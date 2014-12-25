@@ -2,6 +2,7 @@ Language Manager
 ========
 
 Source Code Repository For Language Manager
+
 Source code released under [MPL 2.0] (https://www.mozilla.org/MPL/2.0/)
 
 #### What it does: 
