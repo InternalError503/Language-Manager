@@ -12,5 +12,6 @@ locale LanguageManager cs chrome/locale/cs/
 locale LanguageManager da chrome/locale/da/
 locale LanguageManager de chrome/locale/de/
 locale LanguageManager en-US chrome/locale/en-US/
+locale LanguageManager fr chrome/locale/fr/
 locale LanguageManager tr chrome/locale/tr/
 locale LanguageManager ru chrome/locale/ru/

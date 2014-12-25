@@ -952,7 +952,7 @@ items.forEach(function(item, index, array) {
   }
 
   function actualResizeHandler() {
-
+			//Note: textContent does not seem to work here, Looking for a better way in future updates.
 			var container = document.getElementById("theList");
             var content = container.innerHTML;
 					container.innerHTML= content;

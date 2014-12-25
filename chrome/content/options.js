@@ -38,19 +38,19 @@ try{
 		var CopyrightLabel = document.getElementById("labelCopy");
 		
 		document.title = _bundleOptionsWindow.GetStringFromName("lmOptionsTitle");
-		navBarTitle.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
-		navBarSupport.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		navBarContact.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
-		navBarSupport2.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		navBarContact2.innerHTML = " " + _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");		
-		OptionsPanelTitle.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
-		OptionsSelectBrowser.innerHTML = _bundleOptionsWindow.GetStringFromName("lmSelectBrowser");
-				OptionsSelectBrowserMenuCF.innerHTML = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuCF");
-				OptionsSelectBrowserMenuFF.innerHTML = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFF");
-				OptionsSelectBrowserMenuFFB.innerHTML = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFFB");
-		OptionsButtonReset.innerHTML = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
-		OptionsBrowserDetection.innerHTML = _bundleOptionsWindow.GetStringFromName("lmBrowserDetection");
-		CopyrightLabel.innerHTML = _bundleOptionsWindow.GetStringFromName("lmCopyright");
+		navBarTitle.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
+		navBarSupport.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
+		navBarContact.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
+		navBarSupport2.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
+		navBarContact2.textContent = " " + _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");		
+		OptionsPanelTitle.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
+		OptionsSelectBrowser.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowser");
+				OptionsSelectBrowserMenuCF.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuCF");
+				OptionsSelectBrowserMenuFF.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFF");
+				OptionsSelectBrowserMenuFFB.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFFB");
+		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
+		OptionsBrowserDetection.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserDetection");
+		CopyrightLabel.textContent = _bundleOptionsWindow.GetStringFromName("lmCopyright");
 		
 //Browser Version Detection	
 var browserVersionDetectionPreference = document.getElementById("form-version-detection");
@@ -106,7 +106,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 		}
 		
-	document.getElementById("current-locale").innerHTML = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguage") +" "+ "<strong>" + ServicesPrefs.getCharPref("locale").toString() + "</strong>";	
+	document.getElementById("current-locale").textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguage") +" "+ ServicesPrefs.getCharPref("locale").toString();	
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue and console
@@ -166,8 +166,8 @@ restoreDefaultLanguage: function(){
 
 		//Refresh Preference
 		var container = document.getElementById("form-clear-locale");
-			var content = container.innerHTML;
-				container.innerHTML= content;
+			var content = container.textContent;
+				container.textContent = content;
 			
 			}catch (e){
 				//Catch any nasty errors and output to dialogue and console
