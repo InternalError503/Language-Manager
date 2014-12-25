@@ -1152,11 +1152,11 @@ items.forEach(function(item, index, array) {
 				
 					if (versionDetectEnabled){
 									
-							window.location = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";
+							document.location.href = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";
 					
 					}else{			
 
-							window.location = cyberfoxModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
+							document.location.href = cyberfoxModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
 					
 					}
 				
@@ -1164,13 +1164,13 @@ items.forEach(function(item, index, array) {
 
 		    case "firefoxmode":
 				
-				window.location = firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi";
+				document.location.href = firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi";
 
 		        break;
 
 		    case "firefoxbetamode":
 				
-				window.location = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
+				document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
 				
 		        break;
 

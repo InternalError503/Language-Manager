@@ -27,7 +27,8 @@ Copyright (c) 2014 8pecxstudios
     <em:description>Language Manager, Designed to manage language packs for Cyberfox and Firefox web browsers this easy to use utility make it easy to manage installed language packs and always have the latest language pack installed.</em:description>
     <em:creator>8pecxstudios</em:creator>
     <em:homepageURL>https://8pecxstudios.com/</em:homepageURL>
-	<em:optionsURL>chrome://LanguageManager/content/showOptions.xul</em:optionsURL>
+	<em:optionsType>3</em:optionsType>
+	<em:optionsURL>chrome://LanguageManager/content/options.html</em:optionsURL>
 	<!-- Special Thanks List -->
 	<em:translator>Michel Gagnon (fr (French))</em:translator>			
 	<em:translator>Bekir Uçarci (tr (Turkish))</em:translator>		
