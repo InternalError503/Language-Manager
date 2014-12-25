@@ -1,11 +1,11 @@
 Language Manager
 ========
 
-Source Code Repository ForLanguage Manager
-Source code released under https://www.mozilla.org/MPL/2.0/
+Source Code Repository For Language Manager
+Source code released under [MPL 2.0] (https://www.mozilla.org/MPL/2.0/)
 
 #### What it does: 
-Language Manager, Designed to manage language packs for Cyberfox and Firefox web 
+Language Manager, Designed to manage language packs for `Cyberfox` and `Firefox` web 
 browsers this easy to use utility make it easy to manage installed language packs and always have 
 the latest language pack installed.
 
