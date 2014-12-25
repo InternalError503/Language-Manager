@@ -6,5 +6,10 @@
 <!ENTITY selectLanguageItem.label "Dil Seçin">
 <!ENTITY installButtonItem.label "Kur">
 <!ENTITY closeButtonItem.label "Son">
+<!ENTITY optionsButtonItem.label "Options">
 
-
+<!ENTITY listItemName.label "Name">
+<!ENTITY listItemVersion.label "Version">
+<!ENTITY listItemInstalled.label "Installed">
+<!ENTITY listItemEnabled.label "Enabled">
+<!ENTITY listItemCompatible.label "Compatible">

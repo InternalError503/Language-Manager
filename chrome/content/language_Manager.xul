@@ -30,11 +30,11 @@ Copyright (c) 2014 8pecxstudios
 <description id="desc2" align="center">&languageCurrentInstalled.label;</description>
 <listbox id="theList">
   <listhead>
-    <listheader label="Name"/>
-	<listheader label="Version"/>
-	<listheader label="Installed"/>	
-	<listheader label="Enabled"/>
-	<listheader label="Compatible"/>	
+    <listheader label="&listItemName.label;"/>
+	<listheader label="&listItemVersion.label;"/>
+	<listheader label="&listItemInstalled.label;"/>	
+	<listheader label="&listItemEnabled.label;"/>
+	<listheader label="&listItemCompatible.label;"/>	
   </listhead>
 </listbox>
 
@@ -55,7 +55,7 @@ Copyright (c) 2014 8pecxstudios
 <hbox align="center">	
  <button id="installButton" label="&installButtonItem.label;" disabled="true" oncommand="gLanguageManger.downloadPack();"/> 
  <button id="closeButton" type="button" label="&closeButtonItem.label;" disabled="true" oncommand="gLanguageManger.complete();"/>
- <button id="optionsButton" type="button" label=" options" oncommand="openUILinkIn('chrome://LanguageManager/content/options.html', 'tab');"
+ <button id="optionsButton" type="button" label="&optionsButtonItem.label;" oncommand="openUILinkIn('chrome://LanguageManager/content/options.html', 'tab');"
  />
  </hbox>
 </window>

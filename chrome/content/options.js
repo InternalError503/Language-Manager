@@ -26,7 +26,8 @@ try{
 		var navBarTitle = document.getElementById("NavTitle");
 		var navBarSupport = document.getElementById("NavSupport");
 		var navBarContact = document.getElementById("NavContact");
-		//var navBarOffcanvasFAQ = document.getElementById("OffcanvasFAQ");
+		var navBarSupport2 = document.getElementById("NavSupport2");
+		var navBarContact2 = document.getElementById("NavContact2");		
 		var OptionsPanelTitle = document.getElementById("OptionsPanel");
 		var OptionsSelectBrowser = document.getElementById("SelectBrowser");
 				var OptionsSelectBrowserMenuCF = document.getElementById("form-cyberfox-mode");
@@ -40,7 +41,8 @@ try{
 		navBarTitle.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
 		navBarSupport.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
 		navBarContact.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
-		//navBarOffcanvasFAQ.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarOffcanvasFAQ");
+		navBarSupport2.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
+		navBarContact2.innerHTML = " " + _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");		
 		OptionsPanelTitle.innerHTML = _bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
 		OptionsSelectBrowser.innerHTML = _bundleOptionsWindow.GetStringFromName("lmSelectBrowser");
 				OptionsSelectBrowserMenuCF.innerHTML = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuCF");
