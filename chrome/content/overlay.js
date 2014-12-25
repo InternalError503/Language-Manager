@@ -1018,7 +1018,20 @@ items.forEach(function(item, index, array) {
 	
 
 		gLanguageManger.ReuseTab("A7E24DF418823798B540DF75FC347898", "chrome://LanguageManager/content/language_Manager.xul");
-	    		
+
+		//Check If Firefox (Seems we need to find better solution)
+		if (ServicesPref.getCharPref("browser_mode") === "firefoxmode"){
+				isFirefoxModeEnabled = true;
+		}		
+		
+		//Check if browser Firefox
+		if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
+			ServicesPref.setCharPref("browser_mode", "firefoxmode");
+			isFirefoxModeEnabled = true;
+			ServicesPref.setBoolPref("versiondetection", false);		
+				
+		}	
+		
 				
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
@@ -1087,7 +1100,8 @@ items.forEach(function(item, index, array) {
 		
 		//Check if browser Firefox
 		if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
-			
+			ServicesPref.setCharPref("browser_mode", "firefoxmode");
+			isFirefoxModeEnabled = true;
 			ServicesPref.setBoolPref("versiondetection", false);		
 				
 		}		
@@ -1191,7 +1205,7 @@ items.forEach(function(item, index, array) {
 
 			
 			//Prompt restart to apply changes
-			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), _bundleDialogue.GetStringFromName("restartMessage"))) {
+			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+  _bundleDialogue.GetStringFromName("restartMessage"))) {
 			
 				//Call browser restart function
 				gLanguageManger.restartBrowser();
@@ -1216,7 +1230,7 @@ items.forEach(function(item, index, array) {
 
 			
 			//Prompt restart to apply changes
-			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), _bundleDialogue.GetStringFromName("restartMessageActivate"))) {
+			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+ _bundleDialogue.GetStringFromName("restartMessageActivate"))) {
 			
 				//Call browser restart function
 				gLanguageManger.restartBrowser();
