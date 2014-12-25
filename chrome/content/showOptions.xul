@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- 
+Copyright (c) 2014 8pecxstudios
+-->
+<!-- Current solution to add custom options page -->
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+			id="options"        
+			hidden="true"
+			onload="showOptionsPage();">
+			
+	<script>
+				  function showOptionsPage() {
+				  
+					var gBrowser = Components.classes['@mozilla.org/appshell/window-mediator;1']
+											 .getService(Components.interfaces.nsIWindowMediator)
+											 .getMostRecentWindow('navigator:browser')
+											 .gBrowser;
+											 
+					gBrowser.selectedTab = gBrowser.addTab("chrome://LanguageManager/content/options.html");
+					
+					document.getElementById("options").cancelDialog();
+				  }
+	</script>
+	
+</dialog>

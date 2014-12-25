@@ -1,0 +1,72 @@
+/* Here you can create a custom CSS style for cyberfox language manager */
+
+/* Main Ui 
+#Language-Manager{
+	width: 310px;
+	height: 425px;
+	
+	color:#333;
+	font-weight: 600;
+}
+#top_pane{
+	background-image: linear-gradient(to bottom, #ffffff, #eeeeee)!important;
+	color:#333;
+	font-weight: 800;
+    text-shadow: 0 1px 0 #ffffff!important;	
+}
+#top_pane_caption{
+	background-color: inherit !important;
+	color:#333;
+	font-weight: 800;
+	font-size: 19px;
+    text-shadow: 0 1px 0 #ffffff!important;	
+}
+#closeButton,
+#languageMenu,
+#installButton{
+  display: inline-block!important;
+  -moz-box-sizing: border-box!important;
+  box-sizing: border-box!important;
+  text-decoration: none!important;
+  border: none!important;
+  line-height: 28px!important;
+  min-height: 30px!important;
+  font-size: 1rem!important;
+  padding: 0 12px!important;
+  background: #f7f7f7!important;
+  color: #444444!important;
+  border: 1px solid rgba(0, 0, 0, 0.2)!important;
+  border-bottom-color: rgba(0, 0, 0, 0.3)!important;
+  background-origin: border-box!important;
+  background-image: linear-gradient(to bottom, #ffffff, #eeeeee)!important;
+  border-radius: 4px!important;
+  text-shadow: 0 1px 0 #ffffff!important;
+}*/
+#languageMenu{
+	width: 290px;
+}
+
+#theList{
+	width: 300px;
+}
+
+#optionsButton{
+
+	list-style-image: url("chrome://LanguageManager/skin/settings.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+	padding-right:7px;
+
+}
+#toolbar_openLangageManager{
+	list-style-image: url("chrome://LanguageManager/skin/icon16.png");
+	
+}
+#toolbar_openLangageManager[cui-areatype="menu-panel"]{
+	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;
+	
+}
+
+#toolbar_openLangageManager:not([cui-areatype="toolbar"])> .toolbarbutton-icon{
+	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;
+	
+}

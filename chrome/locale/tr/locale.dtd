@@ -1,0 +1,10 @@
+<!ENTITY languageManagerTitleItem.label "Dil Yöneticisi">
+<!ENTITY languagePackCaptionItem.label "Dil Paketi Yükle">
+<!ENTITY languageDescription.desc "Basitçe 'Kur' düğmesine basarak yüklemek istediğiniz paketi seçin.">
+<!ENTITY languageCurrentInstalled.label "Şuanda yüklü olan dil paketleri:">
+<!ENTITY languageEnableMessage.label "Dil paketini etkinleştirmek için üzerine çift tıklayın!">
+<!ENTITY selectLanguageItem.label "Dil Seçin">
+<!ENTITY installButtonItem.label "Kur">
+<!ENTITY closeButtonItem.label "Son">
+
+

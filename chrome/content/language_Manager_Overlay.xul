@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- 
+Copyright (c) 2014 8pecxstudios
+-->
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://LanguageManager/skin/custom.css" type="text/css"?>
+<!DOCTYPE overlay [
+<!ENTITY % commonDTD SYSTEM "chrome://LanguageManager/locale/locale.dtd" >
+%commonDTD;
+]>
+
+<overlay id="Language-Manager-Overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script src="chrome://LanguageManager/content/overlay.js"/>
+	<menupopup id="menu_ToolsPopup">
+		<menuitem id="menu_LanguageManager"
+					iconic="true"
+					class="menuitem-iconic"
+					image="chrome://LanguageManager/skin/icon16.png"
+					label="&languageManagerTitleItem.label;" 
+					oncommand="gLanguageManger.ShowLanguageManager();"/>						
+	</menupopup>
+	<menupopup id="appmenuSecondaryPane">
+		<menuitem id="appmenu_LanguageManager"
+					iconic="true"
+					class="menuitem-iconic"
+					image="chrome://LanguageManager/skin/icon16.png"
+					label="&languageManagerTitleItem.label;" 
+					oncommand="gLanguageManger.ShowLanguageManager();"/>	
+	</menupopup>	
+
+	<toolbarpalette id="BrowserToolbarPalette">	
+		<toolbarbutton id="toolbar_openLangageManager" 
+							   class="toolbarbutton-1 chromeclass-toolbar-additional"
+							   label="&languageManagerTitleItem.label;"	
+							   tooltiptext="&languageManagerTitleItem.label;"  
+							   oncommand="gLanguageManger.ShowLanguageManager();" /> 
+	</toolbarpalette>
+</overlay>

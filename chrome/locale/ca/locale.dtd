@@ -1,0 +1,10 @@
+<!ENTITY languageManagerTitleItem.label "Language Manager">
+<!ENTITY languagePackCaptionItem.label "Language Pack Installation">
+<!ENTITY languageDescription.desc "Simply select the pack you wish to install then press the install button.">
+<!ENTITY languageCurrentInstalled.label "Currently installed language packs:">
+<!ENTITY languageEnableMessage.label "Double click pack to enable!">
+<!ENTITY selectLanguageItem.label "Select Language">
+<!ENTITY installButtonItem.label "Install">
+<!ENTITY closeButtonItem.label "Finished">
+
+

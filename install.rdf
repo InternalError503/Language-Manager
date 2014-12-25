@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- 
+Copyright (c) 2014 8pecxstudios
+-->
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>LanguageManager@8pecxstudios.com</em:id>
+    <em:version>2.0</em:version>
+	<em:type>2</em:type>
+	<em:iconURL>chrome://LanguageManager/skin/icon32.png</em:iconURL>
+	<em:icon64URL>chrome://LanguageManager/skin/icon64.png</em:icon64URL>
+    <!-- Target Application this theme can install into, 
+        with minimum and maximum supported versions. --> 
+		
+    <em:targetApplication>
+      <Description>
+		<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>29.0</em:minVersion>
+        <em:maxVersion>33.0.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+	
+	<!-- Front End MetaData -->
+    <em:name>Language Manager</em:name>
+    <em:description>Language Manager, Designed to manage language packs for Cyberfox and Firefox web browsers this easy to use utility make it easy to manage installed language packs and always have the latest language pack installed.</em:description>
+    <em:creator>8pecxstudios</em:creator>
+    <em:homepageURL>https://8pecxstudios.com/</em:homepageURL>
+	<em:optionsURL>chrome://LanguageManager/content/showOptions.xul</em:optionsURL>
+	<!-- Special Thanks List -->
+	<em:translator>Michel Gagnon (fr (French))</em:translator>			
+	<em:translator>Bekir Uçarci (tr (Turkish))</em:translator>		
+  </Description>      
+</RDF>

@@ -1,0 +1,10 @@
+<!ENTITY languageManagerTitleItem.label "Cyberfox Sprache Geschäftsführer">
+<!ENTITY languagePackCaptionItem.label "Sprach Paket Installieren">
+<!ENTITY languageDescription.desc "Wählen Sie einfach das paket zu installieren drücken Sie die Taste installieren möchten.">
+<!ENTITY languageCurrentInstalled.label "Currently installed language packs:">
+<!ENTITY languageEnableMessage.label "Double click pack to enable!">
+<!ENTITY selectLanguageItem.label "Sprache auswählen">
+<!ENTITY installButtonItem.label "Installieren">
+<!ENTITY closeButtonItem.label "Finished">
+
+

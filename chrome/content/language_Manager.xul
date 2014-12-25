@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- 
+Copyright (c) 2014 8pecxstudios
+-->
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://LanguageManager/skin/custom.css" type="text/css"?>
+<!DOCTYPE window [
+<!ENTITY % commonDTD SYSTEM "chrome://LanguageManager/locale/locale.dtd" >
+%commonDTD;
+]>
+<window id="Language-Manager" title="&languageManagerTitleItem.label;" flex="1" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="gLanguageManger.initPane();">
+
+<script src="chrome://LanguageManager/content/overlay.js"/>
+<script type="application/javascript" src="chrome://browser/content/utilityOverlay.js"/>
+
+<tooltip id="listEnableMessage" orient="vertical">
+  <label value="&languageEnableMessage.label;"/>
+</tooltip>
+
+<groupbox id="top_pane">
+<caption id="top_pane_caption" label="&languagePackCaptionItem.label;" />
+
+
+<separator class="groove-thin"/>
+<rows>
+<vbox align="center">
+
+</vbox>
+<description id="desc2" align="center">&languageCurrentInstalled.label;</description>
+<listbox id="theList">
+  <listhead>
+    <listheader label="Name"/>
+	<listheader label="Version"/>
+	<listheader label="Installed"/>	
+	<listheader label="Enabled"/>
+	<listheader label="Compatible"/>	
+  </listhead>
+</listbox>
+
+<row id="iRow">
+
+<menulist id="languageMenu" label="&selectLanguageItem.label;" align="center" oncommand="gLanguageManger.Buttonenabled(); gLanguageManger.SetPrefValue();">
+	<menupopup>
+		<menuitem label="&selectLanguageItem.label;" disabled="true"/>	
+	</menupopup>
+</menulist>  
+
+</row>
+
+</rows>
+<description id="desc2" align="center">&languageDescription.desc;</description>
+</groupbox>
+
+<hbox align="center">	
+ <button id="installButton" label="&installButtonItem.label;" disabled="true" oncommand="gLanguageManger.downloadPack();"/> 
+ <button id="closeButton" type="button" label="&closeButtonItem.label;" disabled="true" oncommand="gLanguageManger.complete();"/>
+ <button id="optionsButton" type="button" label=" options" oncommand="openUILinkIn('chrome://LanguageManager/content/options.html', 'tab');"
+ />
+ </hbox>
+</window>

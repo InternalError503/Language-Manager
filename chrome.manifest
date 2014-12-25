@@ -1,0 +1,15 @@
+content LanguageManager chrome/content/
+skin LanguageManager classic/1.0 chrome/skin/
+overlay chrome://browser/content/browser.xul chrome://LanguageManager/content/language_Manager_Overlay.xul
+
+#Current Support Locales For Language Manager
+locale LanguageManager af chrome/locale/af/
+locale LanguageManager ar chrome/locale/ar/
+locale LanguageManager be chrome/locale/be/
+locale LanguageManager bg chrome/locale/bg/
+locale LanguageManager ca chrome/locale/ca/
+locale LanguageManager cs chrome/locale/cs/
+locale LanguageManager da chrome/locale/da/
+locale LanguageManager de chrome/locale/de/
+locale LanguageManager en-US chrome/locale/en-US/
+locale LanguageManager tr chrome/locale/tr/
