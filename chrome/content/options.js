@@ -13,9 +13,6 @@ var ServicesPref = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPre
 var localisedContent = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService); 
 var _bundleOptionsWindow = localisedContent.createBundle("chrome://LanguageManager/locale/options.properties");
 
-//Version Detection Preference
-//var browserVersionDetection= ServicesPref.getBoolPref("versiondetection");	
-	
 var gLanguageMangerOptions = {
 
 init: function(){
@@ -34,7 +31,6 @@ try{
 				var OptionsSelectBrowserMenuFF = document.getElementById("form-firefox-mode");
 				var OptionsSelectBrowserMenuFFB = document.getElementById("form-firefoxbeta-mode");
 		var OptionsButtonReset = document.getElementById("resetLanguage");				
-		//var OptionsBrowserDetection = document.getElementById("form-version-detection-label");
 		var CopyrightLabel = document.getElementById("labelCopy");
 		
 		document.title = _bundleOptionsWindow.GetStringFromName("lmOptionsTitle");
@@ -49,12 +45,8 @@ try{
 				OptionsSelectBrowserMenuFF.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFF");
 				OptionsSelectBrowserMenuFFB.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFFB");
 		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
-		//OptionsBrowserDetection.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserDetection");
 		CopyrightLabel.textContent = _bundleOptionsWindow.GetStringFromName("lmCopyright");
-		
-//Browser Version Detection	
-//var browserVersionDetectionPreference = document.getElementById("form-version-detection");
-	
+			
 //Firefox Mode	
 var firefoxModePreference = document.getElementById("form-firefox-mode");
 
@@ -80,12 +72,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 			document.getElementById("form-cyberfox-mode").setAttribute('disabled', true);		
 				
 		}
-/*		
-		//Set checkbox state based on preference value
-		if (ServicesPref.getBoolPref("versiondetection")){
-		    browserVersionDetectionPreference.setAttribute("checked", "checked");
-		}
-*/
+
 		switch (ServicesPref.getCharPref("browser_mode")) {
 
 		    case "cyberfoxmode":
@@ -96,12 +83,10 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 		    case "firefoxmode":
 				document.getElementById("form-browser-select").value = "browser_firefox";
-		        //browserVersionDetectionPreference.setAttribute("disabled", true);
 		        break;
 
 		    case "firefoxbetamode":
 				document.getElementById("form-browser-select").value = "browser_beta";
-		        //browserVersionDetectionPreference.setAttribute("disabled", true);
 		        break;
 
 		}
@@ -114,22 +99,6 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 		}
 	
 },
-		
-/*		
-browserVersionDetectionCheckbox: function() {
-
-	try{
-		
-		if (ServicesPref.getBoolPref("versiondetection")){	
-				ServicesPref.setBoolPref("versiondetection",false);		
-		}else{
-				ServicesPref.setBoolPref("versiondetection", true);
-		}			
-			}catch (e){
-				//Catch any nasty errors and output to dialogue and console
-				alert("Were sorry but something has gone wrong! " + e);
-		}
-},*/
 
 browserModeChanged: function(){
 

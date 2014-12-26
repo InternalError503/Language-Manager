@@ -15,7 +15,7 @@ the latest language pack installed.
 
 - Firefox: Supports Firefox on release channel
 - Firefox Beta: Supports Firefox beta, Testing the new Firefox in multiple languages just got easier
-- Cyberfox: Works in all versions of cyberfox, With browser version detection for older versions.
+- Cyberfox: Works in all versions of cyberfox.
 - Easily: Download and install the latest language pack for your browser version.
 - Quickly: & easily switch between installed language packs.
 - Information: Shows vital information about installed language packs.

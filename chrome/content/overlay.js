@@ -10,9 +10,6 @@ Cu.import("resource://gre/modules/AddonManager.jsm");
 //Get & set language manager user preferences.
 var ServicesPref = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.language_manager.");
 
-//Version detect pref (Pending removal)
-//var versionDetectEnabled = ServicesPref.getBoolPref("versiondetection");
-
 //Version firefox-mode
 var isFirefoxModeEnabled; 
 
@@ -435,15 +432,7 @@ try{
 			ServicesPref.setBoolPref("versiondetection", false);		
 				
 		}		
-		/*
-			//Check to make sure browser version detection and firefox mode don't conflict when both are set to "true"
-			if (versionDetectEnabled & isFirefoxModeEnabled === true){
-			
-			prompts.confirm(window, "Error Message", (_bundleDebugError.GetStringFromName("downloadoptionsError")));
-						window.close();						
-			return;
-			}
-		*/	
+		
 		var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
 		var newPref = document.getElementById("languageMenu").value;		
 		
@@ -479,17 +468,8 @@ try{
 		switch (ServicesPref.getCharPref("browser_mode")) {
 
 		    case "cyberfoxmode":
-				
-					//if (versionDetectEnabled){
-									
-							document.location.href = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";
-					
-				/*	}else{			
-
-							document.location.href = cyberfoxModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
-					
-					}*/
-				
+												
+							document.location.href = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";				
 		        break;
 
 		    case "firefoxmode":
