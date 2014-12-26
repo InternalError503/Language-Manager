@@ -33,26 +33,6 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 var gLanguageManger = {
 
-
-removeOld: function(){
-
-	 // Check for old cyberfox Language Manager (Only Temporary)
-	AddonManager.getAddonByID('CyberfoxLanguageManager@8pecxstudios.com', function(addon) {
-		if(addon) { 
-		addon.userDisabled = true;
-		
-			var clmprefs = Cc["@mozilla.org/preferences-service;1"]
-						.getService(Ci.nsIPrefService).getBranch("extensions.cyberfox_language_manager.");							
-			clmprefs.clearUserPref("debugMode");
-			clmprefs.clearUserPref("versiondetect");
-			clmprefs.clearUserPref("firefoxmode");
-			addon.uninstall();							
-		}
-				
-	});
-	
-},
-
 initPane: function(){	
 
 	try{
@@ -1251,4 +1231,3 @@ items.forEach(function(item, index, array) {
 			  	
 	
 }
-gLanguageManger.removeOld();
