@@ -4,7 +4,7 @@ var Cc = Components.classes;
 var Ci = Components.interfaces;
 var Cu = Components.utils;
 
-//Import Addon Manager
+//Import addon manager
 Cu.import("resource://gre/modules/AddonManager.jsm");
 
 //Get & set language manager user preferences.
@@ -21,12 +21,12 @@ var localiseJavascript = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.ns
 var _bundleDialogue = localiseJavascript.createBundle("chrome://LanguageManager/locale/dialogue.properties");
 var _bundleDebugError = localiseJavascript.createBundle("chrome://LanguageManager/locale/debug.properties");
 
-//Setup Prompts Service.
+//Setup prompts service.
 var prompts = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
 
-//Browser Information			
+//Browser information			
 var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
-			.getService(Components.interfaces.nsIXULAppInfo);
+			.getService(Components.interfaces.nsIXULAppInfo);			
 
 var gLanguageManger = {
 
@@ -395,7 +395,7 @@ try{
 
 		gLanguageManger.ReuseTab("A7E24DF418823798B540DF75FC347898", "chrome://LanguageManager/content/language_Manager.xul");
 
-		//Check If Firefox (Seems we need to find better solution)
+		//Check if firefox (Seems we need to find better solution)
 		if (ServicesPref.getCharPref("browser_mode") === "firefoxmode"){
 				isFirefoxModeEnabled = true;
 		}		
@@ -495,14 +495,14 @@ try{
 	}
 },
 	
-	//Complex Member
+	//Complex member
 	downloadPack: function() {
 
 		try{			
 			var installButton = document.getElementById("installButton");
 			var closeButton = document.getElementById("closeButton");
 
-					//Change Button Attributes. 
+					//Change button attributes. 
 					installButton.disabled = true;
 					closeButton.disabled = false;
 					

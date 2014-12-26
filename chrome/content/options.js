@@ -1,7 +1,5 @@
 // Copyright (c) 2014 8pecxstudios
 
-//Options settings rebuilt 28/09/2014
-
 var Cc = Components.classes;
 var Ci = Components.interfaces;
 var Cu = Components.utils;
@@ -47,10 +45,10 @@ try{
 		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
 		CopyrightLabel.textContent = _bundleOptionsWindow.GetStringFromName("lmCopyright");
 			
-//Firefox Mode	
+//Firefox mode	
 var firefoxModePreference = document.getElementById("form-firefox-mode");
 
-//Browser Information			
+//Browser information			
 var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 			.getService(Components.interfaces.nsIXULAppInfo); 	
 
@@ -130,10 +128,10 @@ browserModeChanged: function(){
 restoreDefaultLanguage: function(){
 
 	try{
-		//Clear Locale 
+		//Clear locale 
 		ServicesPrefs.clearUserPref("locale");
 
-		//Refresh Preference
+		//Refresh preference
 		var container = document.getElementById("form-clear-locale");
 			var content = container.textContent;
 				container.textContent = content;
