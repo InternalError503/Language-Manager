@@ -404,8 +404,7 @@ try{
 		if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
 			ServicesPref.setCharPref("browser_mode", "firefoxmode");
 			isFirefoxModeEnabled = true;
-			ServicesPref.setBoolPref("versiondetection", false);		
-				
+					
 		}	
 		
 				
@@ -479,8 +478,7 @@ try{
 		if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
 			ServicesPref.setCharPref("browser_mode", "firefoxmode");
 			isFirefoxModeEnabled = true;
-			ServicesPref.setBoolPref("versiondetection", false);		
-				
+					
 		}		
 		
 		var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
