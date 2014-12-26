@@ -212,48 +212,62 @@ try{
 					.createInstance(Ci.nsIXMLHttpRequest);
 					  
 	request.onload = function(aEvent) {
-			let text = aEvent.target.responseText;
-			let jsObject = text;
-			items = aAddons;
-			
-		//Need to check if json is valid, If json not valid don't continue and show error.
-		function IsJsonValid(jsObject) {
-		try {
-					JSON.parse(jsObject);
-				} catch (e) {
-					return false;
-				}
-			return true;
-		}
 
-		if(!IsJsonValid(jsObject)){
-			//Need to throw error message and exit if not valid json.
-			datlist.disabled = true;	
-			alert(_bundleDebugError.GetStringFromName("jsonnotvalid"));	
-			return;
-		} else { 
-			jsObject = JSON.parse(text);
-		}
-		
-	let guidList = jsObject.SUPPORTEDIDS[0].GUIDS;	
-		
-		/*
-			We take a small performance hit as the switch case was less intensive, But now we have a controllable list of supported GUIDs
-			This means we no longer have to edit the very large select case to add\remove items its all controlled by supportedidlist.json	
-		*/
-		
-		for (i = 0; guidList[i]; i++) {
-			items.forEach(function(item, index, array) {	
-				if (item.id === guidList[i].ID){
-					getAllAddons(item.name, item.id,  item.version, item.updateDate, item.isActive, item.isCompatible);
-				}
-			});
-		}
-					
+		//Since we have json elements hosted on our server, We need to check if the url is valid
+		//If the url is not valid then we need to alert the user and stop the addon from continuing.	
+		if ((request.status >= 200 && 
+			request.status < 300) || 
+			request.status == 304){
+			
+				let text = aEvent.target.responseText;
+				let jsObject = text;
+				items = aAddons;
+				
+			//Need to check if json is valid, If json not valid don't continue and show error.
+			function IsJsonValid(jsObject) {
+			try {
+						JSON.parse(jsObject);
+					} catch (e) {
+						return false;
+					}
+				return true;
+			}
+
+			if(!IsJsonValid(jsObject)){
+				//Need to throw error message and exit if not valid json.
+				datlist.disabled = true;	
+				alert(_bundleDebugError.GetStringFromName("jsonnotvalid"));	
+				return;
+			} else { 
+				jsObject = JSON.parse(text);
+			}
+			
+		let guidList = jsObject.SUPPORTEDIDS[0].GUIDS;	
+			
+			/*
+				We take a small performance hit as the switch case was less intensive, But now we have a controllable list of supported GUIDs
+				This means we no longer have to edit the very large select case to add\remove items its all controlled by supportedidlist.json	
+			*/
+			
+			for (i = 0; guidList[i]; i++) {
+				items.forEach(function(item, index, array) {	
+					if (item.id === guidList[i].ID){
+						getAllAddons(item.name, item.id,  item.version, item.updateDate, item.isActive, item.isCompatible);
+					}
+				});
+			}
+			
+		}else{
+			//Disable the table and show error
+			datlist.disabled = true;
+			alert("http response did not succeed, URL does not exist or maybe unavailable");				
+		}					
 	};
 				
 	request.onerror = function(aEvent) {
-		   window.alert("Error Status: " + this.target.status);
+			//Disable the table and show error
+			datlist.disabled = true;
+			window.alert("Loading URL timed out, server may not exist or maybe unavailable " + aEvent.target.status);
 	};
 	
 	request.open("GET", url, true);
