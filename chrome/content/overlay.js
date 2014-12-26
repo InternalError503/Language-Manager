@@ -347,14 +347,6 @@ try{
 			var closeButton = document.getElementById("closeButton");
 			installButton.disabled = false
 			closeButton.disabled = true;	
-/* 		
-			if (installButton.disabled == true){
-					installButton.disabled = false;
-					closeButton.disabled = true;
-			}else{
-					installButton.disabled = true;
-					closeButton.disabled = false;
-			} */
 			
 	}catch (e){
 				//Catch any nasty errors and output to dialogue
@@ -495,7 +487,7 @@ try{
 			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+  _bundleDialogue.GetStringFromName("restartMessage"))) {
 			
 				//Call browser restart function
-				gLanguageManger.restartBrowser();
+				this.restartBrowser();
 				
 				window.close();
 			}else{
@@ -520,7 +512,7 @@ try{
 			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+ _bundleDialogue.GetStringFromName("restartMessageActivate"))) {
 			
 				//Call browser restart function
-				gLanguageManger.restartBrowser();
+				this.restartBrowser();
 				
 				window.close();
 			}else{
