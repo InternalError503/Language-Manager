@@ -42,44 +42,57 @@ initPane: function(){
 	var menuItemsList = document.getElementById("languageMenu");				
 					  
 	request.onload = function(aEvent) {
-			let text = aEvent.target.responseText;
-			let jsObject = text;
-			
-			//Need to check if json is valid, If json not valid don't continue and show error.
-			function IsJsonValid(jsObject) {
-					try {
-						JSON.parse(jsObject);
-					} catch (e) {
-						return false;
-					}
-				return true;
-			}			
-						
-			if(!IsJsonValid(jsObject)){
-				//Need to throw error message and exit if not valid json.
-				menuItemsList.disabled = true;	
-				alert(_bundleDebugError.GetStringFromName("jsonnotvalid"));	
-				return;
-			} else { 
-				jsObject = JSON.parse(text);
-			}			
-			
-			let myLanguageList = jsObject.languageList[0].packs;
-			
-	for (i = 0; myLanguageList[i]; i++) {
 	
-			if (myLanguageList[i].version_min > webBrowserVersion.version){}else{
-				menuItemsList = document.getElementById("languageMenu")
-							.appendItem( myLanguageList[i].name, myLanguageList[i].value);	
-			}
+		//Since we have json elements hosted on our server, We need to check if the url is valid
+		//If the url is not valid then we need to alert the user and stop the addon from continuing.	
+		if ((request.status >= 200 && 
+			request.status < 300) || 
+			request.status == 304){
 		
-		}
-		console.log("Found " + myLanguageList.length + " language packs");	
+				let text = aEvent.target.responseText;
+				let jsObject = text;
+				
+				//Need to check if json is valid, If json not valid don't continue and show error.
+				function IsJsonValid(jsObject) {
+						try {
+							JSON.parse(jsObject);
+						} catch (e) {
+							return false;
+						}
+					return true;
+				}			
+							
+				if(!IsJsonValid(jsObject)){
+					//Need to throw error message and exit if not valid json.
+					menuItemsList.disabled = true;	
+					alert(_bundleDebugError.GetStringFromName("jsonnotvalid"));	
+					return;
+				} else { 
+					jsObject = JSON.parse(text);
+				}			
+				
+				let myLanguageList = jsObject.languageList[0].packs;
+				
+		for (i = 0; myLanguageList[i]; i++) {
+		
+				if (myLanguageList[i].version_min > webBrowserVersion.version){}else{
+					menuItemsList = document.getElementById("languageMenu")
+								.appendItem( myLanguageList[i].name, myLanguageList[i].value);	
+				}
 			
+			}
+			console.log("Found " + myLanguageList.length + " language packs");	
+		}else{
+			//Disable the list and show error
+			menuItemsList.disabled = true;	
+			alert("http response did not succeed, URL does not exist or maybe unavailable");				
+		}	
 	};
 				
 	request.onerror = function(aEvent) {
-		   window.alert("Error Status: " + this.target.status);
+			//Disable the list and show error
+			menuItemsList.disabled = true;	
+			window.alert("Loading URL timed out, server may not exist or maybe unavailable " + aEvent.target.status);
 	};
 	
 	request.open("GET", url, true);
