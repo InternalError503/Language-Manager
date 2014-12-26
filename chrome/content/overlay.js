@@ -70,9 +70,11 @@ initPane: function(){
 			let myLanguageList = jsObject.languageList[0].packs;
 			
 	for (i = 0; myLanguageList[i]; i++) {
-
-			menuItemsList = document.getElementById("languageMenu")
-						.appendItem( myLanguageList[i].name, myLanguageList[i].value);			
+	
+			if (myLanguageList[i].version_min > webBrowserVersion.version){}else{
+				menuItemsList = document.getElementById("languageMenu")
+							.appendItem( myLanguageList[i].name, myLanguageList[i].value);	
+			}
 		
 		}
 		console.log("Found " + myLanguageList.length + " language packs");	
