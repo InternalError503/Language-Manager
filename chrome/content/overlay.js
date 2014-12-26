@@ -60,7 +60,7 @@ initPane: function(){
 	};
 				
 	request.onerror = function(aEvent) {
-		   window.alert("Error Status: " + aEvent.target.status);
+		   window.alert("Error Status: " + this.target.status);
 	};
 	
 	request.open("GET", url, true);
@@ -117,8 +117,8 @@ try{
     }, false);	
 	
 		
-	gLanguageManger.getInstalledLanguages();
-	gLanguageManger.ResizeListbox();
+	this.getInstalledLanguages();
+	this.ResizeListbox();
 	
 },
 
@@ -167,7 +167,7 @@ try{
 	}
 		
 
-//Get list of all installed language packs, Needs a little work very large code block in need of optimization and simplification -> (Single call iteration).
+//Get list of all installed language packs, Needs a little work in need of optimization -> (Single call iteration).
 AddonManager.getAllAddons(function(aAddons) {	
 
 try{
@@ -197,9 +197,7 @@ try{
 				}
 			});
 		}
-		
-
-			
+					
 	};
 				
 	request.onerror = function(aEvent) {
