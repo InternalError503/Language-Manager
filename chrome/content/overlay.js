@@ -368,6 +368,15 @@ try{
 		}
 	},
 	
+	ShowLanguageManagerOptions : function(){
+	try{	
+			gLanguageManger.ReuseTab("C974F35CA066A280F094DDE616EDD176", "chrome://languagemanager/content/options.html");
+		}catch (e){
+			//Catch any nasty errors and output to dialogue
+			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}	
+	},
+	
 	ShowHelpPage : function() {
 	
 	try{
