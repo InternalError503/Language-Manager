@@ -10,8 +10,8 @@ Cu.import("resource://gre/modules/AddonManager.jsm");
 //Get & set language manager user preferences.
 var ServicesPref = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.language_manager.");
 
-//Version detect pref
-var versionDetectEnabled = ServicesPref.getBoolPref("versiondetection");
+//Version detect pref (Pending removal)
+//var versionDetectEnabled = ServicesPref.getBoolPref("versiondetection");
 
 //Version firefox-mode
 var isFirefoxModeEnabled; 
@@ -435,7 +435,7 @@ try{
 			ServicesPref.setBoolPref("versiondetection", false);		
 				
 		}		
-		
+		/*
 			//Check to make sure browser version detection and firefox mode don't conflict when both are set to "true"
 			if (versionDetectEnabled & isFirefoxModeEnabled === true){
 			
@@ -443,7 +443,7 @@ try{
 						window.close();						
 			return;
 			}
-			
+		*/	
 		var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
 		var newPref = document.getElementById("languageMenu").value;		
 		
@@ -467,7 +467,7 @@ try{
 					installButton.disabled = true;
 					closeButton.disabled = false;
 					
-			//Request URL Where To Download Language Pack From.		
+			//Request URL where to download language pack from.		
 			var cyberfoxModeURL = "https://8pecxstudios.com/download/latest/language/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/";
 			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";
@@ -480,15 +480,15 @@ try{
 
 		    case "cyberfoxmode":
 				
-					if (versionDetectEnabled){
+					//if (versionDetectEnabled){
 									
 							document.location.href = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";
 					
-					}else{			
+				/*	}else{			
 
 							document.location.href = cyberfoxModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
 					
-					}
+					}*/
 				
 		        break;
 
