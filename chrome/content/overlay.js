@@ -363,7 +363,30 @@ try{
 		}
 			  
 	},
+
+	//We attempt to validate our json urls, But what about the language pack urls.
+	validateURL : function(url){
 	
+		var request = new XMLHttpRequest();
+		request.open("GET", url);
+		
+		request.onload = function(){
+			if ((request.status >= 200 && 
+				  request.status < 300) || 
+				  request.status == 304){
+				return true;
+			}else{
+				alert("http response did not succeed, URL does not exist or maybe unavailable");
+				return false;
+			}	
+		};
+		
+		request.onerror = function(){
+			alert("Loading URL timed out, server may not exist or maybe unavailable");
+			return false;
+		};
+		request.send(null);
+	},	
 	
 	ShowLanguageManager : function() {
 	
@@ -495,20 +518,21 @@ try{
 		switch (ServicesPref.getCharPref("browser_mode")) {
 
 		    case "cyberfoxmode":
-												
-							document.location.href = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";				
+				if(gLanguageManger.validateURL(cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi") == true){					
+					document.location.href = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";	
+				}
 		        break;
 
 		    case "firefoxmode":
-				
-				document.location.href = firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi";
-
+				if(gLanguageManger.validateURL(firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi") == true){			
+					document.location.href = firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi";
+				}
 		        break;
 
 		    case "firefoxbetamode":
-				
-				document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
-				
+				if(gLanguageManger.validateURL(document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi") == true){				
+					document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
+				}				
 		        break;
 
 		}
