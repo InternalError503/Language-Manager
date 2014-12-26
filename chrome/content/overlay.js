@@ -42,17 +42,38 @@ initPane: function(){
 	let url = "http://download.8pecxstudios.com/latest/language/LastestLanguage.json";
 	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
 					.createInstance(Ci.nsIXMLHttpRequest);
+	var menuItemsList = document.getElementById("languageMenu");				
 					  
 	request.onload = function(aEvent) {
 			let text = aEvent.target.responseText;
-			let jsObject = JSON.parse(text);
+			let jsObject = text;
+			
+			//Need to check if json is valid, If json not valid don't continue and show error.
+			function IsJsonValid(jsObject) {
+					try {
+						JSON.parse(jsObject);
+					} catch (e) {
+						return false;
+					}
+				return true;
+			}			
+						
+			if(!IsJsonValid(jsObject)){
+				//Need to throw error message and exit if not valid json.
+				menuItemsList.disabled = true;	
+				alert("Were sorry but something has gone wrong while trying to parse LastestLanguage.json (LastestLanguage.json is not valid!)");	
+				return;
+			} else { 
+				jsObject = JSON.parse(text);
+			}			
+			
 			let myLanguageList = jsObject.languageList;
 			let mylanguageItems = jsObject.languageItems;
 			
 	for (i = 0; mylanguageItems[i]; i++) {
 
-			var menuItemsList = document.getElementById("languageMenu")
-								.appendItem( myLanguageList[i], mylanguageItems[i]);			
+			menuItemsList = document.getElementById("languageMenu")
+						.appendItem( myLanguageList[i], mylanguageItems[i]);			
 		
 		}
 		console.log("Found " + myLanguageList.length + " language packs");	
