@@ -61,7 +61,7 @@ initPane: function(){
 			if(!IsJsonValid(jsObject)){
 				//Need to throw error message and exit if not valid json.
 				menuItemsList.disabled = true;	
-				alert("Were sorry but something has gone wrong while trying to parse LastestLanguage.json (LastestLanguage.json is not valid!)");	
+				alert(_bundleDebugError.GetStringFromName("jsonnotvalid"));	
 				return;
 			} else { 
 				jsObject = JSON.parse(text);
@@ -217,7 +217,7 @@ try{
 		if(!IsJsonValid(jsObject)){
 			//Need to throw error message and exit if not valid json.
 			datlist.disabled = true;	
-			alert("Were sorry but something has gone wrong while trying to parse supportedidlist.json (supportedidlist.json is not valid!)");	
+			alert(_bundleDebugError.GetStringFromName("jsonnotvalid"));	
 			return;
 		} else { 
 			jsObject = JSON.parse(text);
