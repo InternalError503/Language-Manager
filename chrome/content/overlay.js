@@ -39,7 +39,7 @@ initPane: function(){
 		
 	
 	//Get latest language list
-	let url = "http://download.8pecxstudios.com/latest/language/LastestLanguage.json";
+	let url = "http://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
 	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
 					.createInstance(Ci.nsIXMLHttpRequest);
 	var menuItemsList = document.getElementById("languageMenu");				
@@ -67,13 +67,12 @@ initPane: function(){
 				jsObject = JSON.parse(text);
 			}			
 			
-			let myLanguageList = jsObject.languageList;
-			let mylanguageItems = jsObject.languageItems;
+			let myLanguageList = jsObject.languageList[0].packs;
 			
-	for (i = 0; mylanguageItems[i]; i++) {
+	for (i = 0; myLanguageList[i]; i++) {
 
 			menuItemsList = document.getElementById("languageMenu")
-						.appendItem( myLanguageList[i], mylanguageItems[i]);			
+						.appendItem( myLanguageList[i].name, myLanguageList[i].value);			
 		
 		}
 		console.log("Found " + myLanguageList.length + " language packs");	
