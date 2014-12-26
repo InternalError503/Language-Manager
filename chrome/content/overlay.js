@@ -202,10 +202,30 @@ try{
 					  
 	request.onload = function(aEvent) {
 			let text = aEvent.target.responseText;
-			let jsObject = JSON.parse(text);
-			let guidList = jsObject.SUPPORTEDIDS[0].GUIDS;
+			let jsObject = text;
 			items = aAddons;
 			
+		//Need to check if json is valid, If json not valid don't continue and show error.
+		function IsJsonValid(jsObject) {
+		try {
+					JSON.parse(jsObject);
+				} catch (e) {
+					return false;
+				}
+			return true;
+		}
+
+		if(!IsJsonValid(jsObject)){
+			//Need to throw error message and exit if not valid json.
+			datlist.disabled = true;	
+			alert("Were sorry but something has gone wrong while trying to parse supportedidlist.json (supportedidlist.json is not valid!)");	
+			return;
+		} else { 
+			jsObject = JSON.parse(text);
+		}
+		
+	let guidList = jsObject.SUPPORTEDIDS[0].GUIDS;	
+		
 		/*
 			We take a small performance hit as the switch case was less intensive, But now we have a controllable list of supported GUIDs
 			This means we no longer have to edit the very large select case to add\remove items its all controlled by supportedidlist.json	
