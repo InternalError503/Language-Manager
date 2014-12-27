@@ -1,15 +1,15 @@
-<!ENTITY languageManagerTitleItem.label "Language Manager">
+<!ENTITY languageManagerTitleItem.label "Gestionnaire de langues">
 <!ENTITY languagePackCaptionItem.label "Installation d’un paquet linguistique">
 <!ENTITY languageDescription.desc "Choisissez le paquet linguistique que vous souhaitez installer, puis cliquez sur le bouton Installer.">
-<!ENTITY languageCurrentInstalled.label "Currently installed language packs:">
-<!ENTITY languageEnableMessage.label "Double click pack to enable!">
-<!ENTITY selectLanguageItem.label "Choisir la langue">
+<!ENTITY languageCurrentInstalled.label "Paquets linguistiques présentement installés :">
+<!ENTITY languageEnableMessage.label "Cliquez deux fois pour activer cette langue.">
+<!ENTITY selectLanguageItem.label "Choisissez la langue">
 <!ENTITY installButtonItem.label "Installer">
-<!ENTITY closeButtonItem.label "Finished">
+<!ENTITY closeButtonItem.label "Terminé">
 <!ENTITY optionsButtonItem.label "Options">
 
-<!ENTITY listItemName.label "Name">
+<!ENTITY listItemName.label "Nom">
 <!ENTITY listItemVersion.label "Version">
-<!ENTITY listItemInstalled.label "Installed">
-<!ENTITY listItemEnabled.label "Enabled">
+<!ENTITY listItemInstalled.label "Installé">
+<!ENTITY listItemEnabled.label "Activé">
 <!ENTITY listItemCompatible.label "Compatible">
