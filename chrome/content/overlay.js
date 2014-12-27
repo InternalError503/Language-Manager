@@ -26,7 +26,7 @@ var prompts = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPro
 
 //Browser information			
 var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
-			.getService(Components.interfaces.nsIXULAppInfo);			
+			.getService(Components.interfaces.nsIXULAppInfo);	
 
 var gLanguageManger = {
 
@@ -75,9 +75,12 @@ initPane: function(){
 				
 		for (i = 0; myLanguageList[i]; i++) {
 		
-				if (myLanguageList[i].version_min > webBrowserVersion.version){}else{
-					menuItemsList = document.getElementById("languageMenu")
-								.appendItem( myLanguageList[i].name, myLanguageList[i].value);	
+				if (myLanguageList[i].version_min > webBrowserVersion.version){}else{			
+					if (webBrowserVersion.version > myLanguageList[i].version_max 
+							&& !myLanguageList[i].version_max == ""){}else{
+								menuItemsList = document.getElementById("languageMenu")
+										.appendItem( myLanguageList[i].name, myLanguageList[i].value);						
+					}									
 				}
 			
 			}
