@@ -1,47 +1,4 @@
 /* Here you can create a custom CSS style for cyberfox language manager */
-
-/* Main Ui 
-#Language-Manager{
-	width: 310px;
-	height: 425px;
-	
-	color:#333;
-	font-weight: 600;
-}
-#top_pane{
-	background-image: linear-gradient(to bottom, #ffffff, #eeeeee)!important;
-	color:#333;
-	font-weight: 800;
-    text-shadow: 0 1px 0 #ffffff!important;	
-}
-#top_pane_caption{
-	background-color: inherit !important;
-	color:#333;
-	font-weight: 800;
-	font-size: 19px;
-    text-shadow: 0 1px 0 #ffffff!important;	
-}
-#closeButton,
-#languageMenu,
-#installButton{
-  display: inline-block!important;
-  -moz-box-sizing: border-box!important;
-  box-sizing: border-box!important;
-  text-decoration: none!important;
-  border: none!important;
-  line-height: 28px!important;
-  min-height: 30px!important;
-  font-size: 1rem!important;
-  padding: 0 12px!important;
-  background: #f7f7f7!important;
-  color: #444444!important;
-  border: 1px solid rgba(0, 0, 0, 0.2)!important;
-  border-bottom-color: rgba(0, 0, 0, 0.3)!important;
-  background-origin: border-box!important;
-  background-image: linear-gradient(to bottom, #ffffff, #eeeeee)!important;
-  border-radius: 4px!important;
-  text-shadow: 0 1px 0 #ffffff!important;
-}*/
 #languageMenu{
 	width: 290px;
 }
@@ -54,7 +11,7 @@
 
 	list-style-image: url("chrome://LanguageManager/skin/settings.png");
 	-moz-image-region: rect(0px 16px 16px 0px);
-	padding-right:7px;
+	padding-right:8px;
 
 }
 #toolbar_openLangageManager{
@@ -70,3 +27,48 @@
 	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;
 	
 }
+/*
+.help-button {
+  min-width: 30px;
+  border-radius: 2px;
+  border: 1px solid #c1c1c1;
+  background-color: #ffcb00;
+  background-image: none;
+  box-shadow: none;
+}
+
+.help-button:not([disabled="true"]):hover {
+  background-color: #f4c200;
+  background-image: none;
+}
+
+.help-button:not([disabled="true"]):hover:active {
+  background-color: #eaba00;
+  background-image: none;
+}
+
+.help-button > .button-box {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.help-button > .button-box > .button-icon {
+  width: 26px;
+  height: 26px;
+  background-image: url("chrome://global/skin/in-content/help-glyph.png");
+  background-position: center;
+}
+
+@media (min-resolution: 2dppx) {
+.help-button > .button-box > .button-icon {
+    background-size: 26px 26px;
+    background-image: url("chrome://global/skin/in-content/help-glyph@2x.png");
+  }
+}
+
+.help-button > .button-box >.button-text {
+  display: none;
+}
+*/
