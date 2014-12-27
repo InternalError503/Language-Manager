@@ -88,14 +88,14 @@ initPane: function(){
 		}else{
 			//Disable the list and show error
 			menuItemsList.disabled = true;	
-			alert("http response did not succeed, URL does not exist or maybe unavailable");				
+			alert(_bundleDebugError.GetStringFromName("httpdNotsuccess"));				
 		}	
 	};
 				
 	request.onerror = function(aEvent) {
 			//Disable the list and show error
 			menuItemsList.disabled = true;	
-			window.alert("Loading URL timed out, server may not exist or maybe unavailable " + aEvent.target.status);
+			window.alert(_bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 	};
 	
 	request.open("GET", url, true);
@@ -263,14 +263,14 @@ try{
 		}else{
 			//Disable the table and show error
 			datlist.disabled = true;
-			alert("http response did not succeed, URL does not exist or maybe unavailable");				
+			alert(_bundleDebugError.GetStringFromName("httpdNotsuccess"));				
 		}					
 	};
 				
 	request.onerror = function(aEvent) {
 			//Disable the table and show error
 			datlist.disabled = true;
-			window.alert("Loading URL timed out, server may not exist or maybe unavailable " + aEvent.target.status);
+			window.alert(_bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 	};
 	
 	request.open("GET", url, true);
@@ -379,13 +379,13 @@ try{
 				  request.status == 304){
 				return true;
 			}else{
-				alert("http response did not succeed, URL does not exist or maybe unavailable");
+				alert(_bundleDebugError.GetStringFromName("httpdNotsuccess"));
 				return false;
 			}	
 		};
 		
-		request.onerror = function(){
-			alert("Loading URL timed out, server may not exist or maybe unavailable");
+		request.onerror = function(aEvent){
+			alert(_bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 			return false;
 		};
 		request.send(null);
