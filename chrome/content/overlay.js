@@ -377,16 +377,14 @@ try{
 			if ((request.status >= 200 && 
 				  request.status < 300) || 
 				  request.status == 304){
-				return true;
+				  document.location.href = url;
 			}else{
 				alert(_bundleDebugError.GetStringFromName("httpdNotsuccess"));
-				return false;
 			}	
 		};
 		
 		request.onerror = function(aEvent){
 			alert(_bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
-			return false;
 		};
 		request.send(null);
 	},	
@@ -519,21 +517,15 @@ try{
 		switch (ServicesPref.getCharPref("browser_mode")) {
 
 		    case "cyberfoxmode":
-				if(gLanguageManger.validateURL(cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi") == true){					
-					document.location.href = cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi";	
-				}
+				gLanguageManger.validateURL(cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi");	
 		        break;
 
 		    case "firefoxmode":
-				if(gLanguageManger.validateURL(firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi") == true){			
-					document.location.href = firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi";
-				}
+				gLanguageManger.validateURL(firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi");
 		        break;
 
 		    case "firefoxbetamode":
-				if(gLanguageManger.validateURL(document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi") == true){				
-					document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi";
-				}				
+				gLanguageManger.validateURL(document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi");				
 		        break;
 
 		}
