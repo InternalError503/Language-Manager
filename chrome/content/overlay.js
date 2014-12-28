@@ -178,8 +178,26 @@ try{
 			row.appendChild( cell );
 			// Create and attach 3rd cell (Installed)
 			cell = document.createElement('listcell');
-			cell.setAttribute('label',  updateDate );
-			cell.setAttribute('value', updateDate );
+
+		//Some users might like a different time - date readout.			
+		switch (ServicesPref.getCharPref("time-date_mode")){
+
+		    case "basicdate":
+				cell.setAttribute('label',  updateDate.toLocaleDateString());
+				cell.setAttribute('value', updateDate.toLocaleDateString() );			
+		    break;		
+
+		    case "timedate":
+				cell.setAttribute('label',  updateDate.toLocaleTimeString() + " " + updateDate.toLocaleDateString());
+				cell.setAttribute('value', updateDate.toLocaleTimeString() + " " + updateDate.toLocaleDateString() );			
+		    break;	
+			
+		    default:
+				cell.setAttribute('label',  updateDate);
+				cell.setAttribute('value', updateDate);	
+		    break;				
+		}			
+			
 			row.appendChild( cell );
 			// Create and attach 4th cell (Enabled)
 			cell = document.createElement('listcell');

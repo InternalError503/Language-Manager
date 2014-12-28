@@ -58,7 +58,7 @@
 					<label class="uk-form-label" for="form-browser-select"><span id="SelectBrowser">Select Browser: (Firefox Only)</span></label>	
 					<div class="uk-form-controls" onchange="gLanguageMangerOptions.browserModeChanged();">
 						<select id="form-browser-select">
-                        <option id="default">Select Browser</option>					
+                        <option id="default" disabled="true">Select Browser</option>					
 						<option id="form-cyberfox-mode" value="browser_cyberfox">Cyberfox</option>
 						<option id="form-firefox-mode" value="browser_firefox">Firefox</option>
 						<option id="form-firefoxbeta-mode" value="browser_beta">Firefox Beta</option>						
@@ -73,6 +73,20 @@
 							<button id="form-clear-locale" onclick="gLanguageMangerOptions.restoreDefaultLanguage();" class="uk-button"><i class="uk-icon-refresh"></i> <span id="resetLanguage">Reset Language</span></button>
 								<label for="form-clear-locale"></label>
 						</div>		
+				</div>
+
+				<!-- Time & Date Format Selection -->
+				<div class="uk-form-row">				
+						
+					<label class="uk-form-label" for="form-time-date"><span id="SelectTimeDate">Select Time &amp; Date Format:</span></label>	
+					<div class="uk-form-controls" onchange="gLanguageMangerOptions.timeDateFormatChanged();">
+						<select id="form-time-date">
+                        <option id="default" disabled="true">Select Format</option>					
+						<option id="form-time-date-default" value="default_tnd">Default</option>
+						<option id="form-time-date-basic-d" value="basic_date">Basic Date</option>
+						<option id="form-time-date-basic-td" value="basic_time">Basic Time &amp; Date</option>						
+						</select>
+					</div>																
 				</div>				
 								
 				</fieldset>				
