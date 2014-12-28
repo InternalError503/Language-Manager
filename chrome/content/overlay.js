@@ -210,7 +210,7 @@ try{
 	datlist = document.getElementById("theList");
   
 	//Get latest support GUID list
-	let url = "http://download.8pecxstudios.com/latest/language/language_manager/supportedidlist.json";
+	let url = "http://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
 	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
 					.createInstance(Ci.nsIXMLHttpRequest);
 					  
@@ -249,7 +249,7 @@ try{
 			
 			/*
 				We take a small performance hit as the switch case was less intensive, But now we have a controllable list of supported GUIDs
-				This means we no longer have to edit the very large select case to add\remove items its all controlled by supportedidlist.json	
+				This means we no longer have to edit the very large select case to add\remove items its all controlled by LastestLanguage.json	
 			*/
 			
 			for (i = 0; guidList[i]; i++) {
