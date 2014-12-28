@@ -52,6 +52,16 @@
 			<form class="uk-form uk-form-horizontal">
 			<fieldset>
 			
+			
+				<!-- Current Browser Locale - Restore browser default locale -->
+				<div class="uk-form-row">
+					<span class="uk-form-label" id="current-locale">Currently Set Language:</span>
+						<div class="uk-form-controls uk-form-controls-text">
+							<button id="form-clear-locale" onclick="gLanguageMangerOptions.restoreDefaultLanguage();" class="uk-button"><i class="uk-icon-refresh"></i> <span id="resetLanguage">Reset Language</span></button>
+								<label for="form-clear-locale"></label>
+						</div>		
+				</div>			
+			
 				<!-- Browser Selection -->
 				<div class="uk-form-row">				
 						
@@ -65,15 +75,6 @@
 						</select>
 					</div>																
 				</div>	
-
-				<!-- Current Browser Locale - Restore browser default locale -->
-				<div class="uk-form-row">
-					<span class="uk-form-label" id="current-locale">Currently Set Language:</span>
-						<div class="uk-form-controls uk-form-controls-text">
-							<button id="form-clear-locale" onclick="gLanguageMangerOptions.restoreDefaultLanguage();" class="uk-button"><i class="uk-icon-refresh"></i> <span id="resetLanguage">Reset Language</span></button>
-								<label for="form-clear-locale"></label>
-						</div>		
-				</div>
 
 				<!-- Time & Date Format Selection -->
 				<div class="uk-form-row">				
