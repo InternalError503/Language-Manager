@@ -13,3 +13,6 @@
 <!ENTITY listItemInstalled.label "Установлен">
 <!ENTITY listItemEnabled.label "Включен">
 <!ENTITY listItemCompatible.label "Совместим">
+
+<!ENTITY languageManagerCMenuItem.label "Show Language Manager">
+<!ENTITY languageManagerCMenuOptionsItem.label "Show Options">

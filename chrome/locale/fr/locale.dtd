@@ -13,3 +13,6 @@
 <!ENTITY listItemInstalled.label "Installé">
 <!ENTITY listItemEnabled.label "Activé">
 <!ENTITY listItemCompatible.label "Compatible">
+
+<!ENTITY languageManagerCMenuItem.label "Show Language Manager">
+<!ENTITY languageManagerCMenuOptionsItem.label "Show Options">

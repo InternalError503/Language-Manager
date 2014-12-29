@@ -14,3 +14,5 @@
 <!ENTITY listItemEnabled.label "Enabled">
 <!ENTITY listItemCompatible.label "Compatible">
 
+<!ENTITY languageManagerCMenuItem.label "Show Language Manager">
+<!ENTITY languageManagerCMenuOptionsItem.label "Show Options">
