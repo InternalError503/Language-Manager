@@ -16,7 +16,6 @@ Copyright (c) 2014 8pecxstudios
 		<menuitem id="menu_LanguageManager"
 					iconic="true"
 					class="menuitem-iconic"
-					image="chrome://LanguageManager/skin/icon16.png"
 					label="&languageManagerTitleItem.label;" 
 					oncommand="gLanguageManger.ShowLanguageManager();"/>						
 	</menupopup>
@@ -24,7 +23,6 @@ Copyright (c) 2014 8pecxstudios
 		<menuitem id="appmenu_LanguageManager"
 					iconic="true"
 					class="menuitem-iconic"
-					image="chrome://LanguageManager/skin/icon16.png"
 					label="&languageManagerTitleItem.label;" 
 					oncommand="gLanguageManger.ShowLanguageManager();"/>	
 	</menupopup>	
