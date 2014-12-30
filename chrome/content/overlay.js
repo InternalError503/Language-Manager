@@ -325,12 +325,13 @@ try{
     }
   }
 
+  //Need to resize the listbox so the elements don't get dragged offscreen.
   function actualResizeHandler() {
-			//Note: textContent does not seem to work here, Looking for a better way in future updates.
+
+			//Note: Resolved issue with use of innerHTML as textContent did not work in this case.
 			var container = document.getElementById("theList");
-            var content = container.innerHTML;
-					container.innerHTML= content;
-		//Need to resize the listbox so the elements don't get dragged offscreen, This appears to be the best solution at this time.
+			var newList = document.createTextNode(container);
+			container.appendChild(newList);
   }
 
 }());
