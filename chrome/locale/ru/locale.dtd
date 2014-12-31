@@ -4,7 +4,7 @@
 <!ENTITY languageCurrentInstalled.label "Установленные языки:">
 <!ENTITY languageEnableMessage.label "Активируйте язык двойным щелчком!">
 <!ENTITY selectLanguageItem.label "Выберите язык">
-<!ENTITY installButtonItem.label "Установите">
+<!ENTITY installButtonItem.label "Установить">
 <!ENTITY closeButtonItem.label "Готово">
 <!ENTITY optionsButtonItem.label "Настройки">
 
@@ -14,5 +14,5 @@
 <!ENTITY listItemEnabled.label "Включен">
 <!ENTITY listItemCompatible.label "Совместим">
 
-<!ENTITY languageManagerCMenuItem.label "Show Language Manager">
-<!ENTITY languageManagerCMenuOptionsItem.label "Show Options">
+<!ENTITY languageManagerCMenuItem.label "Показать Менеджер языков">
+<!ENTITY languageManagerCMenuOptionsItem.label "Показать настройки">
