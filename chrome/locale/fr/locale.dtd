@@ -14,5 +14,5 @@
 <!ENTITY listItemEnabled.label "Activé">
 <!ENTITY listItemCompatible.label "Compatible">
 
-<!ENTITY languageManagerCMenuItem.label "Show Language Manager">
-<!ENTITY languageManagerCMenuOptionsItem.label "Show Options">
+<!ENTITY languageManagerCMenuItem.label "Afficher le gestionnaire de langues">
+<!ENTITY languageManagerCMenuOptionsItem.label "Afficher les paramètres">
