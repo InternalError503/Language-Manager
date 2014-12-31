@@ -17,41 +17,64 @@ init: function(){
 
 try{
 
-//Localise Content	
+//Localise Content
+
+		//Top navigation bar
 		var navBarTitle = document.getElementById("NavTitle");
 		var navBarSupport = document.getElementById("NavSupport");
 		var navBarContact = document.getElementById("NavContact");
 		var navBarSupport2 = document.getElementById("NavSupport2");
-		var navBarContact2 = document.getElementById("NavContact2");		
-		var OptionsPanelTitle = document.getElementById("OptionsPanel");
+		var navBarContact2 = document.getElementById("NavContact2");
+		
+		//Reset language button
+		var OptionsButtonReset = document.getElementById("resetLanguage");				
+		
+		//Panel label
+		var OptionsPanelTitle = document.getElementById("OptionsPanel");		
+		
+		//Select between firefox or firefox beta
 		var OptionsSelectBrowser = document.getElementById("SelectBrowser");
+				var OptionsSelectBrowserMenuDefault = document.getElementById("defaultBrowser");		
 				var OptionsSelectBrowserMenuCF = document.getElementById("form-cyberfox-mode");
 				var OptionsSelectBrowserMenuFF = document.getElementById("form-firefox-mode");
 				var OptionsSelectBrowserMenuFFB = document.getElementById("form-firefoxbeta-mode");
-		var OptionsButtonReset = document.getElementById("resetLanguage");				
+		
+		//Copyright message.
 		var CopyrightLabel = document.getElementById("labelCopy");
 		
+		//Select time and date format.
 		var OptionsSelectTimeDate = document.getElementById("SelectTimeDate");
+				var OptionsSelectTimeDateMenuDefault = document.getElementById("defaultFormat");		
 				var OptionsSelectTimeDateMenuD = document.getElementById("form-time-date-default");
 				var OptionsSelectTimeDateMenuB = document.getElementById("form-time-date-basic-d");
 				var OptionsSelectTimeDateMenuTD = document.getElementById("form-time-date-basic-td");		
 		
-		
+		//Window title
 		document.title = _bundleOptionsWindow.GetStringFromName("lmOptionsTitle");
+		//Top navigation bar
 		navBarTitle.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
 		navBarSupport.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
 		navBarContact.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
 		navBarSupport2.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		navBarContact2.textContent = " " + _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");		
+		navBarContact2.textContent = " " + _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
+		
+		//Reset language button
+		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
+		
+		//Select between firefox or firefox beta
 		OptionsPanelTitle.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
 		OptionsSelectBrowser.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowser");
+				OptionsSelectBrowserMenuDefault.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuDefault");
 				OptionsSelectBrowserMenuCF.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuCF");
 				OptionsSelectBrowserMenuFF.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFF");
 				OptionsSelectBrowserMenuFFB.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFFB");
-		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
+				
+		//Copyright message.
 		CopyrightLabel.textContent = _bundleOptionsWindow.GetStringFromName("lmCopyright");
-		
+
+		//Select time and date format.		
 		OptionsSelectTimeDate.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
+				OptionsSelectTimeDateMenuDefault.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuDefault");
 				OptionsSelectTimeDateMenuD.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
 				OptionsSelectTimeDateMenuB.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
 				OptionsSelectTimeDateMenuTD.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");

@@ -21,8 +21,8 @@
 <nav class="uk-navbar">
 <a class="uk-navbar-brand uk-hidden-small"><img src="chrome://LanguageManager/skin/icon32.png"></img> <span class="uk-text-bold" id="NavTitle">Language Manager</span></a>
     <ul class="uk-navbar-nav uk-hidden-small">				
-        <li><a href="https://8pecxstudios.com/Forums/index.php" title="8pecxstudios support forums" target="_blank" ><i class="uk-icon-user uk-icon-medium"></i> <span id="NavSupport">Support Forums</span></a></li>
-        <li><a href="https://8pecxstudios.com/contact-us" title="Contact Us" target="_blank" ><i class="uk-icon-envelope uk-icon-medium"></i> <span id="NavContact">Contact Us</span></a></li>
+        <li><a href="https://8pecxstudios.com/Forums/index.php" target="_blank" ><i class="uk-icon-user uk-icon-medium"></i> <span id="NavSupport">Support Forums</span></a></li>
+        <li><a href="https://8pecxstudios.com/contact-us" target="_blank" ><i class="uk-icon-envelope uk-icon-medium"></i> <span id="NavContact">Contact Us</span></a></li>
     </ul>
 		<a class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas="{target:'#small-menu'}" href="#"></a>	
 </nav>
@@ -68,7 +68,7 @@
 					<label class="uk-form-label" for="form-browser-select"><span id="SelectBrowser">Select Browser: (Firefox Only)</span></label>	
 					<div class="uk-form-controls" onchange="gLanguageMangerOptions.browserModeChanged();">
 						<select id="form-browser-select">
-                        <option id="default" disabled="true">Select Browser</option>					
+                        <option id="defaultBrowser" disabled="true">Select Browser</option>					
 						<option id="form-cyberfox-mode" value="browser_cyberfox">Cyberfox</option>
 						<option id="form-firefox-mode" value="browser_firefox">Firefox</option>
 						<option id="form-firefoxbeta-mode" value="browser_beta">Firefox Beta</option>						
@@ -82,7 +82,7 @@
 					<label class="uk-form-label" for="form-time-date"><span id="SelectTimeDate">Select Time &amp; Date Format:</span></label>	
 					<div class="uk-form-controls" onchange="gLanguageMangerOptions.timeDateFormatChanged();">
 						<select id="form-time-date">
-                        <option id="default" disabled="true">Select Format</option>					
+                        <option id="defaultFormat" disabled="true">Select Format</option>					
 						<option id="form-time-date-default" value="default_tnd">Default</option>
 						<option id="form-time-date-basic-d" value="basic_date">Basic Date</option>
 						<option id="form-time-date-basic-td" value="basic_time">Basic Time &amp; Date</option>						
@@ -120,8 +120,8 @@
 					<div class="uk-panel">
                 </div>			
                 <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="">
-					<li><a href="https://8pecxstudios.com/Forums/index.php" title="8pecxstudios support forums" target="_blank" ><i class="uk-icon-user uk-icon-medium"></i> <span id="NavSupport2">Support Forums</span></a></li>
-					<li><a href="https://8pecxstudios.com/contact-us" title="Contact Us" target="_blank" ><i class="uk-icon-envelope uk-icon-medium"> </i><span id="NavContact2">Contact Us</span></a></li>
+					<li><a href="https://8pecxstudios.com/Forums/index.php" target="_blank" ><i class="uk-icon-user uk-icon-medium"></i> <span id="NavSupport2">Support Forums</span></a></li>
+					<li><a href="https://8pecxstudios.com/contact-us" target="_blank" ><i class="uk-icon-envelope uk-icon-medium"> </i><span id="NavContact2">Contact Us</span></a></li>
                     </ul>
             </div>
         </div>
