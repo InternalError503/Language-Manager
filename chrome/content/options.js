@@ -51,7 +51,7 @@ try{
 		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
 		CopyrightLabel.textContent = _bundleOptionsWindow.GetStringFromName("lmCopyright");
 		
-		OptionsSelectTimeDate = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
+		OptionsSelectTimeDate.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
 				OptionsSelectTimeDateMenuD.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
 				OptionsSelectTimeDateMenuB.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
 				OptionsSelectTimeDateMenuTD.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
