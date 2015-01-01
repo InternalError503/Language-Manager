@@ -10,9 +10,6 @@ Cu.import("resource://gre/modules/AddonManager.jsm");
 //Get & set language manager user preferences.
 var ServicesPref = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.language_manager.");
 
-//Version firefox-mode
-var isFirefoxModeEnabled; 
-
 //For browser version detection.
 var webBrowserVersion = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo);
 
@@ -70,8 +67,13 @@ initPane: function(){
 				} else { 
 					jsObject = JSON.parse(text);
 				}			
-				
+							
 				let myLanguageList = jsObject.languageList[0].packs;
+				
+				//Here were getting the latest beta version, We are making sure its always the latest from the json.
+				var latest_Beta = jsObject.BrowserVersion[0].Version;				
+					ServicesPref.setCharPref("latest_beta_version", latest_Beta[0].Beta);
+
 				
 		for (i = 0; myLanguageList[i]; i++) {
 		
@@ -100,6 +102,8 @@ initPane: function(){
 	
 	request.open("GET", url, true);
 	request.send(null);
+	
+	this.checkBrowser();
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
@@ -300,9 +304,7 @@ try{
 		}
 	
 	});
-	
-	
-	
+		
 	},
 
 	ResizeListbox: function(){
@@ -408,6 +410,41 @@ try{
 		request.send(null);
 	},	
 	
+	//Here we are making sure only the mode for the browser can be enabled on that browser.
+	//Example: Firefoxmode can only be enabled in firefox etc.
+	checkBrowser : function(){
+	
+	try{
+
+				
+			//Check if browser Firefox
+			if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
+
+				//Check if running firefox beta.
+				if (webBrowserVersion.version === ServicesPref.getCharPref("latest_beta_version")){
+				
+					ServicesPref.setCharPref("browser_mode", "firefoxbetamode");
+					
+				}else{
+				
+					ServicesPref.setCharPref("browser_mode", "firefoxmode");
+				
+				}
+			
+			}
+
+			//Check if browser Cyberfox (Additional fallback)
+			if (browserAppInformation.name.toLowerCase() === "Cyberfox".toLowerCase()) {
+				ServicesPref.setCharPref("browser_mode", "cyberfoxmode");				
+			}
+
+		}catch (e){
+			//Catch any nasty errors and output to dialogue
+			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}		
+	
+	},
+	
 	ShowLanguageManager : function() {
 	
 	try{
@@ -415,19 +452,8 @@ try{
 
 		gLanguageManger.ReuseTab("A7E24DF418823798B540DF75FC347898", "chrome://LanguageManager/content/language_Manager.xul");
 
-		//Check if firefox (Seems we need to find better solution)
-		if (ServicesPref.getCharPref("browser_mode") === "firefoxmode"){
-				isFirefoxModeEnabled = true;
-		}		
-		
-		//Check if browser Firefox
-		if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
-			ServicesPref.setCharPref("browser_mode", "firefoxmode");
-			isFirefoxModeEnabled = true;
+		this.checkBrowser();
 					
-		}	
-		
-				
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
 			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
@@ -490,16 +516,7 @@ try{
 		
 		try{
 		
-			if(ServicesPref.getCharPref("browser_mode") === "firefoxmode"){
-				isFirefoxModeEnabled = true;
-			}		
-		
-		//Check if browser Firefox
-		if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
-			ServicesPref.setCharPref("browser_mode", "firefoxmode");
-			isFirefoxModeEnabled = true;
-					
-		}		
+		this.checkBrowser();		
 		
 		var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
 		var newPref = document.getElementById("languageMenu").value;		
