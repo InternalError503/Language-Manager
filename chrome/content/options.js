@@ -32,12 +32,9 @@ try{
 		//Panel label
 		var OptionsPanelTitle = document.getElementById("OptionsPanel");		
 		
-		//Select between firefox or firefox beta
-		var OptionsSelectBrowser = document.getElementById("SelectBrowser");
-				var OptionsSelectBrowserMenuDefault = document.getElementById("defaultBrowser");		
-				var OptionsSelectBrowserMenuCF = document.getElementById("form-cyberfox-mode");
-				var OptionsSelectBrowserMenuFF = document.getElementById("form-firefox-mode");
-				var OptionsSelectBrowserMenuFFB = document.getElementById("form-firefoxbeta-mode");
+		//Show what browser mode firefox or firefox beta or cyberfox.
+		var OptionsBrowserMode = document.getElementById("BrowserMode");	
+
 		
 		//Copyright message.
 		var CopyrightLabel = document.getElementById("labelCopy");
@@ -61,13 +58,12 @@ try{
 		//Reset language button
 		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
 		
-		//Select between firefox or firefox beta
+		//Options panel label
 		OptionsPanelTitle.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
-		OptionsSelectBrowser.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowser");
-				OptionsSelectBrowserMenuDefault.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuDefault");
-				OptionsSelectBrowserMenuCF.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuCF");
-				OptionsSelectBrowserMenuFF.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFF");
-				OptionsSelectBrowserMenuFFB.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectBrowserMenuFFB");
+		
+		//Show browser mode label.
+		OptionsBrowserMode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserMode");
+
 				
 		//Copyright message.
 		CopyrightLabel.textContent = _bundleOptionsWindow.GetStringFromName("lmCopyright");
@@ -80,47 +76,26 @@ try{
 				OptionsSelectTimeDateMenuTD.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
 
 		
-//Firefox mode	
-var firefoxModePreference = document.getElementById("form-firefox-mode");
-
 //Browser information			
 var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 			.getService(Components.interfaces.nsIXULAppInfo); 	
 
-						
-		//Check if browser Cyberfox
-		if (browserAppInformation.name.toLowerCase() === "Cyberfox".toLowerCase()) {
-		     ServicesPref.setCharPref("browser_mode", "cyberfoxmode");
-		     firefoxModePreference.setAttribute('disabled', true);
-		}
-
-		//Check if browser Firefox
-		if (browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
-			
-			if (ServicesPref.getBoolPref("firefoxfirstrun") === false){
-					ServicesPref.setCharPref("browser_mode", "firefoxmode");
-					ServicesPref.setBoolPref("firefoxfirstrun", true);
-				}
-				
-			document.getElementById("form-cyberfox-mode").setAttribute('disabled', true);		
-				
-		}
-
+		//Note: We don't show any values on the first run, Once language_Manager.xul has be initialized and the browser verified then we can display a value here.	
+		//Show what browser mode firefox or firefox beta or cyberfox.
+		var OptionsBrowser_Mode = document.getElementById("form-browser-mode");
 		switch (ServicesPref.getCharPref("browser_mode")) {
 
 		    case "cyberfoxmode":
-				document.getElementById("form-browser-select").value = "browser_cyberfox";
-				document.getElementById("form-browser-select").setAttribute('disabled', true);
-		        document.getElementById("form-firefoxbeta-mode").setAttribute('disabled', true);
-		        break;
+				OptionsBrowser_Mode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserModeCF");
+			break;
 
 		    case "firefoxmode":
-				document.getElementById("form-browser-select").value = "browser_firefox";
-		        break;
+				OptionsBrowser_Mode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserModeFF");
+		    break;
 
 		    case "firefoxbetamode":
-				document.getElementById("form-browser-select").value = "browser_beta";
-		        break;
+				OptionsBrowser_Mode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserModeFFB");
+		    break;
 
 		}
 		
@@ -147,33 +122,6 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 				alert("Were sorry but something has gone wrong! " + e);
 		}
 	
-},
-
-browserModeChanged: function(){
-
-	try{
-	
-        switch (document.getElementById("form-browser-select").value) {
-        
-            case "browser_cyberfox":
-                ServicesPref.setCharPref("browser_mode", "cyberfoxmode");
-            break;
- 
-            case "browser_firefox":
-                ServicesPref.setCharPref("browser_mode", "firefoxmode");
-                break;
-
-            case "browser_beta":
-                ServicesPref.setCharPref("browser_mode", "firefoxbetamode");
-                break;
-
-        }
-		
-			}catch (e){
-				//Catch any nasty errors and output to dialogue and console
-				alert("Were sorry but something has gone wrong! " + e);
-		}		
-
 },
 
 timeDateFormatChanged: function(){
