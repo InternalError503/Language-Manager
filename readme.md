@@ -15,12 +15,15 @@ the latest language pack installed.
 
 - Firefox: Supports Firefox on release channel
 - Firefox Beta: Supports Firefox beta, Testing the new Firefox in multiple languages just got easier
-- Cyberfox: Works in all versions of cyberfox.
+- Cyberfox: Supports cyberfox.
 - Easily: Download and install the latest language pack for your browser version.
 - Quickly: & easily switch between installed language packs.
 - Information: Shows vital information about installed language packs.
 - Restore: Default language settings at a click of a button.
 - Read more about Language Manager by reading the [Informational Manual] (https://8pecxstudios.com/Forums/viewtopic.php?f=11&t=645)
+
+#### Investigating:
+- Add possible support for Thunderbird
 
 ### Credits:
 
