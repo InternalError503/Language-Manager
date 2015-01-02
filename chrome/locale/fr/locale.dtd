@@ -16,3 +16,8 @@
 
 <!ENTITY languageManagerCMenuItem.label "Afficher le gestionnaire de langues">
 <!ENTITY languageManagerCMenuOptionsItem.label "Afficher les paramètres">
+
+<!ENTITY languageManagerTogglePack.label "Toggle Pack">
+<!ENTITY languageManagerTogglePack.tooltip "Enable Language Pack">
+<!ENTITY languageManagerToggleRemove.label "Remove Pack">
+<!ENTITY languageManagerToggleRemove.tooltip "Remove Language Pack">
