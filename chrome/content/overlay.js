@@ -568,14 +568,9 @@ try{
 			
 			//Prompt restart to apply changes
 			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+  _bundleDialogue.GetStringFromName("restartMessage"))) {
-			
 				//Call browser restart function
 				this.restartBrowser();
-				
-				window.close();
-			}else{
-				window.close();
-				} 
+			} 
 						
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
@@ -592,15 +587,10 @@ try{
 
 			
 			//Prompt restart to apply changes
-			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+ _bundleDialogue.GetStringFromName("restartMessageActivate"))) {
-			
+			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+ _bundleDialogue.GetStringFromName("restartMessageActivate"))) {			
 				//Call browser restart function
 				this.restartBrowser();
-				
-				window.close();
-			}else{
-				window.close();
-				} 
+			}
 						
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
@@ -660,7 +650,7 @@ try{
 	try{			
 			//Here we toggle the pack when the user selects toggle pack from right click context menu.
 			var listbox= document.getElementById("theList");
-			gLanguageManger.ToggleHandler( listbox.selectedItem.childNodes[0]);
+			gLanguageManger.ToggleHandler(listbox.selectedItem.childNodes[0]);
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
