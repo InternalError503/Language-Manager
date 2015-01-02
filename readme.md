@@ -22,9 +22,6 @@ the latest language pack installed.
 - Restore: Default language settings at a click of a button.
 - Read more about Language Manager by reading the [Informational Manual] (https://8pecxstudios.com/Forums/viewtopic.php?f=11&t=645)
 
-#### Investigating:
-- Add possible support for Thunderbird
-
 ### Credits:
 
 Using popular open source projects.

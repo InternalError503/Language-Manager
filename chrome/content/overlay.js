@@ -670,21 +670,72 @@ try{
 	
 	},
 
-	//Here we are just taking the user to the about:addons page to the locales sections
-	//We can directly uninstall the addon from language manager but first need to check the rules on this.
+	/*
+		Here we uninstall the selected language pack, Only if users accepts the confirmation message, A restart is required for an active pack, Non active can simply just be uninstalled.
+	*/
 	RemovePack : function(e){
 	
 	try{
-		//Make sure we are not opening multiple about:addon tabs, Just reuse the tab if already open.
-		gLanguageManger.ReuseTab("D41D8CD98F00B204E9800998ECF8427E", "about:addons#category-locale");
+	
+			//Prompt inform user they are about to uninstall a language pack and ask if that is what they want to do.
+			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("removeWarningTitle"), _bundleDialogue.GetStringFromName("removeWarningMessage"))) {
+			
+				var listbox= document.getElementById("theList");
+				var target = listbox.selectedItem.childNodes[0];
+					if (!target){
+						return; 
+					}
 					
+					var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
+					var localeServices = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
+					var splitElement = target.getAttribute("value");
+					var splitElementStart = splitElement.indexOf('-') + 1;
+					var splitElementEnd = splitElement.indexOf('@',  splitElementStart);
+					
+					var elementData = splitElement.substring(splitElementStart, splitElementEnd);		
+			
+			
+			AddonManager.getAddonByID(target.getAttribute("value"), function(addon) {
+			
+				//Check if addon
+				if (addon){
+				
+					//Check if the addon is the current active addon, Then need to reset the changed (general.useragent.locale) back to its original state before pack was enabled.
+					if (elementData.match(localeServices.getCharPref("locale"))){
+						
+						//Clear locale 
+						callPrefService.clearUserPref("locale");
+						addon.uninstall();
+						
+						//Since the addon was active there are still parts of the localization loaded, So prompt user to restart the browser to unload these elements.
+						//Prompt restart to unload any localized elements. 
+						if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+ _bundleDialogue.GetStringFromName("restartRemoveMessage"))) {
+						
+							//Call browser restart function
+							gLanguageManger.restartBrowser();
+						}
+						
+					}else{			
+				
+						//If pack is not the current active we can just uninstall it.
+						addon.uninstall();
+						
+						//Trigger a update on the installed addons table.
+						document.location = "chrome://languagemanager/content/language_Manager.xul";
+						
+					}
+				}
+
+									
+			});
+
+		} 		
+						
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
 			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}	
 	
 	}
-
-			  	
 	
 }
