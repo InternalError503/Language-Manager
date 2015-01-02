@@ -18,6 +18,22 @@ Copyright (c) 2014 8pecxstudios
   <label value="&languageEnableMessage.label;"/>
 </tooltip>
 
+<popupset>
+
+	<menupopup id="lm-pack-context-menu">
+		<menuitem label="&languageManagerTogglePack.label;"
+							id="context_LanguageManager_toggle"
+							iconic="true"
+							class="menuitem-iconic"								
+							tooltiptext="&languageManagerTogglePack.tooltip;"					
+							oncommand="gLanguageManger.TogglePack();"/>
+		<menuitem label="&languageManagerToggleRemove.label;"
+							tooltiptext="&languageManagerToggleRemove.tooltip;"					
+							oncommand="gLanguageManger.RemovePack();"/>								
+	</menupopup>
+
+</popupset>
+
 <groupbox id="top_pane">
 <caption id="top_pane_caption" label="&languagePackCaptionItem.label;" />
 

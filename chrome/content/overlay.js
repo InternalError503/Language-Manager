@@ -111,47 +111,18 @@ initPane: function(){
 		}
 
 
-//Quick toggle of language packs (merge from 1.0.5A)		
-    var listbox= document.getElementById("theList");
-			listbox.addEventListener("dblclick", function(event){
+		//Quick toggle of language packs	
+		var listbox= document.getElementById("theList");
+		listbox.addEventListener("dblclick", function(event){
 
-try{			
-			
-			var target = event.target.childNodes[0];
-			if (!target){
-				return; 
-			}
-		
-		var localeServices = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
-		var splitElement = target.getAttribute("value");
-		var splitElementStart = splitElement.indexOf('-') + 1;
-		var splitElementEnd = splitElement.indexOf('@',  splitElementStart);
-		
-		var elementData = splitElement.substring(splitElementStart, splitElementEnd);
-		
-		AddonManager.getAddonByID(target.getAttribute("value"), function(addon) {
-		if (addon.isActive === false && addon.isCompatible){
-			addon.userDisabled = false;			
-		}
-		
-	if (addon.isCompatible){
-	
-		if (elementData.match(localeServices.getCharPref("locale"))){
-			return;			
-	}else{
-			localeServices.setCharPref("locale", elementData);
-			gLanguageManger.activateComplete();	
-			
-		}	
-	}
-		
-		
-		});
-		
-		}catch (e){
-			//Catch any nasty errors and output to dialogue
-			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
-		}		
+		try{			
+				
+				gLanguageManger.ToggleHandler(event.target.childNodes[0]);
+
+			}catch (e){
+				//Catch any nasty errors and output to dialogue
+				alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			}		
 
     }, false);	
 	
@@ -170,6 +141,7 @@ try{
 	
 			var row = document.createElement('listitem');
 			row.setAttribute('tooltip', 'listEnableMessage');
+			row.setAttribute('context', "lm-pack-context-menu");			
 			// Create and attach 1st cell (Name)
 			var cell = document.createElement('listcell');
 			cell.setAttribute('label', name );
@@ -588,7 +560,7 @@ try{
         
 	},	
 
-//Language pack install complete.
+		//Language pack install complete.
 		complete: function() {
 
 		try{		
@@ -613,7 +585,7 @@ try{
 		
 },
 
-//Language pack activate.
+		//Language pack activate.
 		activateComplete: function() {
 
 		try{		
@@ -636,7 +608,82 @@ try{
 
 		}			
 		
-}
+},
+
+	//To prevent use of duplicate code we now can call this function by passing the element.childNodes 
+	//So for example you have the listitem and you get its childnode listcell 
+	ToggleHandler : function(element){
+	
+	try{			
+			
+			var target = element;
+				if (!target){
+					return; 
+				}
+				
+				var localeServices = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
+				var splitElement = target.getAttribute("value");
+				var splitElementStart = splitElement.indexOf('-') + 1;
+				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);
+				
+				var elementData = splitElement.substring(splitElementStart, splitElementEnd);
+				
+				AddonManager.getAddonByID(target.getAttribute("value"), function(addon) {
+				if (addon.isActive === false && addon.isCompatible){
+					addon.userDisabled = false;			
+				}
+				
+			if (addon.isCompatible){
+			
+				if (elementData.match(localeServices.getCharPref("locale"))){
+					return;			
+			}else{
+					localeServices.setCharPref("locale", elementData);
+					gLanguageManger.activateComplete();	
+					
+				}	
+			}
+				
+				
+				});
+		
+		}catch (e){
+			//Catch any nasty errors and output to dialogue
+			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}		
+	
+	
+	},
+
+	TogglePack : function(e){
+	
+	try{			
+			//Here we toggle the pack when the user selects toggle pack from right click context menu.
+			var listbox= document.getElementById("theList");
+			gLanguageManger.ToggleHandler( listbox.selectedItem.childNodes[0]);
+		
+		}catch (e){
+			//Catch any nasty errors and output to dialogue
+			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}	
+		
+	
+	},
+
+	//Here we are just taking the user to the about:addons page to the locales sections
+	//We can directly uninstall the addon from language manager but first need to check the rules on this.
+	RemovePack : function(e){
+	
+	try{
+		//Make sure we are not opening multiple about:addon tabs, Just reuse the tab if already open.
+		gLanguageManger.ReuseTab("D41D8CD98F00B204E9800998ECF8427E", "about:addons#category-locale");
+					
+		}catch (e){
+			//Catch any nasty errors and output to dialogue
+			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}	
+	
+	}
 
 			  	
 	
