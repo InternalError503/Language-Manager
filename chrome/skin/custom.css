@@ -32,6 +32,12 @@
 #toolbar_openLangageManager:not([cui-areatype="toolbar"])> .toolbarbutton-icon{
 	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;	
 }
+
+#lm_options_menu_options{
+	list-style-image: url("chrome://LanguageManager/skin/settings.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
 #context_LanguageManager_toggle{
 	list-style-image: url("chrome://LanguageManager/skin/lm-toggle.png");	
 }
