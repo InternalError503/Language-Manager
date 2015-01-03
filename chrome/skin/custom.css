@@ -8,11 +8,9 @@
 }
 
 #optionsButton{
-
 	list-style-image: url("chrome://LanguageManager/skin/settings.png");
 	-moz-image-region: rect(0px 16px 16px 0px);
 	padding-right:8px;
-
 }
 
 #menu_LanguageManager,
@@ -21,20 +19,24 @@
 	
 }
 
+#lm_options_menu_manager,
 #toolbar_openLangageManager{
 	list-style-image: url("chrome://LanguageManager/skin/icon16.png");
 	
 }
 
 #toolbar_openLangageManager[cui-areatype="menu-panel"]{
-	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;
-	
+	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;	
 }
 
 #toolbar_openLangageManager:not([cui-areatype="toolbar"])> .toolbarbutton-icon{
-	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;
-	
+	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;	
 }
+
+#lm_options_menu_options{
+	list-style-image: url("chrome://LanguageManager/skin/settings.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}	
 
 /*
 .help-button {

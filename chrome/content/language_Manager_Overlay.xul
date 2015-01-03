@@ -14,27 +14,25 @@ Copyright (c) 2014 8pecxstudios
 <script src="chrome://LanguageManager/content/overlay.js"/>
 
 <popupset>
-<vbox>
-	<menupopup id="lm-options-menu">
+	<menupopup id="lm_options_menu">
 		<menuitem label="&languageManagerCMenuOptionsItem.label;"
 							tooltiptext="&languageManagerCMenuOptionsItem.label;"
-							id="optionsButton"
+							id="lm_options_menu_options"
 							iconic="true"
 							class="menuitem-iconic"							
 							oncommand="gLanguageManger.ShowLanguageManagerOptions();"/>
 		<menuitem label="&languageManagerCMenuItem.label;" 
+							id="lm_options_menu_manager"
 							tooltiptext="&languageManagerCMenuItem.label;" 	
-							id="toolbar_openLangageManager"
 							iconic="true"
 							class="menuitem-iconic"
 							oncommand="gLanguageManger.ShowLanguageManager();"/>							
 	</menupopup>
-</vbox>	
 </popupset>
 
 	<menupopup id="menu_ToolsPopup">
 		<menuitem id="menu_LanguageManager"
-					context="lm-options-menu"			
+					context="lm_options_menu"		
 					iconic="true"
 					class="menuitem-iconic"
 					label="&languageManagerTitleItem.label;" 
@@ -42,7 +40,7 @@ Copyright (c) 2014 8pecxstudios
 	</menupopup>
 	<menupopup id="appmenuSecondaryPane">
 		<menuitem id="appmenu_LanguageManager"
-					context="lm-options-menu"			
+					context="lm_options_menu"		
 					iconic="true"
 					class="menuitem-iconic"
 					label="&languageManagerTitleItem.label;" 
@@ -51,10 +49,11 @@ Copyright (c) 2014 8pecxstudios
 
 	<toolbarpalette id="BrowserToolbarPalette">	
 		<toolbarbutton id="toolbar_openLangageManager" 
-							   context="lm-options-menu"			
+							   context="lm_options_menu"		
 							   class="toolbarbutton-1 chromeclass-toolbar-additional"
 							   label="&languageManagerTitleItem.label;"	
 							   tooltiptext="&languageManagerTitleItem.label;"						   
 							   oncommand="gLanguageManger.ShowLanguageManager();" /> 
 	</toolbarpalette>
+
 </overlay>
