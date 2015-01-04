@@ -711,7 +711,7 @@ try{
 						addon.uninstall();
 						
 						//Trigger a update on the installed addons table.
-						document.location = "chrome://languagemanager/content/language_Manager.xul";
+						document.location.reload(false);
 						
 					}
 				}
