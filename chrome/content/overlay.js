@@ -240,7 +240,7 @@ try{
 			}
 			
 		let guidList = jsObject.SUPPORTEDIDS[0].GUIDS;	
-			
+		
 			/*
 				We take a small performance hit as the switch case was less intensive, But now we have a controllable list of supported GUIDs
 				This means we no longer have to edit the very large select case to add\remove items its all controlled by LastestLanguage.json	
@@ -249,7 +249,7 @@ try{
 			for (i = 0; guidList[i]; i++) {
 				items.forEach(function(item, index, array) {	
 					if (item.id === guidList[i].ID){
-						getAllAddons(item.name, item.id,  item.version, item.updateDate, item.isActive, item.isCompatible);
+						getAllAddons(item.name, item.id,  item.version, item.updateDate, item.isActive, item.isCompatible);						
 					}
 				});
 			}
@@ -506,10 +506,7 @@ try{
 	downloadPack: function() {
 
 		try{	
-			
-			//Set general.useragent.locale when install button is pressed in-case user changes there mind after selecting a language in the list, This will prevent
-			//Unwanted change to there default language setting.
-			this.SetPrefValue();
+					
 			var installButton = document.getElementById("installButton");
 			var closeButton = document.getElementById("closeButton");
 
@@ -521,23 +518,19 @@ try{
 			var cyberfoxModeURL = "https://8pecxstudios.com/download/latest/language/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/";
 			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";
-			
-			
-			var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
 						
-
 		switch (ServicesPref.getCharPref("browser_mode")) {
 
 		    case "cyberfoxmode":
-				gLanguageManger.validateURL(cyberfoxModeURL + webBrowserVersion.version + "/" + callPrefService.getCharPref('locale').toString() + ".xpi");	
+				gLanguageManger.validateURL(cyberfoxModeURL + webBrowserVersion.version + "/" + document.getElementById("languageMenu").value + ".xpi");	
 		        break;
 
 		    case "firefoxmode":
-				gLanguageManger.validateURL(firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + callPrefService.getCharPref('locale').toString() + ".xpi");
+				gLanguageManger.validateURL(firerfoxModeURL + webBrowserVersion.version + "/win32/xpi/" + document.getElementById("languageMenu").value + ".xpi");
 		        break;
 
 		    case "firefoxbetamode":
-				gLanguageManger.validateURL(document.location.href = firefoxBetaModeURL + callPrefService.getCharPref('locale').toString() + ".xpi");				
+				gLanguageManger.validateURL(document.location.href = firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi");				
 		        break;
 
 		}
@@ -569,7 +562,9 @@ try{
 
 		try{		
 
-			
+			//Set general.useragent.locale when install button is pressed in-case user changes there mind after selecting a language in the list, This will prevent
+			//Unwanted change to there default language setting.
+			this.SetPrefValue();
 			//Prompt restart to apply changes
 			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+  _bundleDialogue.GetStringFromName("restartMessage"))) {
 				//Call browser restart function
