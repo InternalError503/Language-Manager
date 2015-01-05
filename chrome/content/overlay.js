@@ -530,7 +530,7 @@ try{
 		        break;
 
 		    case "firefoxbetamode":
-				gLanguageManger.validateURL(document.location.href = firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi");				
+				gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi");				
 		        break;
 
 		}
