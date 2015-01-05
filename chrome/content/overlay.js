@@ -505,7 +505,11 @@ try{
 	//Complex member
 	downloadPack: function() {
 
-		try{			
+		try{	
+			
+			//Set general.useragent.locale when install button is pressed in-case user changes there mind after selecting a language in the list, This will prevent
+			//Unwanted change to there default language setting.
+			this.SetPrefValue();
 			var installButton = document.getElementById("installButton");
 			var closeButton = document.getElementById("closeButton");
 

@@ -56,7 +56,7 @@ Copyright (c) 2014 8pecxstudios
 
 <row id="iRow">
 
-<menulist id="languageMenu" label="&selectLanguageItem.label;" align="center" oncommand="gLanguageManger.Buttonenabled(); gLanguageManger.SetPrefValue();">
+<menulist id="languageMenu" label="&selectLanguageItem.label;" align="center" oncommand="gLanguageManger.Buttonenabled();">
 	<menupopup>
 		<menuitem label="&selectLanguageItem.label;" disabled="true"/>	
 	</menupopup>
