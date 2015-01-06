@@ -47,48 +47,51 @@
 	-moz-image-region: rect(0px 16px 16px 0px);
 }	
 
-/*
-.help-button {
-  min-width: 30px;
-  border-radius: 2px;
-  border: 1px solid #c1c1c1;
-  background-color: #ffcb00;
-  background-image: none;
-  box-shadow: none;
-}
+	/* Make sure it only uses this css in language manger*/
+    @-moz-document url(chrome://languagemanager/content/language_Manager.xul) {
+	
+	#placeholder{}
+	
+			.help-button {
+			  min-width: 30px;
+			  border-radius: 16px;
+			  border: 1px solid inherit;
 
-.help-button:not([disabled="true"]):hover {
-  background-color: #f4c200;
-  background-image: none;
-}
+			}
 
-.help-button:not([disabled="true"]):hover:active {
-  background-color: #eaba00;
-  background-image: none;
-}
+			.help-button:not([disabled="true"]):hover {
+			  background-color: #fefefe;
+			  opacity: 0.5;
+			  background-image: none;
+			}
 
-.help-button > .button-box {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
+			.help-button:not([disabled="true"]):hover:active {
+			  background-color: inherit;
+			  background-image: none;
+			}
 
-.help-button > .button-box > .button-icon {
-  width: 26px;
-  height: 26px;
-  background-image: url("chrome://global/skin/in-content/help-glyph.png");
-  background-position: center;
-}
+			.help-button > .button-box {
+			  padding-top: 0;
+			  padding-bottom: 0;
+			  padding-right: 0 !important;
+			  padding-left: 0 !important;
+			}
 
-@media (min-resolution: 2dppx) {
-.help-button > .button-box > .button-icon {
-    background-size: 26px 26px;
-    background-image: url("chrome://global/skin/in-content/help-glyph@2x.png");
-  }
-}
+			.help-button > .button-box > .button-icon {
+			  width: 26px;
+			  height: 26px;
+			  background-image: url("chrome://LanguageManager/skin/help-glyph.png");
+			  background-position: center;
+			}
 
-.help-button > .button-box >.button-text {
-  display: none;
-}
-*/
+			@media (min-resolution: 2dppx) {
+			.help-button > .button-box > .button-icon {
+				background-size: 26px 26px;
+				background-image: url("chrome://LanguageManager/skin/help-glyph@2x.png");
+			  }
+			}
+
+			.help-button > .button-box >.button-text {
+			  display: none;
+			}
+	}

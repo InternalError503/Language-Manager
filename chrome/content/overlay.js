@@ -441,6 +441,7 @@ try{
 		}	
 	},
 	
+	//Enabled Help button, This will show the informational post for detailed instructions on how to use language manager if needed.
 	ShowHelpPage : function() {
 	
 	try{

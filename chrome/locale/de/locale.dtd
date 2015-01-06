@@ -7,6 +7,7 @@
 <!ENTITY installButtonItem.label "Installieren">
 <!ENTITY closeButtonItem.label "Finished">
 <!ENTITY optionsButtonItem.label "Options">
+<!ENTITY lmHelpButton.tooltip "Language Manager Help Documentation">
 
 <!ENTITY listItemName.label "Name">
 <!ENTITY listItemVersion.label "Version">

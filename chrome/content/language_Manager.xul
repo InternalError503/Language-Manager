@@ -72,10 +72,13 @@ Copyright (c) 2014 8pecxstudios
  <button id="installButton" label="&installButtonItem.label;" disabled="true" oncommand="gLanguageManger.downloadPack();"/> 
  <button id="closeButton" type="button" label="&closeButtonItem.label;" disabled="true" oncommand="gLanguageManger.complete();"/>
  <button id="optionsButton" type="button" label="&optionsButtonItem.label;" oncommand="gLanguageManger.ShowLanguageManagerOptions();"/>
-<!-- <hbox pack="end">
+<hbox pack="end">
         <button id="help-button"
                      class="help-button"
+					 label="?"
+					 type="button"
+					 tooltiptext="&lmHelpButton.tooltip;"	
 					 oncommand="gLanguageManger.ShowHelpPage();"/>
-      </hbox> -->
+      </hbox>
  </hbox>
 </window>
