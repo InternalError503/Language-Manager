@@ -1,5 +1,6 @@
 content LanguageManager chrome/content/
 skin LanguageManager classic/1.0 chrome/skin/
+skin LanguageManager classic/1.0 chrome/skin/linux/ os=Linux
 overlay chrome://browser/content/browser.xul chrome://LanguageManager/content/language_Manager_Overlay.xul
 
 #Current Support Locales For Language Manager
