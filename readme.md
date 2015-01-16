@@ -1,6 +1,8 @@
 Language Manager
 ========
 
+Download this addon from [addons.mozilla.org] (https://addons.mozilla.org/en-US/firefox/addon/language-manager)
+
 Source Code Repository For Language Manager
 
 Source code released under [MPL 2.0] (https://www.mozilla.org/MPL/2.0/)
