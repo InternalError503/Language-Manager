@@ -33,7 +33,7 @@ initPane: function(){
 		
 	
 	//Get latest language list
-	let url = "http://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
+	let url = "https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
 	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
 					.createInstance(Ci.nsIXMLHttpRequest);
 	var menuItemsList = document.getElementById("languageMenu");				
@@ -204,7 +204,7 @@ try{
 	datlist = document.getElementById("theList");
   
 	//Get latest support GUID list
-	let url = "http://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
+	let url = "https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
 	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
 					.createInstance(Ci.nsIXMLHttpRequest);
 					  
