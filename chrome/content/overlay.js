@@ -364,8 +364,7 @@ try{
 	validateURL : function(url){
 	
 		var request = new XMLHttpRequest();
-		request.open("GET", url);
-		
+			
 		request.onload = function(){
 			if ((request.status >= 200 && 
 				  request.status < 300) || 
@@ -379,6 +378,9 @@ try{
 		request.onerror = function(aEvent){
 			alert(_bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 		};
+		
+		//Add pramas true for async
+		request.open("GET", url, true);
 		request.send(null);
 	},	
 	
