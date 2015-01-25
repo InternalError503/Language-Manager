@@ -371,6 +371,7 @@ try{
 				  request.status < 300) || 
 				  request.status == 304){
 				  document.location.href = url;
+				  gLanguageManger.ButtonDisabled();
 			}else{
 				alert(_bundleDebugError.GetStringFromName("httpdNotsuccess"));
 			}	
@@ -510,14 +511,11 @@ try{
 	downloadPack: function() {
 
 		try{	
-					
+			
 			var installButton = document.getElementById("installButton");
-			var closeButton = document.getElementById("closeButton");
-
-					//Change button attributes. 
-					installButton.disabled = true;
-					closeButton.disabled = false;
-					
+				  //Change button attributes.	
+				  installButton.disabled = true;	
+				  
 			//Request URL where to download language pack from.		
 			var cyberfoxModeURL = "https://8pecxstudios.com/download/latest/language/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/";
