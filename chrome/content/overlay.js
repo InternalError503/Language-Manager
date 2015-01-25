@@ -86,7 +86,7 @@ initPane: function(){
 				}
 			
 			}
-			console.log("Found " + myLanguageList.length + " language packs");	
+	
 		}else{
 			//Disable the list and show error
 			menuItemsList.disabled = true;	
