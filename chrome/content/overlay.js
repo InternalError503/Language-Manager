@@ -371,7 +371,7 @@ try{
 				  request.status < 300) || 
 				  request.status == 304){
 				  document.location.href = url;
-				  gLanguageManger.ButtonDisabled();
+				  gLanguageManger.changeButtonStates("closeButton", false);				  
 			}else{
 				alert(_bundleDebugError.GetStringFromName("httpdNotsuccess"));
 			}	
@@ -460,29 +460,20 @@ try{
 		}
 	},
 	
-	Buttonenabled: function(){
-		
-		try{
-			var installButton = document.getElementById("installButton");
-			var closeButton = document.getElementById("closeButton");
-			installButton.disabled = false
-			closeButton.disabled = true;	
-			
-	}catch (e){
-				//Catch any nasty errors and output to dialogue
-			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);
-	}
-},
 
-	ButtonDisabled: function(){
-		
+	changeButtonStates: function (element, state){
+		try{		
+			document.getElementById(element).disabled = state;
+		}catch (e){
+					//Catch any nasty errors and output to dialogue
+				alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+		}
+	},
+	
+	Buttonenabled: function(){		
 		try{
-			var installButton = document.getElementById("installButton");
-			var closeButton = document.getElementById("closeButton");
-			
-				installButton.disabled = true;
-				closeButton.disabled = false;	
-			
+			this.changeButtonStates("installButton", false);
+			this.changeButtonStates("closeButton", true);			
 	}catch (e){
 				//Catch any nasty errors and output to dialogue
 			alert(_bundleDebugError.GetStringFromName("wereSorry") + " " + e);
@@ -512,9 +503,8 @@ try{
 
 		try{	
 			
-			var installButton = document.getElementById("installButton");
-				  //Change button attributes.	
-				  installButton.disabled = true;	
+			//Change button attributes.	
+			this.changeButtonStates("installButton", true);				  
 				  
 			//Request URL where to download language pack from.		
 			var cyberfoxModeURL = "https://8pecxstudios.com/download/latest/language/";
@@ -563,7 +553,7 @@ try{
 		complete: function() {
 
 		try{		
-
+			this.changeButtonStates("closeButton", true);	
 			//Set general.useragent.locale when install button is pressed in-case user changes there mind after selecting a language in the list, This will prevent
 			//Unwanted change to there default language setting.
 			this.SetPrefValue();
@@ -571,7 +561,7 @@ try{
 			if (prompts.confirm(window, _bundleDialogue.GetStringFromName("restartMessageTitle"), browserAppInformation.name +" "+  _bundleDialogue.GetStringFromName("restartMessage"))) {
 				//Call browser restart function
 				this.restartBrowser();
-			} 
+			}
 						
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
