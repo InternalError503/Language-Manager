@@ -361,6 +361,7 @@ try{
 	},
 
 	//We attempt to validate our json urls, But what about the language pack urls.
+	//URL validation does see to slow the download process as it causes a period of no visual indication on what is happening this could be a potential issue.
 	validateURL : function(url){
 	
 		var request = new XMLHttpRequest();
