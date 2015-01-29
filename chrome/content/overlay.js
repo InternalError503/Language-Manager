@@ -16,8 +16,8 @@ let gLMangerHandler = {
 	//For browser version detection.
 	webBrowserVersion: Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo),
 	//Get string sets to localise internal messages.
-	_bundleDialogue: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/dialogue.properties"),
-	_bundleDebugError: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/debug.properties"),
+	bundleDialogue: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/dialogue.properties"),
+	bundleDebugError: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/debug.properties"),
 	//Setup prompts service.	
 	prompts: Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService),
 	//Browser information	
@@ -62,7 +62,7 @@ initPane: function(){
 				if(!IsJsonValid(jsObject)){
 					//Need to throw error message and exit if not valid json.
 					menuItemsList.disabled = true;	
-					alert(gLMangerHandler._bundleDebugError.GetStringFromName("jsonnotvalid"));	
+					alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));	
 					return;
 				} else { 
 					jsObject = JSON.parse(text);
@@ -90,14 +90,14 @@ initPane: function(){
 		}else{
 			//Disable the list and show error
 			menuItemsList.disabled = true;	
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("httpdNotsuccess"));				
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));				
 		}	
 	};
 				
 	request.onerror = function(aEvent) {
 			//Disable the list and show error
 			menuItemsList.disabled = true;	
-			window.alert(gLMangerHandler._bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
+			window.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 	};
 	
 	request.open("GET", url, true);
@@ -107,7 +107,7 @@ initPane: function(){
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
 		}
 
 
@@ -121,7 +121,7 @@ initPane: function(){
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}		
 
     }, false);	
@@ -190,7 +190,7 @@ initPane: function(){
 			
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	
 	}
@@ -233,7 +233,7 @@ try{
 			if(!IsJsonValid(jsObject)){
 				//Need to throw error message and exit if not valid json.
 				datlist.disabled = true;	
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("jsonnotvalid"));	
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));	
 				return;
 			} else { 
 				jsObject = JSON.parse(text);
@@ -257,14 +257,14 @@ try{
 		}else{
 			//Disable the table and show error
 			datlist.disabled = true;
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("httpdNotsuccess"));				
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));				
 		}					
 	};
 				
 	request.onerror = function(aEvent) {
 			//Disable the table and show error
 			datlist.disabled = true;
-			window.alert(gLMangerHandler._bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
+			window.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 	};
 	
 	request.open("GET", url, true);
@@ -272,7 +272,7 @@ try{
 	
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	
 	});
@@ -355,7 +355,7 @@ try{
 			  
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 			  
 	},
@@ -373,12 +373,12 @@ try{
 				  document.location.href = url;
 				  gLanguageManger.changeButtonStates("closeButton", false);				  
 			}else{
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("httpdNotsuccess"));
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));
 			}	
 		};
 		
 		request.onerror = function(aEvent){
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 		};
 		
 		//Add pramas true for async
@@ -416,7 +416,7 @@ try{
 
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}		
 	
 	},
@@ -432,7 +432,7 @@ try{
 					
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
@@ -441,7 +441,7 @@ try{
 			gLanguageManger.ReuseTab("C974F35CA066A280F094DDE616EDD176", "chrome://languagemanager/content/options.html");
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}	
 	},
 	
@@ -456,7 +456,7 @@ try{
 				
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
@@ -466,7 +466,7 @@ try{
 			document.getElementById(element).disabled = state;
 		}catch (e){
 					//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 		}
 	},
 	
@@ -476,7 +476,7 @@ try{
 			this.changeButtonStates("closeButton", true);			
 	}catch (e){
 				//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 	}
 },
 	
@@ -493,7 +493,7 @@ try{
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("setPrefValueError") + " " + e);
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("setPrefValueError") + " " + e);
 
 	}
 },
@@ -529,7 +529,7 @@ try{
 						
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("downloadPackError") + " " + e);
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("downloadPackError") + " " + e);
 
 		}	
 },
@@ -543,7 +543,7 @@ try{
 	
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("restartBrowserError") + " " + e);
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("restartBrowserError") + " " + e);
 
 		}
         
@@ -558,14 +558,14 @@ try{
 			//Unwanted change to there default language setting.
 			this.SetPrefValue();
 			//Prompt restart to apply changes
-			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler._bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+  gLMangerHandler._bundleDialogue.GetStringFromName("restartMessage"))) {
+			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+  gLMangerHandler.bundleDialogue.GetStringFromName("restartMessage"))) {
 				//Call browser restart function
 				this.restartBrowser();
 			}
 						
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("completeError") + " " + e);
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
 
 		}			
 		
@@ -578,14 +578,14 @@ try{
 
 			
 			//Prompt restart to apply changes
-			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler._bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+ gLMangerHandler._bundleDialogue.GetStringFromName("restartMessageActivate"))) {			
+			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+ gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageActivate"))) {			
 				//Call browser restart function
 				this.restartBrowser();
 			}
 						
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler._bundleDebugError.GetStringFromName("completeError") + " " + e);
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
 
 		}			
 		
@@ -630,7 +630,7 @@ try{
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}		
 	
 	
@@ -645,7 +645,7 @@ try{
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}	
 		
 	
@@ -659,7 +659,7 @@ try{
 	try{
 	
 			//Prompt inform user they are about to uninstall a language pack and ask if that is what they want to do.
-			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler._bundleDialogue.GetStringFromName("removeWarningTitle"), gLMangerHandler._bundleDialogue.GetStringFromName("removeWarningMessage"))) {
+			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningTitle"), gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningMessage"))) {
 			
 				var listbox= document.getElementById("theList");
 				var target = listbox.selectedItem.childNodes[0];
@@ -690,7 +690,7 @@ try{
 						
 						//Since the addon was active there are still parts of the localization loaded, So prompt user to restart the browser to unload these elements.
 						//Prompt restart to unload any localized elements. 
-						if (gLMangerHandler.prompts.confirm(window, gLMangerHandler._bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+ gLMangerHandler._bundleDialogue.GetStringFromName("restartRemoveMessage"))) {
+						if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+ gLMangerHandler.bundleDialogue.GetStringFromName("restartRemoveMessage"))) {
 						
 							//Call browser restart function
 							gLanguageManger.restartBrowser();
@@ -714,7 +714,7 @@ try{
 						
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler._bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}	
 	
 	}

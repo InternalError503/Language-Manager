@@ -9,9 +9,8 @@ Cu.import("resource://gre/modules/Services.jsm");
 //Query nsIPrefBranch see: Bug 1125570 | Bug 1083561
 Services.prefs.QueryInterface(Ci.nsIPrefBranch);
 
-//Get string sets to localised content.
-var localisedContent = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService); 
-var _bundleOptionsWindow = localisedContent.createBundle("chrome://LanguageManager/locale/options.properties");
+//Get string sets to localized content.
+var bundleOptionsWindow = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/options.properties");
 
 var gLanguageMangerOptions = {
 
@@ -49,33 +48,33 @@ try{
 				var OptionsSelectTimeDateMenuTD = document.getElementById("form-time-date-basic-td");		
 		
 		//Window title
-		document.title = _bundleOptionsWindow.GetStringFromName("lmOptionsTitle");
+		document.title = bundleOptionsWindow.GetStringFromName("lmOptionsTitle");
 		//Top navigation bar
-		navBarTitle.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
-		navBarSupport.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		navBarContact.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
-		navBarSupport2.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		navBarContact2.textContent = " " + _bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
+		navBarTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
+		navBarSupport.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
+		navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
+		navBarSupport2.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
+		navBarContact2.textContent = " " + bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
 		
 		//Reset language button
-		OptionsButtonReset.textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
+		OptionsButtonReset.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
 		
 		//Options panel label
-		OptionsPanelTitle.textContent = _bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
+		OptionsPanelTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
 		
 		//Show browser mode label.
-		OptionsBrowserMode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserMode");
+		OptionsBrowserMode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserMode");
 
 				
 		//Copyright message.
-		CopyrightLabel.textContent = _bundleOptionsWindow.GetStringFromName("lmCopyright");
+		CopyrightLabel.textContent = bundleOptionsWindow.GetStringFromName("lmCopyright");
 
 		//Select time and date format.		
-		OptionsSelectTimeDate.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
-				OptionsSelectTimeDateMenuDefault.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuDefault");
-				OptionsSelectTimeDateMenuD.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
-				OptionsSelectTimeDateMenuB.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
-				OptionsSelectTimeDateMenuTD.textContent = _bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
+		OptionsSelectTimeDate.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
+				OptionsSelectTimeDateMenuDefault.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuDefault");
+				OptionsSelectTimeDateMenuD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
+				OptionsSelectTimeDateMenuB.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
+				OptionsSelectTimeDateMenuTD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
 
 		
 //Browser information			
@@ -88,15 +87,15 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 
 		    case "cyberfoxmode":
-				OptionsBrowser_Mode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserModeCF");
+				OptionsBrowser_Mode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserModeCF");
 			break;
 
 		    case "firefoxmode":
-				OptionsBrowser_Mode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserModeFF");
+				OptionsBrowser_Mode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserModeFF");
 		    break;
 
 		    case "firefoxbetamode":
-				OptionsBrowser_Mode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserModeFFB");
+				OptionsBrowser_Mode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserModeFFB");
 		    break;
 
 		}
@@ -117,7 +116,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 		}		
 		
-	document.getElementById("current-locale").textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguage") +" "+ Services.prefs.getCharPref("general.useragent.locale").toString();	
+	document.getElementById("current-locale").textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguage") +" "+ Services.prefs.getCharPref("general.useragent.locale").toString();	
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue and console
