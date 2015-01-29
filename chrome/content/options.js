@@ -18,63 +18,55 @@ init: function(){
 
 try{
 
-//Localise Content
-
+	//Localise Content
+	
+	//Get all the elements by there id's
+	var contentElement = {
 		//Top navigation bar
-		var navBarTitle = document.getElementById("NavTitle");
-		var navBarSupport = document.getElementById("NavSupport");
-		var navBarContact = document.getElementById("NavContact");
-		var navBarSupport2 = document.getElementById("NavSupport2");
-		var navBarContact2 = document.getElementById("NavContact2");
-		
+		navBarTitle: document.getElementById("NavTitle"),
+		navBarSupport: document.getElementById("NavSupport"),
+		navBarContact: document.getElementById("NavContact"),
+		navBarSupport2: document.getElementById("NavSupport2"),
+		navBarContact2: document.getElementById("NavContact2"),		
 		//Reset language button
-		var OptionsButtonReset = document.getElementById("resetLanguage");				
-		
+		OptionsButtonReset: document.getElementById("resetLanguage"),						
 		//Panel label
-		var OptionsPanelTitle = document.getElementById("OptionsPanel");		
-		
+		OptionsPanelTitle: document.getElementById("OptionsPanel"),				
 		//Show what browser mode firefox or firefox beta or cyberfox.
-		var OptionsBrowserMode = document.getElementById("BrowserMode");	
-
-		
+		OptionsBrowserMode: document.getElementById("BrowserMode"),	
 		//Copyright message.
-		var CopyrightLabel = document.getElementById("labelCopy");
-		
+		CopyrightLabel: document.getElementById("labelCopy"),
 		//Select time and date format.
-		var OptionsSelectTimeDate = document.getElementById("SelectTimeDate");
-				var OptionsSelectTimeDateMenuDefault = document.getElementById("defaultFormat");		
-				var OptionsSelectTimeDateMenuD = document.getElementById("form-time-date-default");
-				var OptionsSelectTimeDateMenuB = document.getElementById("form-time-date-basic-d");
-				var OptionsSelectTimeDateMenuTD = document.getElementById("form-time-date-basic-td");		
-		
+		OptionsSelectTimeDate: document.getElementById("SelectTimeDate"),
+		OptionsSelectTimeDateMenuDefault: document.getElementById("defaultFormat"),		
+		OptionsSelectTimeDateMenuD: document.getElementById("form-time-date-default"),
+		OptionsSelectTimeDateMenuB: document.getElementById("form-time-date-basic-d"),
+		OptionsSelectTimeDateMenuTD: document.getElementById("form-time-date-basic-td")		
+	};
+	
+	//Localize all the elements with the translated text if available.
 		//Window title
 		document.title = bundleOptionsWindow.GetStringFromName("lmOptionsTitle");
 		//Top navigation bar
-		navBarTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
-		navBarSupport.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
-		navBarSupport2.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		navBarContact2.textContent = " " + bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
-		
+		contentElement.navBarTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
+		contentElement.navBarSupport.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
+		contentElement.navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
+		contentElement.navBarSupport2.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
+		contentElement.navBarContact2.textContent = " " + bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");		
 		//Reset language button
-		OptionsButtonReset.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");	
-		
+		contentElement.OptionsButtonReset.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");			
 		//Options panel label
-		OptionsPanelTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
-		
+		contentElement.OptionsPanelTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");		
 		//Show browser mode label.
-		OptionsBrowserMode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserMode");
-
-				
+		contentElement.OptionsBrowserMode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserMode");
 		//Copyright message.
-		CopyrightLabel.textContent = bundleOptionsWindow.GetStringFromName("lmCopyright");
-
+		contentElement.CopyrightLabel.textContent = bundleOptionsWindow.GetStringFromName("lmCopyright");
 		//Select time and date format.		
-		OptionsSelectTimeDate.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
-				OptionsSelectTimeDateMenuDefault.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuDefault");
-				OptionsSelectTimeDateMenuD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
-				OptionsSelectTimeDateMenuB.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
-				OptionsSelectTimeDateMenuTD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
+		contentElement.OptionsSelectTimeDate.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
+		contentElement.OptionsSelectTimeDateMenuDefault.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuDefault");
+		contentElement.OptionsSelectTimeDateMenuD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
+		contentElement.OptionsSelectTimeDateMenuB.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
+		contentElement.OptionsSelectTimeDateMenuTD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
 
 		
 //Browser information			
