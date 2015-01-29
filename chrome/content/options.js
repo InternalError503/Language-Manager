@@ -4,8 +4,10 @@ var Cc = Components.classes;
 var Ci = Components.interfaces;
 var Cu = Components.utils;
 
-var ServicesPrefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
-var ServicesPref = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.language_manager.");
+//Import services
+Cu.import("resource://gre/modules/Services.jsm");
+//Query nsIPrefBranch see: Bug 1125570 | Bug 1083561
+Services.prefs.QueryInterface(Ci.nsIPrefBranch);
 
 //Get string sets to localised content.
 var localisedContent = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService); 
@@ -83,7 +85,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 		//Note: We don't show any values on the first run, Once language_Manager.xul has be initialized and the browser verified then we can display a value here.	
 		//Show what browser mode firefox or firefox beta or cyberfox.
 		var OptionsBrowser_Mode = document.getElementById("form-browser-mode");
-		switch (ServicesPref.getCharPref("browser_mode")) {
+		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 
 		    case "cyberfoxmode":
 				OptionsBrowser_Mode.textContent = _bundleOptionsWindow.GetStringFromName("lmBrowserModeCF");
@@ -99,7 +101,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 		}
 		
-		switch (ServicesPref.getCharPref("time-date_mode")) {
+		switch (Services.prefs.getCharPref("extensions.language_manager.time-date_mode")) {
 
 		    default:
 				document.getElementById("form-time-date").value = "default_tnd";
@@ -115,7 +117,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 		}		
 		
-	document.getElementById("current-locale").textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguage") +" "+ ServicesPrefs.getCharPref("locale").toString();	
+	document.getElementById("current-locale").textContent = _bundleOptionsWindow.GetStringFromName("lmCurrentLanguage") +" "+ Services.prefs.getCharPref("general.useragent.locale").toString();	
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue and console
@@ -131,15 +133,15 @@ timeDateFormatChanged: function(){
         switch (document.getElementById("form-time-date").value) {
         
             case "default_tnd":
-                ServicesPref.setCharPref("time-date_mode", "default");
+                Services.prefs.setCharPref("extensions.language_manager.time-date_mode", "default");
             break;
  
             case "basic_date":
-                ServicesPref.setCharPref("time-date_mode", "basicdate");
+                Services.prefs.setCharPref("extensions.language_manager.time-date_mode", "basicdate");
             break;
 
             case "basic_time":
-                ServicesPref.setCharPref("time-date_mode", "timedate");
+                Services.prefs.setCharPref("extensions.language_manager.time-date_mode", "timedate");
              break;
 
         }
@@ -155,7 +157,7 @@ restoreDefaultLanguage: function(){
 
 	try{
 		//Clear locale 
-		ServicesPrefs.clearUserPref("locale");
+		Services.prefs.clearUserPref("general.useragent.locale");
 
 		//Refresh preference
 		var container = document.getElementById("form-clear-locale");

@@ -6,11 +6,13 @@ var Cu = Components.utils;
 
 //Import addon manager
 Cu.import("resource://gre/modules/AddonManager.jsm");
+//Import services
+Cu.import("resource://gre/modules/Services.jsm");
+//Query nsIPrefBranch see: Bug 1125570 | Bug 1083561
+Services.prefs.QueryInterface(Ci.nsIPrefBranch);
 
 let gLMangerHandler = {
 
-	//Get & set language manager user preferences.
-	ServicesPref: Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.language_manager."),
 	//For browser version detection.
 	webBrowserVersion: Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo),
 	//Get string sets to localise internal messages.
@@ -70,7 +72,7 @@ initPane: function(){
 				
 				//Here were getting the latest beta version, We are making sure its always the latest from the json.
 				var latest_Beta = jsObject.BrowserVersion[0].Version;				
-					gLMangerHandler.ServicesPref.setCharPref("latest_beta_version", latest_Beta[0].Beta);
+					Services.prefs.setCharPref("extensions.language_manager.latest_beta_version", latest_Beta[0].Beta);
 
 				
 		for (i = 0; myLanguageList[i]; i++) {
@@ -154,7 +156,7 @@ initPane: function(){
 			cell = document.createElement('listcell');
 
 		//Some users might like a different time - date readout.			
-		switch (gLMangerHandler.ServicesPref.getCharPref("time-date_mode")){
+		switch (Services.prefs.getCharPref("extensions.language_manager.time-date_mode")){
 
 		    case "basicdate":
 				cell.setAttribute('label',  updateDate.toLocaleDateString());
@@ -395,13 +397,13 @@ try{
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
 
 				//Check if running firefox beta.
-				if (gLMangerHandler.webBrowserVersion.version === gLMangerHandler.ServicesPref.getCharPref("latest_beta_version")){
+				if (gLMangerHandler.webBrowserVersion.version === Services.prefs.getCharPref("extensions.language_manager.latest_beta_version")){
 				
-					gLMangerHandler.ServicesPref.setCharPref("browser_mode", "firefoxbetamode");
+					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxbetamode");
 					
 				}else{
 				
-					gLMangerHandler.ServicesPref.setCharPref("browser_mode", "firefoxmode");
+					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxmode");
 				
 				}
 			
@@ -409,7 +411,7 @@ try{
 
 			//Check if browser Cyberfox (Additional fallback)
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Cyberfox".toLowerCase()) {
-				gLMangerHandler.ServicesPref.setCharPref("browser_mode", "cyberfoxmode");				
+				Services.prefs.setCharPref("extensions.language_manager.browser_mode", "cyberfoxmode");				
 			}
 
 		}catch (e){
@@ -509,7 +511,7 @@ try{
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/";
 			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";
 						
-		switch (gLMangerHandler.ServicesPref.getCharPref("browser_mode")) {
+		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 
 		    case "cyberfoxmode":
 				gLanguageManger.validateURL(cyberfoxModeURL + gLMangerHandler.webBrowserVersion.version + "/" + document.getElementById("languageMenu").value + ".xpi");	
