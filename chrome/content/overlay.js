@@ -113,12 +113,17 @@ initPane: function(){
 
 		//Quick toggle of language packs	
 		var listbox= document.getElementById("theList");
-		listbox.addEventListener("dblclick", function(event){
+		listbox.addEventListener("dblclick", function(aEvent){
 
-		try{			
+		try{	
+			//Prevent right or middle mouse event activation.
+			var aEvent = aEvent || window.event;				
+			if ('object' === typeof aEvent) {
+				if (aEvent.button === 0){
+						gLanguageManger.ToggleHandler(aEvent.target.childNodes[0]);
+				}
+			}
 				
-				gLanguageManger.ToggleHandler(event.target.childNodes[0]);
-
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
 				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
