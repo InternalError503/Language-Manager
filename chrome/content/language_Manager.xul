@@ -35,6 +35,9 @@ Copyright (c) 2014 8pecxstudios
 							tooltiptext="&languageManagerTogglePack.tooltip;"					
 							oncommand="gLanguageManger.TogglePack();"/>
 		<menuitem label="&languageManagerToggleRemove.label;"
+							id="context_LanguageManager_remove"
+							iconic="true"
+							class="menuitem-iconic"								
 							tooltiptext="&languageManagerToggleRemove.tooltip;"					
 							oncommand="gLanguageManger.RemovePack();"/>								
 	</menupopup>

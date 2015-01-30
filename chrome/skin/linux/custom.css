@@ -36,6 +36,10 @@
 	list-style-image: url("chrome://LanguageManager/skin/lm-toggle.png");	
 }
 
+#context_LanguageManager_remove{
+	list-style-image: url("chrome://LanguageManager/skin/lm-remove.png");	
+}
+
 #lm_options_menu_options{
 	list-style-image: url("chrome://LanguageManager/skin/settings.png");
 	-moz-image-region: rect(0px 16px 16px 0px);
