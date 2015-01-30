@@ -126,6 +126,34 @@ initPane: function(){
 
     }, false);	
 	
+	//If the pack is the active pack we don't want to show toggle context menu item.
+	document.getElementById("lm-pack-context-menu")
+			.addEventListener("popupshowing", function(){
+
+		try{		
+					
+				var listbox= document.getElementById("theList");
+				var target = listbox.selectedItem.childNodes[0]
+				if (!target){
+					return; 
+				}				
+				var splitElement = target.getAttribute("value");
+				var splitElementStart = splitElement.indexOf('-') + 1;
+				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);				
+				var elementData = splitElement.substring(splitElementStart, splitElementEnd);
+				if (elementData.match(Services.prefs.getCharPref("general.useragent.locale"))){
+					document.getElementById("context_LanguageManager_toggle").hidden = true;
+				}else{
+					document.getElementById("context_LanguageManager_toggle").hidden = false;
+				}
+			
+			}catch (e){
+				//Catch any nasty errors and output to dialogue
+				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			}		
+
+    }, false);
+	
 		
 	this.getInstalledLanguages();
 	this.ResizeListbox();
