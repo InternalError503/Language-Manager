@@ -486,10 +486,9 @@ try{
 		
 		this.checkBrowser();		
 		
-		var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
 		var newPref = document.getElementById("languageMenu").value;		
 		
-				callPrefService.setCharPref("locale", newPref);	
+				Services.prefs.setCharPref("general.useragent.locale", newPref);	
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
@@ -602,7 +601,6 @@ try{
 					return; 
 				}
 				
-				var localeServices = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
 				var splitElement = target.getAttribute("value");
 				var splitElementStart = splitElement.indexOf('-') + 1;
 				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);
@@ -616,10 +614,10 @@ try{
 				
 			if (addon.isCompatible){
 			
-				if (elementData.match(localeServices.getCharPref("locale"))){
+				if (elementData.match(Services.prefs.getCharPref("general.useragent.locale"))){
 					return;			
 			}else{
-					localeServices.setCharPref("locale", elementData);
+					Services.prefs.setCharPref("general.useragent.locale", elementData);
 					gLanguageManger.activateComplete();	
 					
 				}	
@@ -666,9 +664,7 @@ try{
 					if (!target){
 						return; 
 					}
-					
-					var callPrefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
-					var localeServices = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("general.useragent.");
+
 					var splitElement = target.getAttribute("value");
 					var splitElementStart = splitElement.indexOf('-') + 1;
 					var splitElementEnd = splitElement.indexOf('@',  splitElementStart);
@@ -682,10 +678,10 @@ try{
 				if (addon){
 				
 					//Check if the addon is the current active addon, Then need to reset the changed (general.useragent.locale) back to its original state before pack was enabled.
-					if (elementData.match(localeServices.getCharPref("locale"))){
+					if (elementData.match(Services.prefs.getCharPref("general.useragent.locale"))){
 						
 						//Clear locale 
-						callPrefService.clearUserPref("locale");
+						Services.prefs.clearUserPref("general.useragent.locale");
 						addon.uninstall();
 						
 						//Since the addon was active there are still parts of the localization loaded, So prompt user to restart the browser to unload these elements.
