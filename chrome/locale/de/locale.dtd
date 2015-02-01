@@ -1,24 +1,24 @@
-<!ENTITY languageManagerTitleItem.label "Cyberfox Sprache Geschäftsführer">
-<!ENTITY languagePackCaptionItem.label "Sprach Paket Installieren">
-<!ENTITY languageDescription.desc "Wählen Sie einfach das paket zu installieren drücken Sie die Taste installieren möchten.">
-<!ENTITY languageCurrentInstalled.label "Currently installed language packs:">
-<!ENTITY languageEnableMessage.label "Double click pack to enable!">
+<!ENTITY languageManagerTitleItem.label "Cyberfox Sprachmanager">
+<!ENTITY languagePackCaptionItem.label "Sprachpaket Installieren">
+<!ENTITY languageDescription.desc "Wählen Sie einfach das Sprachpacket aus und drücken sie auf Installieren.">
+<!ENTITY languageCurrentInstalled.label "Aktuell installierte Sprachpakete:">
+<!ENTITY languageEnableMessage.label "Doppelklicke das Packet um es zu aktivieren!">
 <!ENTITY selectLanguageItem.label "Sprache auswählen">
 <!ENTITY installButtonItem.label "Installieren">
-<!ENTITY closeButtonItem.label "Finished">
-<!ENTITY optionsButtonItem.label "Options">
+<!ENTITY closeButtonItem.label "Abgeschlossen">
+<!ENTITY optionsButtonItem.label "Optionen">
 <!ENTITY lmHelpButton.tooltip "Language Manager Help Documentation">
 
 <!ENTITY listItemName.label "Name">
 <!ENTITY listItemVersion.label "Version">
-<!ENTITY listItemInstalled.label "Installed">
-<!ENTITY listItemEnabled.label "Enabled">
-<!ENTITY listItemCompatible.label "Compatible">
+<!ENTITY listItemInstalled.label "Installiert">
+<!ENTITY listItemEnabled.label "Aktiviert">
+<!ENTITY listItemCompatible.label "Kompatibel">
 
-<!ENTITY languageManagerCMenuItem.label "Show Language Manager">
-<!ENTITY languageManagerCMenuOptionsItem.label "Show Options">
+<!ENTITY languageManagerCMenuItem.label "Zeige Sprachmanager">
+<!ENTITY languageManagerCMenuOptionsItem.label "Zeige Optionen">
 
 <!ENTITY languageManagerTogglePack.label "Toggle Pack">
-<!ENTITY languageManagerTogglePack.tooltip "Enable Language Pack">
-<!ENTITY languageManagerToggleRemove.label "Remove Pack">
-<!ENTITY languageManagerToggleRemove.tooltip "Remove Language Pack">
+<!ENTITY languageManagerTogglePack.tooltip "Aktiviere Sprachpaket">
+<!ENTITY languageManagerToggleRemove.label "Entferne Packet">
+<!ENTITY languageManagerToggleRemove.tooltip "Entferne Sprachpacket">
