@@ -21,7 +21,8 @@ let gLMangerHandler = {
 	//Setup prompts service.	
 	prompts: Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService),
 	//Browser information	
-	browserAppInformation: Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo)	
+	browserAppInformation: Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo),
+	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0'
 	
 };
 
@@ -29,9 +30,20 @@ var gLanguageManger = {
 
 initPane: function(){	
 
+		// add attribute to provide theme specific css to resolve any issues with styling on non default themes.
+	try{
+		if (gLMangerHandler.defaultfirefoxtheme){
+			document.getElementById("Language-Manager").setAttribute('defaultfxtheme',true);
+		}else {
+			document.getElementById("Language-Manager").setAttribute('themename', Services.prefs.getCharPref("general.skins.selectedSkin"));
+		}
+	}catch(e){
+		//Catch any nasty errors and output to dialogue
+		alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);		
+	}
+
 	try{
 		
-	
 	//Get latest language list
 	let url = "https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
 	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
