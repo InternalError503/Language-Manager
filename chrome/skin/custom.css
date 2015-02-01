@@ -111,6 +111,8 @@
 }
 
 #Language-Manager[themename="mx3"] #top_pane_caption,
-#Language-Manager[themename="mx3"] #top_pane{
+#Language-Manager[themename="mx3"] #top_pane,
+#Language-Manager[themename="mx4"] #top_pane_caption,
+#Language-Manager[themename="mx4"] #top_pane{
 	margin-left:7px;
 }
