@@ -98,4 +98,19 @@
 			.help-button > .button-box >.button-text {
 			  display: none;
 			}
-	}
+	}	
+	
+/* Theme compatibility slight margin issue with some themes and the language manager xul window */
+#Language-Manager[themename="FXChrome"] #top_pane_caption{
+	margin-left:7px;
+}
+
+#Language-Manager[themename="FXOpera"] #top_pane_caption,
+#Language-Manager[themename="FXOpera"] #top_pane{
+	margin-left:7px;
+}
+
+#Language-Manager[themename="mx3"] #top_pane_caption,
+#Language-Manager[themename="mx3"] #top_pane{
+	margin-left:7px;
+}
