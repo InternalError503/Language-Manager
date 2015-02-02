@@ -30,7 +30,8 @@ Copyright (c) 2014 8pecxstudios
 	<em:optionsType>3</em:optionsType>
 	<em:optionsURL>chrome://LanguageManager/content/options.html</em:optionsURL>
 	<!-- Special Thanks List -->
-	<em:translator>Michel Gagnon (fr (French))</em:translator>			
+	<em:translator>DJDanby (De (German))</em:translator>	
+	<em:translator>Michel Gagnon (fr (French))</em:translator>
 	<em:translator>Bekir Uçarci (tr (Turkish))</em:translator>
 	<em:translator>Egorro (ru (Russian))</em:translator>		
   </Description>      
