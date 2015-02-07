@@ -1,0 +1,24 @@
+<!ENTITY languageManagerTitleItem.label "Language Manager">
+<!ENTITY languagePackCaptionItem.label "言語パックのインストール">
+<!ENTITY languageDescription.desc "インストールしたいパックを選択し、 [インストール] ボタンを押してください。">
+<!ENTITY languageCurrentInstalled.label "現在インストールされている言語パック:">
+<!ENTITY languageEnableMessage.label "有効にするにはパックをダブルクリックしてください。">
+<!ENTITY selectLanguageItem.label "言語を選択">
+<!ENTITY installButtonItem.label "インストール">
+<!ENTITY closeButtonItem.label "完了">
+<!ENTITY optionsButtonItem.label "オプション">
+<!ENTITY lmHelpButton.tooltip "Language Manager ヘルプ ドキュメント (英語)">
+
+<!ENTITY listItemName.label "名前">
+<!ENTITY listItemVersion.label "バージョン">
+<!ENTITY listItemInstalled.label "インストール日時">
+<!ENTITY listItemEnabled.label "有効性">
+<!ENTITY listItemCompatible.label "互換性">
+
+<!ENTITY languageManagerCMenuItem.label "Language Manager を表示">
+<!ENTITY languageManagerCMenuOptionsItem.label "オプションを表示">
+
+<!ENTITY languageManagerTogglePack.label "パックを切り替え">
+<!ENTITY languageManagerTogglePack.tooltip "言語パックを有効にします">
+<!ENTITY languageManagerToggleRemove.label "パックを削除">
+<!ENTITY languageManagerToggleRemove.tooltip "言語パックを削除します">
