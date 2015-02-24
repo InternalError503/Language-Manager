@@ -96,7 +96,7 @@
                     "name": "csb (Kashubian)",
                     "value": "csb",
                     "version_min": "",
-                    "version_max": ""
+                    "version_max": "34.0.5"
                 },
                 {
                     "name": "cy (Cymraeg)",
@@ -537,6 +537,12 @@
                     "version_max": ""
                 },
                 {
+                    "name": "uz (Uzbek)",
+                    "value": "uz",
+                    "version_min": "36.0",
+                    "version_max": ""
+                },				
+                {
                     "name": "vi (Vietnamese)",
                     "value": "vi",
                     "version_min": "",
@@ -840,6 +846,9 @@
                     "ID": "langpack-uk@firefox.mozilla.org"
                 },
                 {
+                    "ID": "langpack-uz@firefox.mozilla.org"
+                },				
+                {
                     "ID": "langpack-vi@firefox.mozilla.org"
                 },
                 {
@@ -1122,6 +1131,9 @@
                     "ID": "langpack-uk@8pecxstudios.com"
                 },
                 {
+                    "ID": "langpack-uz@8pecxstudios.com"
+                },				
+                {
                     "ID": "langpack-vi@8pecxstudios.com"
                 },
                 {
@@ -1143,7 +1155,7 @@
         {
             "Version": [
                 {
-                    "Beta": "35.0"
+                    "Beta": "37.0"
                 }
             ]
         }
