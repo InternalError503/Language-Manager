@@ -13,15 +13,13 @@ Services.prefs.QueryInterface(Ci.nsIPrefBranch);
 
 let gLMangerHandler = {
 
-	//For browser version detection.
-	webBrowserVersion: Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo),
 	//Get string sets to localise internal messages.
 	bundleDialogue: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/dialogue.properties"),
 	bundleDebugError: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/debug.properties"),
 	//Setup prompts service.	
 	prompts: Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService),
 	//Browser information	
-	browserAppInformation: Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo),
+	browserAppInformation: Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo),
 	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0'
 	
 };
@@ -89,8 +87,8 @@ initPane: function(){
 				
 		for (i = 0; myLanguageList[i]; i++) {
 		
-				if (myLanguageList[i].version_min > gLMangerHandler.webBrowserVersion.version){}else{			
-					if (gLMangerHandler.webBrowserVersion.version > myLanguageList[i].version_max 
+				if (myLanguageList[i].version_min > gLMangerHandler.browserAppInformation.version){}else{			
+					if (gLMangerHandler.browserAppInformation.version > myLanguageList[i].version_max 
 							&& !myLanguageList[i].version_max == ""){}else{
 								menuItemsList = document.getElementById("languageMenu")
 										.appendItem( myLanguageList[i].name, myLanguageList[i].value);						
@@ -442,7 +440,7 @@ try{
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
 
 				//Check if running firefox beta.
-				if (gLMangerHandler.webBrowserVersion.version === Services.prefs.getCharPref("extensions.language_manager.latest_beta_version")){
+				if (gLMangerHandler.browserAppInformation.version === Services.prefs.getCharPref("extensions.language_manager.latest_beta_version")){
 				
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxbetamode");
 					
@@ -558,11 +556,11 @@ try{
 		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 
 		    case "cyberfoxmode":
-				gLanguageManger.validateURL(cyberfoxModeURL + gLMangerHandler.webBrowserVersion.version + "/" + document.getElementById("languageMenu").value + ".xpi");	
+				gLanguageManger.validateURL(cyberfoxModeURL + gLMangerHandler.browserAppInformation.version + "/" + document.getElementById("languageMenu").value + ".xpi");	
 		        break;
 
 		    case "firefoxmode":
-				gLanguageManger.validateURL(firerfoxModeURL + gLMangerHandler.webBrowserVersion.version + "/win32/xpi/" + document.getElementById("languageMenu").value + ".xpi");
+				gLanguageManger.validateURL(firerfoxModeURL + gLMangerHandler.browserAppInformation.version + "/win32/xpi/" + document.getElementById("languageMenu").value + ".xpi");
 		        break;
 
 		    case "firefoxbetamode":
