@@ -20,7 +20,9 @@ let gLMangerHandler = {
 	prompts: Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService),
 	//Browser information	
 	browserAppInformation: Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo),
-	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0'
+	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0',
+	//Get browser name from branding
+	brandName: Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName")
 	
 };
 
@@ -599,8 +601,9 @@ try{
 			//Set general.useragent.locale when install button is pressed in-case user changes there mind after selecting a language in the list, This will prevent
 			//Unwanted change to there default language setting.
 			this.SetPrefValue();
+
 			//Prompt restart to apply changes
-			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+  gLMangerHandler.bundleDialogue.GetStringFromName("restartMessage"))) {
+			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartMessage", [gLMangerHandler.brandName], 1))) {
 				//Call browser restart function
 				this.restartBrowser();
 			}
@@ -618,9 +621,8 @@ try{
 
 		try{		
 
-			
 			//Prompt restart to apply changes
-			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+ gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageActivate"))) {			
+			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartMessageActivate", [gLMangerHandler.brandName], 1))) {			
 				//Call browser restart function
 				this.restartBrowser();
 			}
@@ -726,10 +728,10 @@ try{
 						//Clear locale 
 						Services.prefs.clearUserPref("general.useragent.locale");
 						addon.uninstall();
-						
+
 						//Since the addon was active there are still parts of the localization loaded, So prompt user to restart the browser to unload these elements.
 						//Prompt restart to unload any localized elements. 
-						if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.browserAppInformation.name +" "+ gLMangerHandler.bundleDialogue.GetStringFromName("restartRemoveMessage"))) {
+						if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartRemoveMessage", [gLMangerHandler.brandName], 1))) {
 						
 							//Call browser restart function
 							gLanguageManger.restartBrowser();
