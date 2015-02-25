@@ -1,4 +1,3 @@
-/* Here you can create a custom CSS style for cyberfox language manager */
 #languageMenu{
 	width: 290px;
 }
@@ -8,46 +7,46 @@
 }
 
 #optionsButton{
-	list-style-image: url("chrome://LanguageManager/skin/settings.png");
+	list-style-image: url("settings.png");
 	-moz-image-region: rect(0px 16px 16px 0px);
 	padding-right:8px;
 }
 
 #menu_LanguageManager,
 #appmenu_LanguageManager{
-	list-style-image: url("chrome://LanguageManager/skin/icon16.png");
+	list-style-image: url("icon16.png");
 	
 }
 
 #lm_options_menu_manager,
 #toolbar_openLangageManager{
-	list-style-image: url("chrome://LanguageManager/skin/icon16.png");
+	list-style-image: url("icon16.png");
 	
 }
 
 #toolbar_openLangageManager[cui-areatype="menu-panel"]{
-	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;	
+	list-style-image: url("icon32.png")!important;	
 }
 
 #toolbar_openLangageManager:not([cui-areatype="toolbar"])> .toolbarbutton-icon{
-	list-style-image: url("chrome://LanguageManager/skin/icon32.png")!important;	
+	list-style-image: url("icon32.png")!important;	
 }
 
 #lm_options_menu_options{
-	list-style-image: url("chrome://LanguageManager/skin/settings.png");
+	list-style-image: url("settings.png");
 	-moz-image-region: rect(0px 16px 16px 0px);
 }
 
 #context_LanguageManager_toggle{
-	list-style-image: url("chrome://LanguageManager/skin/lm-toggle.png");	
+	list-style-image: url("lm-toggle.png");	
 }
 
 #context_LanguageManager_remove{
-	list-style-image: url("chrome://LanguageManager/skin/lm-remove.png");	
+	list-style-image: url("lm-remove.png");	
 }
 
 #lm_options_menu_options{
-	list-style-image: url("chrome://LanguageManager/skin/settings.png");
+	list-style-image: url("settings.png");
 	-moz-image-region: rect(0px 16px 16px 0px);
 }	
 
@@ -84,14 +83,14 @@
 			.help-button > .button-box > .button-icon {
 			  width: 26px;
 			  height: 26px;
-			  background-image: url("chrome://LanguageManager/skin/help-glyph.png");
+			  background-image: url("help-glyph.png")!important;
 			  background-position: center;
 			}
 
 			@media (min-resolution: 2dppx) {
 			.help-button > .button-box > .button-icon {
 				background-size: 26px 26px;
-				background-image: url("chrome://LanguageManager/skin/help-glyph@2x.png");
+				background-image: url("help-glyph@2x.png")!important;
 			  }
 			}
 
