@@ -45,11 +45,6 @@
 	list-style-image: url("lm-remove.png");	
 }
 
-#lm_options_menu_options{
-	list-style-image: url("settings.png");
-	-moz-image-region: rect(0px 16px 16px 0px);
-}	
-
 	/* Make sure it only uses this css in language manger*/
     @-moz-document url(chrome://languagemanager/content/language_Manager.xul) {
 	
