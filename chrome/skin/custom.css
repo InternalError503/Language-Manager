@@ -78,14 +78,14 @@
 			.help-button > .button-box > .button-icon {
 			  width: 26px;
 			  height: 26px;
-			  background-image: url("help-glyph.png")!important;
+			  background-image: url("help-glyph.png");
 			  background-position: center;
 			}
 
 			@media (min-resolution: 2dppx) {
 			.help-button > .button-box > .button-icon {
 				background-size: 26px 26px;
-				background-image: url("help-glyph@2x.png")!important;
+				background-image: url("help-glyph@2x.png");
 			  }
 			}
 
