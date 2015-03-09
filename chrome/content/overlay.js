@@ -19,7 +19,7 @@ let gLMangerHandler = {
 	//Setup prompts service.	
 	prompts: Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService),
 	//Browser information	
-	browserAppInformation: Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo),
+	browserAppInformation: Services.appinfo,
 	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0',
 	//Get browser name from branding
 	brandName: Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName")
