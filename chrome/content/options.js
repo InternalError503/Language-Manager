@@ -164,5 +164,8 @@ restoreDefaultLanguage: function(){
 				
 }
 
-window.addEventListener("load", function () { gLanguageMangerOptions.init(); }, false);
+window.addEventListener("load", function () { 
+	window.removeEventListener("load", gLanguageMangerOptions.init(), false);
+	gLanguageMangerOptions.init(); 
+}, false);
 	
