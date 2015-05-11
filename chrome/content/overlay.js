@@ -214,8 +214,11 @@ initPane: function(){
 		    break;	
 			
 		    default:
-				cell.setAttribute('label',  updateDate);
-				cell.setAttribute('value', updateDate);	
+				//If English  local Monday, May 11, 2015 6:23:32 PM
+				//If German local Montag, 11, Mai 2015 6:23:32 PM			
+				var set_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+				cell.setAttribute('label',  updateDate.toLocaleDateString(Services.prefs.getCharPref("general.useragent.locale"), set_options) + " " + updateDate.toLocaleTimeString());
+				cell.setAttribute('value', updateDate.toLocaleDateString(Services.prefs.getCharPref("general.useragent.locale"), set_options));	
 		    break;				
 		}			
 			
