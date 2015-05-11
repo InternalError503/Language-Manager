@@ -111,6 +111,11 @@
 	margin-left:7px;
 }
 
+#Language-Manager[themename="mla"] #top_pane_caption,
+#Language-Manager[themename="mla"] #top_pane{
+	margin-left:7px;
+}
+
 /* style Popup */
 	#lm-pack-context-menu,
 	#lm_options_menu {
