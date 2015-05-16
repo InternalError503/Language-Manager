@@ -112,6 +112,7 @@ initPane: function(){
 			window.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 	};
 	
+	request.timeout = 5000;
 	request.open("GET", url, true);
 	request.send(null);
 	
@@ -315,6 +316,7 @@ try{
 			window.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 	};
 	
+	request.timeout = 5000;
 	request.open("GET", url, true);
 	request.send(null);		
 	
@@ -430,6 +432,7 @@ try{
 		};
 		
 		//Add pramas true for async
+		request.timeout = 5000;
 		request.open("GET", url, true);
 		request.send(null);
 	},	
