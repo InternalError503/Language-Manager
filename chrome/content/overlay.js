@@ -620,12 +620,13 @@ try{
 },
 
 		//Language pack activate.
-		activateComplete: function() {
+		activateComplete: function(elementData) {
 
 		try{		
 
 			//Prompt restart to apply changes
-			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartMessageActivate", [gLMangerHandler.brandName], 1))) {			
+			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartMessageActivate", [gLMangerHandler.brandName], 1))) {	
+				Services.prefs.setCharPref("general.useragent.locale", elementData);			
 				//Call browser restart function
 				this.restartBrowser();
 			}
@@ -665,8 +666,7 @@ try{
 				if (elementData.match(Services.prefs.getCharPref("general.useragent.locale"))){
 					return;			
 			}else{
-					Services.prefs.setCharPref("general.useragent.locale", elementData);
-					gLanguageManger.activateComplete();	
+					gLanguageManger.activateComplete(elementData);	
 					
 				}	
 			}
