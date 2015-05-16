@@ -623,12 +623,11 @@ try{
 
 		try{		
 			this.changeButtonStates("closeButton", true);	
-			//Set general.useragent.locale when install button is pressed in-case user changes there mind after selecting a language in the list, This will prevent
-			//Unwanted change to there default language setting.
-			this.SetPrefValue();
 
 			//Prompt restart to apply changes
-			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartMessage", [gLMangerHandler.brandName], 1))) {
+			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), 
+					gLMangerHandler.bundleDialogue.formatStringFromName("restartMessage", [gLMangerHandler.brandName], 1))) {
+				this.SetPrefValue();			
 				//Call browser restart function
 				this.restartBrowser();
 			}
