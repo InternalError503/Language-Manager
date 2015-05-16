@@ -97,6 +97,9 @@
 			.help-button > .button-box >.button-text {
 			  display: none;
 			}
+			listheader {
+				padding: 2px 5px!important;
+			}
 	}	
 	
 /* Theme compatibility slight margin issue with some themes and the language manager xul window */
