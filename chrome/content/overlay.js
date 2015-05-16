@@ -415,6 +415,22 @@ try{
 	validateURL : function(url){
 	
 		var request = new XMLHttpRequest();
+			request.addEventListener("progress", requestProgress, false);
+			request.addEventListener("load", requestComplete, false);
+			
+		//Since there can be a delay resolve the address lets show the user a visual indicator that stuff is happening.
+		function requestProgress (oEvent) {
+		  if (oEvent.lengthComputable) {
+			var percentComplete = Math.floor((oEvent.loaded / oEvent.total) * 100);
+			document.getElementById("progress_meter").value = percentComplete;
+		  }
+		}
+		
+		//On request completion hide the progress-bar
+		function requestComplete(evt) {
+		  document.getElementById("progress_meter").value = 0;
+		  document.getElementById("progress_meter").hidden = true;
+		}
 			
 		request.onload = function(){
 			if ((request.status >= 200 && 
@@ -564,14 +580,17 @@ try{
 		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 
 		    case "cyberfoxmode":
+				document.getElementById("progress_meter").hidden = false;
 				gLanguageManger.validateURL(cyberfoxModeURL + gLMangerHandler.browserAppInformation.version + "/" + document.getElementById("languageMenu").value + ".xpi");	
 		        break;
 
 		    case "firefoxmode":
+				document.getElementById("progress_meter").hidden = false;
 				gLanguageManger.validateURL(firerfoxModeURL + gLMangerHandler.browserAppInformation.version + "/win32/xpi/" + document.getElementById("languageMenu").value + ".xpi");
 		        break;
 
 		    case "firefoxbetamode":
+				document.getElementById("progress_meter").hidden = false;
 				gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi");				
 		        break;
 

@@ -64,6 +64,7 @@ Copyright (c) 2014 8pecxstudios
   </listhead>
 </listbox>
 
+<progressmeter id="progress_meter" mode="determined" value="0" hidden="true"/>
 <row id="iRow">
 
 <menulist id="languageMenu" label="&selectLanguageItem.label;" align="center" oncommand="gLanguageManger.Buttonenabled();">
