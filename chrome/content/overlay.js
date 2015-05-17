@@ -41,7 +41,18 @@ initPane: function(){
 		//Catch any nasty errors and output to dialogue
 		alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);		
 	}
-
+	
+	try {
+		if (Services.appinfo.OS=="WINNT"){
+			//Lets add version number to language manager window on windows.
+			AddonManager.getAddonByID('LanguageManager@8pecxstudios.com', function(addon) {
+				document.title = document.title + " " + addon.version;
+			});
+		}
+	}catch(e){
+		//we don't want errors to affect language manager if setting the addon version  fails
+	}
+	
 	try{
 		
 	//Get latest language list
