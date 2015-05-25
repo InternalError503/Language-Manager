@@ -63,8 +63,14 @@ Copyright (c) 2014 8pecxstudios
 	<listheader label="&listItemCompatible.label;"/>	
   </listhead>
 </listbox>
-<hbox id="overlay" hidden="true"/>
-<progressmeter id="progress_meter" mode="determined" value="0" hidden="true"/>
+
+
+<hbox id="lm-overlay" hidden="true">
+	<hbox class="lm-percentContainer">
+		<label id="lm-percent"/>
+	</hbox>
+</hbox>
+
 <row id="iRow">
 
 <menulist id="languageMenu" label="&selectLanguageItem.label;" align="center" oncommand="gLanguageManger.Buttonenabled();">

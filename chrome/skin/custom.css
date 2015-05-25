@@ -99,14 +99,7 @@
 			}
 			listheader {
 				padding: 2px 5px!important;
-			}
-		/* Prevent click happy users */
-		#overlay {
-		  position: fixed;
-		  top: 0; right: 0; bottom: 0; left: 0;
-		  z-index: 10;
-		}			
-			
+			}				
 	}	
 	
 /* Theme compatibility slight margin issue with some themes and the language manager xul window */
@@ -214,4 +207,27 @@
 	#lm_options_menu > menu:not([_moz-menuactive]),
 	#lm_options_menu > menuitem:not([_moz-menuactive]) {
 	  -moz-appearance:none;
+	}
+	
+	#lm-overlay {
+	  position: fixed;
+	  background-color:rgba(0, 0, 0, 0.7);
+	  top: 0; right: 0; bottom: 0; left: 0;
+	  z-index: 10;
+	}
+
+	#lm-percent{
+	  font-size:60px;
+	  font-weight:400;
+	  color:#efefef!important;
+	}
+
+	.lm-percentContainer{
+	  position: fixed;
+	  top: 40%;
+	  left: 0;
+	  bottom: 50%;
+	  right:50%;
+	  width: 100%;
+	  text-align: center;
 	}
