@@ -441,6 +441,7 @@ try{
 		function requestComplete(evt) {
 		  document.getElementById("progress_meter").value = 0;
 		  document.getElementById("progress_meter").hidden = true;
+		  document.getElementById("overlay").hidden = true;
 		}
 			
 		request.onload = function(){
@@ -591,16 +592,19 @@ try{
 		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 
 		    case "cyberfoxmode":
+				document.getElementById("overlay").hidden = false;
 				document.getElementById("progress_meter").hidden = false;
 				gLanguageManger.validateURL(cyberfoxModeURL + gLMangerHandler.browserAppInformation.version + "/" + document.getElementById("languageMenu").value + ".xpi");	
 		        break;
 
 		    case "firefoxmode":
+				document.getElementById("overlay").hidden = false;
 				document.getElementById("progress_meter").hidden = false;
 				gLanguageManger.validateURL(firerfoxModeURL + gLMangerHandler.browserAppInformation.version + "/win32/xpi/" + document.getElementById("languageMenu").value + ".xpi");
 		        break;
 
 		    case "firefoxbetamode":
+				document.getElementById("overlay").hidden = false;
 				document.getElementById("progress_meter").hidden = false;
 				gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi");				
 		        break;

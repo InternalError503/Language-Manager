@@ -63,7 +63,7 @@ Copyright (c) 2014 8pecxstudios
 	<listheader label="&listItemCompatible.label;"/>	
   </listhead>
 </listbox>
-
+<hbox id="overlay" hidden="true"/>
 <progressmeter id="progress_meter" mode="determined" value="0" hidden="true"/>
 <row id="iRow">
 
