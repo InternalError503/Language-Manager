@@ -125,6 +125,7 @@ initPane: function(){
 	
 	request.timeout = 5000;
 	request.open("GET", url, true);
+	request.setRequestHeader("Content-Type", "application/json");
 	request.send(null);
 	
 	this.checkBrowser();
