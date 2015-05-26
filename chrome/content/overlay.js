@@ -22,8 +22,9 @@ let gLMangerHandler = {
 	browserAppInformation: Services.appinfo,
 	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0',
 	//Get browser name from branding
-	brandName: Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName")
-	
+	brandName: Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName"),
+	//Store json data to save on multiple requests.
+	jsObject: [],
 };
 
 var gLanguageManger = {
@@ -70,7 +71,7 @@ initPane: function(){
 			request.status == 304){
 		
 				let text = aEvent.target.responseText;
-				let jsObject = text;
+				gLMangerHandler.jsObject = text;
 				
 				//Need to check if json is valid, If json not valid don't continue and show error.
 				function IsJsonValid(jsObject) {
@@ -82,19 +83,19 @@ initPane: function(){
 					return true;
 				}			
 							
-				if(!IsJsonValid(jsObject)){
+				if(!IsJsonValid(gLMangerHandler.jsObject)){
 					//Need to throw error message and exit if not valid json.
 					menuItemsList.disabled = true;	
 					alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));	
 					return;
 				} else { 
-					jsObject = JSON.parse(text);
+					gLMangerHandler.jsObject = JSON.parse(text);
 				}			
 							
-				let myLanguageList = jsObject.languageList[0].packs;
+				let myLanguageList = gLMangerHandler.jsObject.languageList[0].packs;
 				
 				//Here were getting the latest beta version, We are making sure its always the latest from the json.
-				var latest_Beta = jsObject.BrowserVersion[0].Version;				
+				var latest_Beta = gLMangerHandler.jsObject.BrowserVersion[0].Version;				
 					Services.prefs.setCharPref("extensions.language_manager.latest_beta_version", latest_Beta[0].Beta);
 
 				
@@ -109,6 +110,10 @@ initPane: function(){
 				}
 			
 			}
+			
+	gLanguageManger.checkBrowser();		
+	gLanguageManger.getInstalledLanguages();
+	gLanguageManger.ResizeListbox();
 	
 		}else{
 			//Disable the list and show error
@@ -128,7 +133,7 @@ initPane: function(){
 	request.setRequestHeader("Content-Type", "application/json");
 	request.send(null);
 	
-	this.checkBrowser();
+
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
@@ -183,11 +188,7 @@ initPane: function(){
 			}		
 
     }, false);
-	
 		
-	this.getInstalledLanguages();
-	this.ResizeListbox();
-	
 },
 
 
@@ -263,75 +264,26 @@ AddonManager.getAllAddons(function(aAddons) {
 try{
   
 	datlist = document.getElementById("theList");
-  
+	
 	//Get latest support GUID list
-	let url = "https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
-	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
-					.createInstance(Ci.nsIXMLHttpRequest);
-					  
-	request.onload = function(aEvent) {
-
-		//Since we have json elements hosted on our server, We need to check if the url is valid
-		//If the url is not valid then we need to alert the user and stop the addon from continuing.	
-		if ((request.status >= 200 && 
-			request.status < 300) || 
-			request.status == 304){
+	var guidList = gLMangerHandler.jsObject.SUPPORTEDIDS[0].GUIDS;	
+	items = aAddons;
 			
-				let text = aEvent.target.responseText;
-				let jsObject = text;
-				items = aAddons;
-				
-			//Need to check if json is valid, If json not valid don't continue and show error.
-			function IsJsonValid(jsObject) {
-			try {
-						JSON.parse(jsObject);
-					} catch (e) {
-						return false;
-					}
-				return true;
-			}
-
-			if(!IsJsonValid(jsObject)){
-				//Need to throw error message and exit if not valid json.
-				datlist.disabled = true;	
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));	
-				return;
-			} else { 
-				jsObject = JSON.parse(text);
-			}
+	/*
+		We take a small performance hit as the switch case was less intensive, But now we have a controllable list of supported GUIDs
+		This means we no longer have to edit the very large select case to add\remove items its all controlled by LastestLanguage.json	
+	*/
 			
-		let guidList = jsObject.SUPPORTEDIDS[0].GUIDS;	
+		for (i = 0; guidList[i]; i++) {
+			items.forEach(function(item, index, array) {	
+				if (item.id === guidList[i].ID){
+					getAllAddons(item.name, item.id,  item.version, item.updateDate, item.isActive, item.isCompatible);						
+				}
+			});
+		}
+		//Release JSON data from memory.
+		gLMangerHandler.jsObject = [];
 		
-			/*
-				We take a small performance hit as the switch case was less intensive, But now we have a controllable list of supported GUIDs
-				This means we no longer have to edit the very large select case to add\remove items its all controlled by LastestLanguage.json	
-			*/
-			
-			for (i = 0; guidList[i]; i++) {
-				items.forEach(function(item, index, array) {	
-					if (item.id === guidList[i].ID){
-						getAllAddons(item.name, item.id,  item.version, item.updateDate, item.isActive, item.isCompatible);						
-					}
-				});
-			}
-			
-		}else{
-			//Disable the table and show error
-			datlist.disabled = true;
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));				
-		}					
-	};
-				
-	request.onerror = function(aEvent) {
-			//Disable the table and show error
-			datlist.disabled = true;
-			window.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
-	};
-	
-	request.timeout = 5000;
-	request.open("GET", url, true);
-	request.send(null);		
-	
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
 			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
