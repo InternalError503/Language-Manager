@@ -639,7 +639,9 @@ try{
 			//Prompt restart to apply changes
 			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), 
 					gLMangerHandler.bundleDialogue.formatStringFromName("restartMessage", [gLMangerHandler.brandName], 1))) {
-				this.SetPrefValue();			
+				this.SetPrefValue();
+				//Close language manager window as not to reopen it on restart.
+				window.close();				
 				//Call browser restart function
 				this.restartBrowser();
 			}
