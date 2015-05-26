@@ -571,6 +571,8 @@ try{
 	restartBrowser: function () {	
 			
 		try{
+				//Close language manager window as not to reopen it on restart.
+				window.close();	
 			const nsIAppStartup = Ci.nsIAppStartup;
     Cc["@mozilla.org/toolkit/app-startup;1"].getService(nsIAppStartup).quit(nsIAppStartup.eRestart | nsIAppStartup.eAttemptQuit);
 	
@@ -591,9 +593,7 @@ try{
 			//Prompt restart to apply changes
 			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), 
 					gLMangerHandler.bundleDialogue.formatStringFromName("restartMessage", [gLMangerHandler.brandName], 1))) {
-				this.SetPrefValue();
-				//Close language manager window as not to reopen it on restart.
-				window.close();				
+				this.SetPrefValue();			
 				//Call browser restart function
 				this.restartBrowser();
 			}
@@ -613,9 +613,7 @@ try{
 
 			//Prompt restart to apply changes
 			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartMessageActivate", [gLMangerHandler.brandName], 1))) {	
-				Services.prefs.setCharPref("general.useragent.locale", elementData);
-				//Close language manager window as not to reopen it on restart.
-				window.close();					
+				Services.prefs.setCharPref("general.useragent.locale", elementData);				
 				//Call browser restart function
 				this.restartBrowser();
 			}
@@ -724,8 +722,6 @@ try{
 						//Since the addon was active there are still parts of the localization loaded, So prompt user to restart the browser to unload these elements.
 						//Prompt restart to unload any localized elements. 
 						if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartRemoveMessage", [gLMangerHandler.brandName], 1))) {
-							//Close language manager window as not to reopen it on restart.
-							window.close();	
 							//Call browser restart function
 							gLanguageManger.restartBrowser();
 						}
