@@ -28,6 +28,12 @@ Copyright (c) 2014 8pecxstudios
 <popupset>
 
 	<menupopup id="lm-pack-context-menu">
+		<menuitem label="&languageManagerUpdatePack.label;"
+							id="context_LanguageManager_update"
+							iconic="true"
+							class="menuitem-iconic"								
+							tooltiptext="&languageManagerUpdatePack.tooltip;"					
+							oncommand="gLanguageManger.UpdatePack();"/>
 		<menuitem label="&languageManagerTogglePack.label;"
 							id="context_LanguageManager_toggle"
 							iconic="true"

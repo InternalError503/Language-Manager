@@ -18,6 +18,8 @@
 <!ENTITY languageManagerCMenuItem.label "Language Manager を表示">
 <!ENTITY languageManagerCMenuOptionsItem.label "オプションを表示">
 
+<!ENTITY languageManagerUpdatePack.label "Update Pack">
+<!ENTITY languageManagerUpdatePack.tooltip "Update Language Pack">
 <!ENTITY languageManagerTogglePack.label "パックを切り替え">
 <!ENTITY languageManagerTogglePack.tooltip "言語パックを有効にします">
 <!ENTITY languageManagerToggleRemove.label "パックを削除">

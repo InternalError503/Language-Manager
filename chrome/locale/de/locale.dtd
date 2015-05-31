@@ -18,6 +18,8 @@
 <!ENTITY languageManagerCMenuItem.label "Zeige Sprachmanager">
 <!ENTITY languageManagerCMenuOptionsItem.label "Zeige Optionen">
 
+<!ENTITY languageManagerUpdatePack.label "Update Pack">
+<!ENTITY languageManagerUpdatePack.tooltip "Update Language Pack">
 <!ENTITY languageManagerTogglePack.label "Toggle Pack">
 <!ENTITY languageManagerTogglePack.tooltip "Aktiviere Sprachpaket">
 <!ENTITY languageManagerToggleRemove.label "Entferne Packet">

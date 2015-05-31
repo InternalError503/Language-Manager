@@ -42,6 +42,9 @@
 	-moz-image-region: rect(0px 16px 16px 0px);
 }
 
+#context_LanguageManager_update{
+	list-style-image: url("lm-update.png");	
+}
 #context_LanguageManager_toggle{
 	list-style-image: url("lm-toggle.png");	
 }

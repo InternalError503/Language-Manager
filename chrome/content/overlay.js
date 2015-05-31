@@ -171,7 +171,8 @@ initPane: function(){
 				var target = listbox.selectedItem.childNodes[0]
 				if (!target){
 					return; 
-				}				
+				}		
+			
 				var splitElement = target.getAttribute("value");
 				var splitElementStart = splitElement.indexOf('-') + 1;
 				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);				
@@ -181,6 +182,15 @@ initPane: function(){
 				}else{
 					document.getElementById("context_LanguageManager_toggle").hidden = false;
 				}
+				
+				AddonManager.getAddonByID(target.getAttribute("value"), function(addon) {
+					if (addon.version != gLMangerHandler.browserAppInformation.version){
+						document.getElementById("context_LanguageManager_update").hidden = false;
+					}else{
+						document.getElementById("context_LanguageManager_update").hidden = true;
+					}
+				});
+				
 			
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
@@ -667,6 +677,29 @@ try{
 		}		
 	
 	
+	},
+	
+	UpdatePack : function(){
+	
+	try{			
+			
+			var target = document.getElementById("theList").selectedItem.childNodes[0];
+				if (!target){
+					return; 
+				}
+				
+				var splitElement = target.getAttribute("value");
+				var splitElementStart = splitElement.indexOf('-') + 1;
+				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);				
+				var elementData = splitElement.substring(splitElementStart, splitElementEnd);
+				document.getElementById("languageMenu").value = elementData;
+				gLanguageManger.downloadPack();
+		
+		}catch (e){
+			//Catch any nasty errors and output to dialogue
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}		
+
 	},
 
 	TogglePack : function(e){
