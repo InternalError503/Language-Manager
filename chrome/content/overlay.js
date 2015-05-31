@@ -150,7 +150,7 @@ initPane: function(){
 			var aEvent = aEvent || window.event;				
 			if ('object' === typeof aEvent) {
 				if (aEvent.button === 0){
-						gLanguageManger.ToggleHandler(aEvent.target.childNodes[0]);
+						gLanguageManger.TogglePack();
 				}
 			}
 				
@@ -165,33 +165,21 @@ initPane: function(){
 	document.getElementById("lm-pack-context-menu")
 			.addEventListener("popupshowing", function(){
 
-		try{		
-					
-				var listbox= document.getElementById("theList");
-				var target = listbox.selectedItem.childNodes[0]
-				if (!target){
-					return; 
-				}		
-			
-				var splitElement = target.getAttribute("value");
-				var splitElementStart = splitElement.indexOf('-') + 1;
-				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);				
-				var elementData = splitElement.substring(splitElementStart, splitElementEnd);
-				if (elementData.match(Services.prefs.getCharPref("general.useragent.locale"))){
-					document.getElementById("context_LanguageManager_toggle").hidden = true;
+		try{
+			if (gLanguageManger.getSelectedPackInfo(false, true).match(Services.prefs.getCharPref("general.useragent.locale"))){
+				document.getElementById("context_LanguageManager_toggle").hidden = true;
+			}else{
+				document.getElementById("context_LanguageManager_toggle").hidden = false;
+			}
+				
+			AddonManager.getAddonByID(gLanguageManger.getSelectedPackInfo(true, false), function(addon) {
+				if (addon.version != gLMangerHandler.browserAppInformation.version){
+					document.getElementById("context_LanguageManager_update").hidden = false;
 				}else{
-					document.getElementById("context_LanguageManager_toggle").hidden = false;
+					document.getElementById("context_LanguageManager_update").hidden = true;
 				}
-				
-				AddonManager.getAddonByID(target.getAttribute("value"), function(addon) {
-					if (addon.version != gLMangerHandler.browserAppInformation.version){
-						document.getElementById("context_LanguageManager_update").hidden = false;
-					}else{
-						document.getElementById("context_LanguageManager_update").hidden = true;
-					}
-				});
-				
-			
+			});
+
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
 				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
@@ -638,61 +626,36 @@ try{
 
 	//To prevent use of duplicate code we now can call this function by passing the element.childNodes 
 	//So for example you have the listitem and you get its childnode listcell 
-	ToggleHandler : function(element){
-	
-	try{			
-			
-			var target = element;
-				if (!target){
-					return; 
-				}
-				
-				var splitElement = target.getAttribute("value");
-				var splitElementStart = splitElement.indexOf('-') + 1;
-				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);
-				
-				var elementData = splitElement.substring(splitElementStart, splitElementEnd);
-				
-				AddonManager.getAddonByID(target.getAttribute("value"), function(addon) {
-				if (addon.isActive === false && addon.isCompatible){
-					addon.userDisabled = false;			
-				}
-				
-			if (addon.isCompatible){
-			
-				if (elementData.match(Services.prefs.getCharPref("general.useragent.locale"))){
-					return;			
-			}else{
-					gLanguageManger.activateComplete(elementData);	
-					
-				}	
-			}
-				
-				
-				});
-		
-		}catch (e){
-			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
-		}		
-	
-	
-	},
-	
-	UpdatePack : function(){
-	
-	try{			
-			
+	getSelectedPackInfo : function(aID, aLocale){
+		try{
 			var target = document.getElementById("theList").selectedItem.childNodes[0];
 				if (!target){
 					return; 
-				}
-				
+				}				
 				var splitElement = target.getAttribute("value");
 				var splitElementStart = splitElement.indexOf('-') + 1;
 				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);				
 				var elementData = splitElement.substring(splitElementStart, splitElementEnd);
-				document.getElementById("languageMenu").value = elementData;
+				//If both set return as array.
+				if (aID && aLocale){
+					return [splitElement, elementData];
+				}	
+				if (aID){
+					return splitElement;
+				}	
+				if (aLocale){
+					return elementData;
+				}	
+		}catch (e){
+			//Catch any nasty errors and output to dialogue
+			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}					
+	},
+	
+	UpdatePack : function(){
+	
+	try{
+				document.getElementById("languageMenu").value = gLanguageManger.getSelectedPackInfo(false, true);
 				gLanguageManger.downloadPack();
 		
 		}catch (e){
@@ -706,8 +669,21 @@ try{
 	
 	try{			
 			//Here we toggle the pack when the user selects toggle pack from right click context menu.
-			var listbox= document.getElementById("theList");
-			gLanguageManger.ToggleHandler(listbox.selectedItem.childNodes[0]);
+				AddonManager.getAddonByID(gLanguageManger.getSelectedPackInfo(true, false), function(addon) {
+					if (addon.isActive === false && addon.isCompatible){
+						addon.userDisabled = false;			
+					}
+					
+					if (addon.isCompatible){
+					
+						if (gLanguageManger.getSelectedPackInfo(false, true).match(Services.prefs.getCharPref("general.useragent.locale"))){
+							return;			
+					}else{
+							gLanguageManger.activateComplete(gLanguageManger.getSelectedPackInfo(false, true));	
+							
+						}	
+					}
+				});
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
@@ -726,27 +702,14 @@ try{
 	
 			//Prompt inform user they are about to uninstall a language pack and ask if that is what they want to do.
 			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningTitle"), gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningMessage"))) {
-			
-				var listbox= document.getElementById("theList");
-				var target = listbox.selectedItem.childNodes[0];
-					if (!target){
-						return; 
-					}
 
-					var splitElement = target.getAttribute("value");
-					var splitElementStart = splitElement.indexOf('-') + 1;
-					var splitElementEnd = splitElement.indexOf('@',  splitElementStart);
-					
-					var elementData = splitElement.substring(splitElementStart, splitElementEnd);		
-			
-			
-			AddonManager.getAddonByID(target.getAttribute("value"), function(addon) {
+			AddonManager.getAddonByID(gLanguageManger.getSelectedPackInfo(true, false), function(addon) {
 			
 				//Check if addon
 				if (addon){
 				
 					//Check if the addon is the current active addon, Then need to reset the changed (general.useragent.locale) back to its original state before pack was enabled.
-					if (elementData.match(Services.prefs.getCharPref("general.useragent.locale"))){
+					if (gLanguageManger.getSelectedPackInfo(false, true).match(Services.prefs.getCharPref("general.useragent.locale"))){
 						
 						//Clear locale 
 						Services.prefs.clearUserPref("general.useragent.locale");
