@@ -244,7 +244,8 @@ initPane: function(){
 	},
 
 	//We attempt to validate our json urls, But what about the language pack urls.
-	//URL validation does see to slow the download process as it causes a period of no visual indication on what is happening this could be a potential issue.
+	//Since we have json elements hosted on our server, We need to check if the url is valid
+	//If the url is not valid then we need to alert the user and stop the addon from continuing.
 	validateURL : function(aUrl, aBoolean){
 		var request = new XMLHttpRequest();
 			request.addEventListener("progress", requestProgress, false);
