@@ -51,71 +51,14 @@ initPane: function(){
 		//we don't want errors to affect language manager if setting the addon version  fails
 	}
 	try{
-	//Get latest language list
-	let url = "https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json";
-	let request = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
-					.createInstance(Ci.nsIXMLHttpRequest);
-	var menuItemsList = document.getElementById("languageMenu");  
-	request.onload = function(aEvent) {
-		//Since we have json elements hosted on our server, We need to check if the url is valid
-		//If the url is not valid then we need to alert the user and stop the addon from continuing.	
-		if ((request.status >= 200 && 
-			request.status < 300) || 
-			request.status == 304){
-				let text = aEvent.target.responseText;
-				gLMangerHandler.jsObject = text;		
-				//Need to check if json is valid, If json not valid don't continue and show error.
-				function IsJsonValid(jsObject) {
-						try {
-							JSON.parse(jsObject);
-						} catch (e) {
-							return false;
-						}
-					return true;
-				}	
-				if(!IsJsonValid(gLMangerHandler.jsObject)){
-					//Need to throw error message and exit if not valid json.
-					menuItemsList.disabled = true;	
-					alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));	
-					return;
-				} else { 
-					gLMangerHandler.jsObject = JSON.parse(text);
-				}		
-				let myLanguageList = gLMangerHandler.jsObject.languageList[0].packs;
-				//Here were getting the latest beta version, We are making sure its always the latest from the json.
-				var latest_Beta = gLMangerHandler.jsObject.BrowserVersion[0].Version;				
-					Services.prefs.setCharPref("extensions.language_manager.latest_beta_version", latest_Beta[0].Beta);	
-		for (i = 0; myLanguageList[i]; i++) {		
-				if (myLanguageList[i].version_min > gLMangerHandler.browserAppInformation.version){}else{			
-					if (gLMangerHandler.browserAppInformation.version > myLanguageList[i].version_max 
-							&& !myLanguageList[i].version_max == ""){}else{
-								menuItemsList = document.getElementById("languageMenu")
-										.appendItem( myLanguageList[i].name, myLanguageList[i].value);						
-					}									
-				}
-			}
-			gLanguageManger.checkBrowser();		
-			gLanguageManger.getInstalledLanguages();
-			gLanguageManger.ResizeListbox();
-		}else{
-			//Disable the list and show error
-			menuItemsList.disabled = true;	
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));				
-		}
-	};		
-		request.onerror = function(aEvent) {
-				//Disable the list and show error
-				menuItemsList.disabled = true;	
-				window.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
-		};
-			request.timeout = 5000;
-			request.open("GET", url, true);
-			request.setRequestHeader("Content-Type", "application/json");
-			request.send(null);
+		//Get latest language list
+		document.getElementById("lm-overlay").hidden = false;
+		gLanguageManger.validateURL("https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json", false);
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
 			alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
 		}
+		
 		//Quick toggle of language packs	
 		var listbox= document.getElementById("theList");
 		listbox.addEventListener("dblclick", function(aEvent){
@@ -302,7 +245,7 @@ initPane: function(){
 
 	//We attempt to validate our json urls, But what about the language pack urls.
 	//URL validation does see to slow the download process as it causes a period of no visual indication on what is happening this could be a potential issue.
-	validateURL : function(url){
+	validateURL : function(aUrl, aBoolean){
 		var request = new XMLHttpRequest();
 			request.addEventListener("progress", requestProgress, false);
 			request.addEventListener("load", requestComplete, false);		
@@ -318,22 +261,64 @@ initPane: function(){
 		  document.getElementById("lm-percent").textContent = 0 + " %";
 		 document.getElementById("lm-overlay").hidden = true;
 		}
-		request.onload = function(){
+		request.onload = function(aEvent){
 			if ((request.status >= 200 && 
 				  request.status < 300) || 
 				  request.status == 304){
-				  document.location.href = url;
-				  gLanguageManger.changeButtonStates("closeButton", false);				  
+					 if(aBoolean === true){ 
+						  //Download Pack	
+						  document.location.href = aUrl;
+						  gLanguageManger.changeButtonStates("closeButton", false);	
+					 }else{
+						 //Load lanugage manager information.
+						var text = aEvent.target.responseText;
+						gLMangerHandler.jsObject = text;		
+						//Need to check if json is valid, If json not valid don't continue and show error.
+						function IsJsonValid(jsObject) {
+								try {
+									JSON.parse(jsObject);
+								} catch (e) {
+									return false;
+								}
+							return true;
+						}	
+						if(!IsJsonValid(gLMangerHandler.jsObject)){
+							//Need to throw error message and exit if not valid json.
+							menuItemsList.disabled = true;	
+							alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));	
+							return;
+						} else { 
+							gLMangerHandler.jsObject = JSON.parse(text);
+						}		
+						let myLanguageList = gLMangerHandler.jsObject.languageList[0].packs;
+						//Here were getting the latest beta version, We are making sure its always the latest from the json.
+						var latest_Beta = gLMangerHandler.jsObject.BrowserVersion[0].Version;				
+							Services.prefs.setCharPref("extensions.language_manager.latest_beta_version", latest_Beta[0].Beta);	
+						for (i = 0; myLanguageList[i]; i++) {		
+								if (myLanguageList[i].version_min > gLMangerHandler.browserAppInformation.version){}else{			
+									if (gLMangerHandler.browserAppInformation.version > myLanguageList[i].version_max 
+											&& !myLanguageList[i].version_max == ""){}else{
+												menuItemsList = document.getElementById("languageMenu")
+														.appendItem( myLanguageList[i].name, myLanguageList[i].value);						
+									}									
+								}
+							}
+					gLanguageManger.checkBrowser();		
+					gLanguageManger.getInstalledLanguages();
+					gLanguageManger.ResizeListbox();
+					 }				  			  
 			}else{
 				alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));
 			}	
 		};
 		request.onerror = function(aEvent){
+			//Disable the list and show error
+			menuItemsList.disabled = true;	
 			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 		};
 		//Add pramas true for async
 		request.timeout = 5000;
-		request.open("GET", url, true);
+		request.open("GET", aUrl, true);
 		request.send(null);
 	},	
 	
@@ -430,15 +415,15 @@ initPane: function(){
 				switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 					case "cyberfoxmode":
 						document.getElementById("lm-overlay").hidden = false;
-						gLanguageManger.validateURL(cyberfoxModeURL + gLMangerHandler.browserAppInformation.version + "/" + document.getElementById("languageMenu").value + ".xpi");	
+						gLanguageManger.validateURL(cyberfoxModeURL + gLMangerHandler.browserAppInformation.version + "/" + document.getElementById("languageMenu").value + ".xpi", true);	
 						break;
 					case "firefoxmode":
 						document.getElementById("lm-overlay").hidden = false;
-						gLanguageManger.validateURL(firerfoxModeURL + gLMangerHandler.browserAppInformation.version + "/win32/xpi/" + document.getElementById("languageMenu").value + ".xpi");
+						gLanguageManger.validateURL(firerfoxModeURL + gLMangerHandler.browserAppInformation.version + "/win32/xpi/" + document.getElementById("languageMenu").value + ".xpi", true);
 						break;
 					case "firefoxbetamode":
 						document.getElementById("lm-overlay").hidden = false;
-						gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi");				
+						gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi", true);				
 						break;
 				}						
 			}catch (e){
