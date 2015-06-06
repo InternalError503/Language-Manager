@@ -424,7 +424,7 @@ initPane: function(){
 			//Change button attributes.	
 			this.changeButtonStates("installButton", true);				  
 			//Request URL where to download language pack from.		
-			var cyberfoxModeURL = "https://8pecxstudios.com/download/latest/language/";
+			var cyberfoxModeURL = "https://download.8pecxstudios.com/latest/language/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/";
 			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";					
 				switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
