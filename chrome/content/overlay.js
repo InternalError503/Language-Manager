@@ -247,6 +247,7 @@ initPane: function(){
 	//Since we have json elements hosted on our server, We need to check if the url is valid
 	//If the url is not valid then we need to alert the user and stop the addon from continuing.
 	validateURL : function(aUrl, aBoolean){
+		var menuItemsList = document.getElementById("languageMenu");
 		var request = new XMLHttpRequest();
 			request.addEventListener("progress", requestProgress, false);
 			request.addEventListener("load", requestComplete, false);		
