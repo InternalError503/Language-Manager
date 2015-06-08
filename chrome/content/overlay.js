@@ -263,6 +263,7 @@ initPane: function(){
 		  document.getElementById("lm-percent").textContent = 0 + " %";
 		 document.getElementById("lm-overlay").hidden = true;
 		}
+				
 		request.onload = function(aEvent){
 			if ((request.status >= 200 && 
 				  request.status < 300) || 
@@ -286,8 +287,9 @@ initPane: function(){
 						}	
 						if(!IsJsonValid(gLMangerHandler.jsObject)){
 							//Need to throw error message and exit if not valid json.
-							menuItemsList.disabled = true;	
-							alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));	
+							alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));
+							document.getElementById("lm-overlay").hidden = true;		
+							menuItemsList.disabled = true;						
 							return;
 						} else { 
 							gLMangerHandler.jsObject = JSON.parse(text);
@@ -300,8 +302,7 @@ initPane: function(){
 								if (myLanguageList[i].version_min > gLMangerHandler.browserAppInformation.version){}else{			
 									if (gLMangerHandler.browserAppInformation.version > myLanguageList[i].version_max 
 											&& !myLanguageList[i].version_max == ""){}else{
-												menuItemsList = document.getElementById("languageMenu")
-														.appendItem( myLanguageList[i].name, myLanguageList[i].value);						
+												menuItemsList.appendItem( myLanguageList[i].name, myLanguageList[i].value);						
 									}									
 								}
 							}
@@ -311,12 +312,15 @@ initPane: function(){
 					 }				  			  
 			}else{
 				alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));
+				document.getElementById("lm-overlay").hidden = true;
 			}	
 		};
+		
 		request.onerror = function(aEvent){
 			//Disable the list and show error
-			menuItemsList.disabled = true;	
 			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
+			document.getElementById("lm-overlay").hidden = true;
+			menuItemsList.disabled = true;	
 		};
 		//Add pramas true for async
 		request.timeout = 5000;
