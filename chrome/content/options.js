@@ -6,8 +6,6 @@ var Cu = Components.utils;
 
 //Import services
 Cu.import("resource://gre/modules/Services.jsm");
-//Query nsIPrefBranch see: Bug 1125570 | Bug 1083561
-Services.prefs.QueryInterface(Ci.nsIPrefBranch);
 
 //Get string sets to localized content.
 var bundleOptionsWindow = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/options.properties");
