@@ -25,9 +25,7 @@ try{
 		//Top navigation bar
 		navBarTitle: document.getElementById("NavTitle"),
 		navBarSupport: document.getElementById("NavSupport"),
-		navBarContact: document.getElementById("NavContact"),
-		navBarSupport2: document.getElementById("NavSupport2"),
-		navBarContact2: document.getElementById("NavContact2"),		
+		navBarContact: document.getElementById("NavContact"),		
 		//Reset language button
 		OptionsButtonReset: document.getElementById("resetLanguage"),						
 		//Panel label
@@ -50,9 +48,7 @@ try{
 		//Top navigation bar
 		contentElement.navBarTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
 		contentElement.navBarSupport.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		contentElement.navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");
-		contentElement.navBarSupport2.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		contentElement.navBarContact2.textContent = " " + bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");		
+		contentElement.navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");	
 		//Reset language button
 		contentElement.OptionsButtonReset.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");			
 		//Options panel label
