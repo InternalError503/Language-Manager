@@ -335,7 +335,8 @@ initPane: function(){
 			//Check if browser Firefox
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
 				//Check if running firefox beta.
-				if (gLMangerHandler.browserAppInformation.version === Services.prefs.getCharPref("extensions.language_manager.latest_beta_version")){
+				//Since we target the releases/latest-beta we only support the latest firefox beta release.
+				if (Services.prefs.getCharPref("app.update.channel") === "beta"){
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxbetamode");
 				}else{
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxmode");
