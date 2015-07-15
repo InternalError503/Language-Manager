@@ -8,6 +8,8 @@
 <!ENTITY closeButtonItem.label "Terminé">
 <!ENTITY optionsButtonItem.label "Options">
 <!ENTITY lmHelpButton.tooltip "Aide du gestionnaire de langues">
+<!ENTITY restoreDefaultLocale.label "Restore default language.">
+<!ENTITY restoreDefaultButtonItem.label "Réinitialiser la langue">
 
 <!ENTITY listItemName.label "Nom">
 <!ENTITY listItemVersion.label "Version">

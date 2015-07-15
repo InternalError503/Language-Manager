@@ -8,6 +8,8 @@
 <!ENTITY closeButtonItem.label "Готово">
 <!ENTITY optionsButtonItem.label "Настройки">
 <!ENTITY lmHelpButton.tooltip "Language Manager Help Documentation">
+<!ENTITY restoreDefaultLocale.label "Restore default language.">
+<!ENTITY restoreDefaultButtonItem.label "Сброс языка">
 
 <!ENTITY listItemName.label "Имя">
 <!ENTITY listItemVersion.label "Версия">

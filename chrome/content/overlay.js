@@ -95,6 +95,17 @@ initPane: function(){
 				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}
     }, false);
+	
+	try{
+		if (Services.prefs.prefHasUserValue("general.useragent.locale")){
+			document.getElementById("restoreDefaultLocale").hidden = false;	
+			document.getElementById("restoreDefaultSeparator").hidden = false;			
+		}else{
+			document.getElementById("restoreDefaultLocale").hidden = true;
+			document.getElementById("restoreDefaultSeparator").hidden = true;
+		}	
+	}catch(e){}
+	
 },
 
 	getInstalledLanguages: function() {
@@ -570,5 +581,22 @@ initPane: function(){
 			//Catch any nasty errors and output to dialogue
 			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}		
-	}	
+	},
+
+	restoreDefaultLanguage: function(){	
+		try{
+				//Prompt restart to apply changes
+				if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), 
+						gLMangerHandler.bundleDialogue.formatStringFromName("restartMessageRestoreDefault", [gLMangerHandler.brandName], 1))) {
+						//Clear locale 
+						Services.prefs.clearUserPref("general.useragent.locale");
+						//Call browser restart function
+						this.restartBrowser();
+					}
+				}catch (e){
+					//Catch any nasty errors and output to dialogue and console
+					alert("Were sorry but something has gone wrong! " + e);
+			}			
+
+		}
 }

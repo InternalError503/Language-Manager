@@ -91,6 +91,12 @@ Copyright (c) 2014 8pecxstudios
 <description id="desc2" align="center">&languageDescription.desc;</description>
 </groupbox>
 
+<hbox id="restoreDefaultLocale" align="center">
+	<label id="lm-restoreDefaultLocale" value="&restoreDefaultLocale.label;"/>
+	<button id="restoreDefault" label="&restoreDefaultButtonItem.label;" oncommand="gLanguageManger.restoreDefaultLanguage();"/>
+</hbox> 
+<separator class="groove-thin" id="restoreDefaultSeparator"/>
+
 <hbox align="center">	
  <button id="installButton" label="&installButtonItem.label;" disabled="true" oncommand="gLanguageManger.downloadPack();"/> 
  <button id="closeButton" type="button" label="&closeButtonItem.label;" disabled="true" oncommand="gLanguageManger.complete();"/>

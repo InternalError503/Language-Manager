@@ -23,11 +23,10 @@ try{
 		//Top navigation bar
 		navBarTitle: document.getElementById("NavTitle"),
 		navBarSupport: document.getElementById("NavSupport"),
-		navBarContact: document.getElementById("NavContact"),		
-		//Reset language button
-		OptionsButtonReset: document.getElementById("resetLanguage"),						
+		navBarContact: document.getElementById("NavContact"),					
 		//Panel label
-		OptionsPanelTitle: document.getElementById("OptionsPanel"),				
+		OptionsPanelTitle: document.getElementById("OptionsPanel"),
+		OptionsCurrentLocale: document.getElementById("currentLanguage"),	
 		//Show what browser mode firefox or firefox beta or cyberfox.
 		OptionsBrowserMode: document.getElementById("BrowserMode"),	
 		//Copyright message.
@@ -46,11 +45,10 @@ try{
 		//Top navigation bar
 		contentElement.navBarTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
 		contentElement.navBarSupport.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
-		contentElement.navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");	
-		//Reset language button
-		contentElement.OptionsButtonReset.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguageReset");			
+		contentElement.navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");			
 		//Options panel label
-		contentElement.OptionsPanelTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");		
+		contentElement.OptionsPanelTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
+		contentElement.OptionsCurrentLocale.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguage");	
 		//Show browser mode label.
 		contentElement.OptionsBrowserMode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserMode");
 		//Copyright message.
@@ -102,7 +100,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 		}		
 		
-	document.getElementById("current-locale").textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguage") +" "+ Services.prefs.getCharPref("general.useragent.locale").toString();	
+	document.getElementById("current-locale").textContent = Services.prefs.getCharPref("general.useragent.locale").toString();	
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue and console
@@ -136,25 +134,7 @@ timeDateFormatChanged: function(){
 				alert("Were sorry but something has gone wrong! " + e);
 		}		
 
-},
-
-restoreDefaultLanguage: function(){
-
-	try{
-		//Clear locale 
-		Services.prefs.clearUserPref("general.useragent.locale");
-
-		//Refresh preference
-		var container = document.getElementById("form-clear-locale");
-			var content = container.textContent;
-				container.textContent = content;
-			
-			}catch (e){
-				//Catch any nasty errors and output to dialogue and console
-				alert("Were sorry but something has gone wrong! " + e);
-		}			
-
-	}
+}
 				
 }
 

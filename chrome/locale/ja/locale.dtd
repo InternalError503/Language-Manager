@@ -8,6 +8,8 @@
 <!ENTITY closeButtonItem.label "完了">
 <!ENTITY optionsButtonItem.label "オプション">
 <!ENTITY lmHelpButton.tooltip "Language Manager ヘルプ ドキュメント (英語)">
+<!ENTITY restoreDefaultLocale.label "Restore default language.">
+<!ENTITY restoreDefaultButtonItem.label "言語のリセット">
 
 <!ENTITY listItemName.label "名前">
 <!ENTITY listItemVersion.label "バージョン">
