@@ -7,7 +7,7 @@ var Cu = Components.utils;
 //Import addon manager
 var {AddonManager} = Cu.import("resource://gre/modules/AddonManager.jsm", {});
 //Import services
-Cu.import("resource://gre/modules/Services.jsm");
+var {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
 
 let gLMangerHandler = {
 	//Get string sets to localise internal messages.

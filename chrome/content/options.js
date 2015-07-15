@@ -5,7 +5,7 @@ var Ci = Components.interfaces;
 var Cu = Components.utils;
 
 //Import services
-Cu.import("resource://gre/modules/Services.jsm");
+var {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
 
 //Get string sets to localized content.
 var bundleOptionsWindow = Services.strings.createBundle("chrome://LanguageManager/locale/options.properties");
