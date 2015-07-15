@@ -1,5 +1,5 @@
 // Copyright (c) 2014 8pecxstudios
-
+(function(global) {
 var Cc = Components.classes;
 var Ci = Components.interfaces;
 var Cu = Components.utils;
@@ -142,4 +142,7 @@ window.addEventListener("load", function () {
 	window.removeEventListener("load", gLanguageMangerOptions.init(), false);
 	gLanguageMangerOptions.init(); 
 }, false);
-	
+
+  // Make gLanguageMangerOptions a global variable
+  global.gLanguageMangerOptions = gLanguageMangerOptions;
+}(this));

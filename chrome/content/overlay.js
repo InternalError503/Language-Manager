@@ -1,11 +1,11 @@
 // Copyright (c) 2015 8pecxstudios
-
+(function(global) {
 var Cc = Components.classes;
 var Ci = Components.interfaces;
 var Cu = Components.utils;
 
 //Import addon manager
-Cu.import("resource://gre/modules/AddonManager.jsm");
+var {AddonManager} = Cu.import("resource://gre/modules/AddonManager.jsm", {});
 //Import services
 Cu.import("resource://gre/modules/Services.jsm");
 
@@ -597,3 +597,6 @@ initPane: function(){
 
 		}
 }
+  // Make gLanguageManger a global variable
+  global.gLanguageManger = gLanguageManger;
+}(this));
