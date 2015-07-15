@@ -450,8 +450,6 @@ initPane: function(){
     //Important part of the process to enable download packs, Full logic implementation was removed for an easy one line.
 	restartBrowser: function () {		
 		try{
-				//Close language manager window as not to reopen it on restart.
-				window.close();	
 				Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit);
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
