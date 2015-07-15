@@ -452,8 +452,7 @@ initPane: function(){
 		try{
 				//Close language manager window as not to reopen it on restart.
 				window.close();	
-			const nsIAppStartup = Ci.nsIAppStartup;
-				Cc["@mozilla.org/toolkit/app-startup;1"].getService(nsIAppStartup).quit(nsIAppStartup.eRestart | nsIAppStartup.eAttemptQuit);
+				Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit);
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
 				alert(gLMangerHandler.bundleDebugError.GetStringFromName("restartBrowserError") + " " + e);
