@@ -8,7 +8,7 @@ var Cu = Components.utils;
 Cu.import("resource://gre/modules/Services.jsm");
 
 //Get string sets to localized content.
-var bundleOptionsWindow = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/options.properties");
+var bundleOptionsWindow = Services.strings.createBundle("chrome://LanguageManager/locale/options.properties");
 
 var gLanguageMangerOptions = {
 

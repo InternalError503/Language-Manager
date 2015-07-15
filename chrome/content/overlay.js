@@ -11,10 +11,10 @@ Cu.import("resource://gre/modules/Services.jsm");
 
 let gLMangerHandler = {
 	//Get string sets to localise internal messages.
-	bundleDialogue: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/dialogue.properties"),
-	bundleDebugError: Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService).createBundle("chrome://LanguageManager/locale/debug.properties"),
+	bundleDialogue: Services.strings.createBundle("chrome://LanguageManager/locale/dialogue.properties"),
+	bundleDebugError: Services.strings.createBundle("chrome://LanguageManager/locale/debug.properties"),
 	//Setup prompts service.	
-	prompts: Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService),
+	prompts: Services.prompt,
 	//Browser information	
 	browserAppInformation: Services.appinfo,
 	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0',
