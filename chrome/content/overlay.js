@@ -303,10 +303,7 @@ initPane: function(){
 						} else { 
 							gLMangerHandler.jsObject = JSON.parse(text);
 						}		
-						let myLanguageList = gLMangerHandler.jsObject.languageList[0].packs;
-						//Here were getting the latest beta version, We are making sure its always the latest from the json.
-						var latest_Beta = gLMangerHandler.jsObject.BrowserVersion[0].Version;				
-							Services.prefs.setCharPref("extensions.language_manager.latest_beta_version", latest_Beta[0].Beta);	
+						let myLanguageList = gLMangerHandler.jsObject.languageList[0].packs;	
 						for (i = 0; myLanguageList[i]; i++) {		
 								if (myLanguageList[i].version_min > gLMangerHandler.browserAppInformation.version){}else{			
 									if (gLMangerHandler.browserAppInformation.version > myLanguageList[i].version_max 
