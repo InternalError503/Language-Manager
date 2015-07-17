@@ -8,7 +8,7 @@
 <!ENTITY closeButtonItem.label "Terminé">
 <!ENTITY optionsButtonItem.label "Options">
 <!ENTITY lmHelpButton.tooltip "Aide du gestionnaire de langues">
-<!ENTITY restoreDefaultLocale.label "Restore default language.">
+<!ENTITY restoreDefaultLocale.label "Restaurer la langue par défaut.">
 <!ENTITY restoreDefaultButtonItem.label "Réinitialiser la langue">
 
 <!ENTITY listItemName.label "Nom">
@@ -20,8 +20,8 @@
 <!ENTITY languageManagerCMenuItem.label "Afficher le gestionnaire de langues">
 <!ENTITY languageManagerCMenuOptionsItem.label "Afficher les paramètres">
 
-<!ENTITY languageManagerUpdatePack.label "Update Pack">
-<!ENTITY languageManagerUpdatePack.tooltip "Update Language Pack">
+<!ENTITY languageManagerUpdatePack.label "Mettre à jour">
+<!ENTITY languageManagerUpdatePack.tooltip "Mettre à jour le paquet linguistique">
 <!ENTITY languageManagerTogglePack.label "Activer/désactiver">
 <!ENTITY languageManagerTogglePack.tooltip "Activer ou désactiver le paquet linguistique">
 <!ENTITY languageManagerToggleRemove.label "Enlever le paquet">
