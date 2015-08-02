@@ -51,7 +51,10 @@ initPane: function(){
 	try{
 		//Get latest language list
 		document.getElementById("lm-overlay").hidden = false;
-		gLanguageManger.validateURL("https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json", false);
+		//gLanguageManger.validateURL("https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json", false);
+		//Trial the list locally
+		gLanguageManger.validateURL("chrome://LanguageManager/content/LanguageList.json", false);
+		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
 			alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
