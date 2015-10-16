@@ -7,7 +7,7 @@
 <!ENTITY installButtonItem.label "Установить">
 <!ENTITY closeButtonItem.label "Готово">
 <!ENTITY optionsButtonItem.label "Настройки">
-<!ENTITY lmHelpButton.tooltip "Language Manager Help Documentation">
+<!ENTITY lmHelpButton.tooltip "Помощь по использованию Language Manager">
 <!ENTITY restoreDefaultLocale.label "Restore default language.">
 <!ENTITY restoreDefaultButtonItem.label "Сброс языка">
 
@@ -20,7 +20,7 @@
 <!ENTITY languageManagerCMenuItem.label "Показать Менеджер языков">
 <!ENTITY languageManagerCMenuOptionsItem.label "Показать настройки">
 
-<!ENTITY languageManagerUpdatePack.label "Update Pack">
+<!ENTITY languageManagerUpdatePack.label "Обновить языковой пакет">
 <!ENTITY languageManagerUpdatePack.tooltip "Update Language Pack">
 <!ENTITY languageManagerTogglePack.label "Переключить язык">
 <!ENTITY languageManagerTogglePack.tooltip "Активация языкового пакета">
