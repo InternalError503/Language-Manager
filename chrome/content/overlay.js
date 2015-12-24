@@ -9,7 +9,7 @@ var {AddonManager} = Cu.import("resource://gre/modules/AddonManager.jsm", {});
 //Import services
 var {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
 
-let gLMangerHandler = {
+var gLMangerHandler = {
 	//Get string sets to localise internal messages.
 	bundleDialogue: Services.strings.createBundle("chrome://LanguageManager/locale/dialogue.properties"),
 	bundleDebugError: Services.strings.createBundle("chrome://LanguageManager/locale/debug.properties"),
@@ -306,7 +306,7 @@ initPane: function(){
 						} else { 
 							gLMangerHandler.jsObject = JSON.parse(text);
 						}		
-						let myLanguageList = gLMangerHandler.jsObject.languageList[0].packs;	
+						var myLanguageList = gLMangerHandler.jsObject.languageList[0].packs;	
 						for (i = 0; myLanguageList[i]; i++) {		
 								if (myLanguageList[i].version_min > gLMangerHandler.browserAppInformation.version){}else{			
 									if (gLMangerHandler.browserAppInformation.version > myLanguageList[i].version_max 
