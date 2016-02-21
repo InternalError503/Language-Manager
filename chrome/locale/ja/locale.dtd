@@ -8,7 +8,7 @@
 <!ENTITY closeButtonItem.label "完了">
 <!ENTITY optionsButtonItem.label "オプション">
 <!ENTITY lmHelpButton.tooltip "Language Manager ヘルプ ドキュメント (英語)">
-<!ENTITY restoreDefaultLocale.label "Restore default language.">
+<!ENTITY restoreDefaultLocale.label "既定の言語へ復元">
 <!ENTITY restoreDefaultButtonItem.label "言語のリセット">
 
 <!ENTITY listItemName.label "名前">
@@ -20,8 +20,8 @@
 <!ENTITY languageManagerCMenuItem.label "Language Manager を表示">
 <!ENTITY languageManagerCMenuOptionsItem.label "オプションを表示">
 
-<!ENTITY languageManagerUpdatePack.label "Update Pack">
-<!ENTITY languageManagerUpdatePack.tooltip "Update Language Pack">
+<!ENTITY languageManagerUpdatePack.label "パックを更新">
+<!ENTITY languageManagerUpdatePack.tooltip "言語パックを更新します">
 <!ENTITY languageManagerTogglePack.label "パックを切り替え">
 <!ENTITY languageManagerTogglePack.tooltip "言語パックを有効にします">
 <!ENTITY languageManagerToggleRemove.label "パックを削除">
