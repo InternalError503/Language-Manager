@@ -493,7 +493,7 @@ initPane: function(){
 			var target = document.getElementById("theList").selectedItem.childNodes[0];
 				if (!target){
 					return; 
-				}				
+				}
 				var splitElement = target.getAttribute("value");
 				var splitElementStart = splitElement.indexOf('-') + 1;
 				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);				
@@ -508,10 +508,7 @@ initPane: function(){
 				if (aLocale){
 					return elementData;
 				}	
-		}catch (e){
-			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
-		}					
+		}catch (e){}
 	},
 	
 	UpdatePack : function(){	
@@ -527,7 +524,9 @@ initPane: function(){
 	TogglePack : function(e){	
 	try{			
 			//Here we toggle the pack when the user selects toggle pack from right click context menu.
-				AddonManager.getAddonByID(gLanguageManger.getSelectedPackInfo(true, false), function(addon) {
+			var addonID = gLanguageManger.getSelectedPackInfo(true, false);
+			if (addonID &&  typeof(addonID)  != "undefined" || addonID  != null){
+				AddonManager.getAddonByID(addonID, function(addon) {
 					if (addon.isActive === false && addon.isCompatible){
 						addon.userDisabled = false;			
 					}					
@@ -539,6 +538,7 @@ initPane: function(){
 						}	
 					}
 				});
+			}
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
 			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
