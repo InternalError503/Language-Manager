@@ -56,7 +56,9 @@
 	/* Make sure it only uses this css in language manger*/
     @-moz-document url(chrome://languagemanager/content/language_Manager.xul) {
 	
-	#placeholder{}
+	#Language-Manager *{
+		-moz-user-select: none;
+	}
 	
 			.help-button {
 			  min-width: 30px;
