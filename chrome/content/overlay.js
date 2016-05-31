@@ -7,30 +7,30 @@ var Cc = Components.classes;
 var Ci = Components.interfaces;
 var Cu = Components.utils;
 
-//Import addon manager
+// Import addon manager
 var {AddonManager} = Cu.import("resource://gre/modules/AddonManager.jsm", {});
-//Import services
+// Import services
 var {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
 
 var gLMangerHandler = {
-	//Get string sets to localise internal messages.
+	// Get string sets to localise internal messages.
 	bundleDialogue: Services.strings.createBundle("chrome://LanguageManager/locale/dialogue.properties"),
 	bundleDebugError: Services.strings.createBundle("chrome://LanguageManager/locale/debug.properties"),
-	//Setup prompts service.	
+	// Setup prompts service.	
 	prompts: Services.prompt,
-	//Browser information	
+	// Browser information	
 	browserAppInformation: Services.appinfo,
 	defaultfirefoxtheme:		Services.prefs.getCharPref("general.skins.selectedSkin") == 'classic/1.0',
-	//Get browser name from branding
+	// Get browser name from branding
 	brandName: Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName"),
-	//Store json data to save on multiple requests.
+	// Store json data to save on multiple requests.
 	jsObject: [],
 };
 
 var gLanguageManger = {
 
 initPane: function(){	
-		// add attribute to provide theme specific css to resolve any issues with styling on non default themes.
+		// Add attribute to provide theme specific css to resolve any issues with styling on non default themes.
 	try{
 		if (gLMangerHandler.defaultfirefoxtheme){
 			document.getElementById("Language-Manager").setAttribute('defaultfxtheme',true);
@@ -38,36 +38,35 @@ initPane: function(){
 			document.getElementById("Language-Manager").setAttribute('themename', Services.prefs.getCharPref("general.skins.selectedSkin"));
 		}
 	}catch(e){
-		//Catch any nasty errors and output to dialogue
+		// Catch any nasty errors and output to dialogue
 		gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);		
 	}
 	try {
 		if (Services.appinfo.OS=="WINNT"){
-			//Lets add version number to language manager window on windows.
+			// Lets add version number to language manager window on windows.
 			AddonManager.getAddonByID('LanguageManager@8pecxstudios.com', function(addon) {
 				document.title = document.title + " " + addon.version;
 			});
 		}
 	}catch(e){
-		//we don't want errors to affect language manager if setting the addon version  fails
+		// We don't want errors to affect language manager if setting the addon version  fails
 	}
 	try{
-		//Get latest language list
+		// Get latest language list
 		document.getElementById("lm-overlay").hidden = false;
-		//gLanguageManger.validateURL("https://download.8pecxstudios.com/latest/language/language_manager/LastestLanguage.json", false);
-		//Trial the list locally
+		// Use list locally
 		gLanguageManger.validateURL("chrome://LanguageManager/content/LanguageList.json", false);
 		
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
 		}
 		
-		//Quick toggle of language packs	
+		// Quick toggle of language packs	
 		var listbox= document.getElementById("theList");
 		listbox.addEventListener("dblclick", function(aEvent){
 		try{	
-				//Prevent right or middle mouse event activation.
+				// Prevent right or middle mouse event activation.
 				var aEvent = aEvent || window.event;				
 				if ('object' === typeof aEvent) {
 					if (aEvent.button === 0){
@@ -75,11 +74,11 @@ initPane: function(){
 					}
 				}
 			}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}
     }, false);
-	//If the pack is the active pack we don't want to show toggle context menu item.
+	// If the pack is the active pack we don't want to show toggle context menu item.
 	document.getElementById("lm-pack-context-menu")
 			.addEventListener("popupshowing", function(){
 		try{
@@ -97,7 +96,7 @@ initPane: function(){
 					}
 				});
 				}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}
     }, false);
@@ -127,8 +126,10 @@ initPane: function(){
 			row.appendChild( cell );
 			// Create and attach 2nd cell (Locale)
 			cell = document.createElement('listcell');
-			// Here we chop the source URI to get the locale value, In cases where the pack was updated automatically
-			// we need to trim the query with the file hash value, This locale value will look different to the standard.
+			/*
+			   Here we chop the source URI to get the locale value, In cases where the pack was updated automatically
+			   we need to trim the query with the file hash value, This locale value will look different to the standard.
+			*/
 			var showLocale = locale.substring(locale.lastIndexOf("/") + 1).replace(".xpi", "").split('?')[0];			
 			cell.setAttribute('label', showLocale );
 			cell.setAttribute('value', showLocale );
@@ -140,7 +141,7 @@ initPane: function(){
 			row.appendChild( cell );
 			// Create and attach 4th cell (Installed)
 			cell = document.createElement('listcell');
-			//Some users might like a different time - date readout.			
+			// Some users might like a different time - date readout.			
 			switch (Services.prefs.getCharPref("extensions.language_manager.time-date_mode")){
 
 				case "basicdate":
@@ -154,8 +155,10 @@ initPane: function(){
 				break;	
 				
 				default:
-					//If English  local Monday, May 11, 2015 6:23:32 PM
-					//If German local Montag, 11, Mai 2015 6:23:32 PM			
+					/*
+					   If English  local Monday, May 11, 2015 6:23:32 PM
+					   If German local Montag, 11, Mai 2015 6:23:32 PM
+					*/		
 					var set_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 					cell.setAttribute('label',  updateDate.toLocaleDateString(Services.prefs.getCharPref("general.useragent.locale"), set_options) + " " + updateDate.toLocaleTimeString());
 					cell.setAttribute('value', updateDate.toLocaleDateString(Services.prefs.getCharPref("general.useragent.locale"), set_options));	
@@ -175,15 +178,15 @@ initPane: function(){
 			// Attach row
 			datlist.appendChild( row );
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	}
-	//Get list of all installed language packs, Needs a little work in need of optimization -> (Single call iteration).
+	// Get list of all installed language packs, Needs a little work in need of optimization -> (Single call iteration).
 	AddonManager.getAllAddons(function(aAddons) {	
 	try{
 		datlist = document.getElementById("theList");	
-		//Get latest support GUID list
+		// Get latest support GUID list
 		var guidList = gLMangerHandler.jsObject.SUPPORTEDIDS[0].GUIDS;	
 		items = aAddons;			
 		/*
@@ -197,10 +200,10 @@ initPane: function(){
 					}
 				});
 			}
-			//Release JSON data from memory.
+			// Release JSON data from memory.
 			gLMangerHandler.jsObject = [];
 			}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}
 		});
@@ -211,7 +214,7 @@ initPane: function(){
 		  window.addEventListener("resize", resizeThrottler, false);
 		  var resizeTimeout;
 		  function resizeThrottler() {
-			// ignore resize events as long as an actualResizeHandler execution is in the queue
+			// Ignore resize events as long as an actualResizeHandler execution is in the queue
 			if ( !resizeTimeout ) {
 			  resizeTimeout = setTimeout(function() {
 				resizeTimeout = null;
@@ -220,16 +223,16 @@ initPane: function(){
 			   }, 66);
 			}
 		  }
-		  //Need to resize the listbox so the elements don't get dragged offscreen.
+		  // Need to resize the listbox so the elements don't get dragged offscreen.
 		  function actualResizeHandler() {
-					//Note: Resolved issue with use of innerHTML as textContent did not work in this case.
+					// Note: Resolved issue with use of innerHTML as textContent did not work in this case.
 					var container = document.getElementById("theList");
 					var newList = document.createTextNode(container);
 					container.appendChild(newList);
 		  }
 		}());
 	},
-	//Reference: https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Tabbed_browser#Reusing_by_other_criteria
+	// Reference: https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Tabbed_browser#Reusing_by_other_criteria
 	ReuseTab: function (attrName, url) {
 	try{
 			  var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
@@ -261,27 +264,29 @@ initPane: function(){
 				tabbrowser.ownerDocument.defaultView.focus();
 			  }
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 		}
 	},
 
-	//We attempt to validate our json urls, But what about the language pack urls.
-	//Since we have json elements hosted on our server, We need to check if the url is valid
-	//If the url is not valid then we need to alert the user and stop the addon from continuing.
+	/* 
+	   We attempt to validate our json urls, But what about the language pack urls.
+	   Since we have json elements hosted on our server, We need to check if the url is valid
+	   If the url is not valid then we need to alert the user and stop the addon from continuing.
+	*/
 	validateURL : function(aUrl, aBoolean){
 		var menuItemsList = document.getElementById("languageMenu");
 		var request = new XMLHttpRequest();
 			request.addEventListener("progress", requestProgress, false);
 			request.addEventListener("load", requestComplete, false);		
-		//Since there can be a delay resolve the address lets show the user a visual indicator that stuff is happening.
+		// Since there can be a delay resolve the address lets show the user a visual indicator that stuff is happening.
 		function requestProgress (oEvent) {
 		  if (oEvent.lengthComputable) {
 			var percentComplete = Math.floor((oEvent.loaded / oEvent.total) * 100);
 			document.getElementById("lm-percent").textContent = percentComplete + " %";
 		  }
 		}
-		//On request completion hide the progress-bar
+		// On request completion hide the progress-bar
 		function requestComplete(evt) {
 		  document.getElementById("lm-percent").textContent = 0 + " %";
 		 document.getElementById("lm-overlay").hidden = true;
@@ -292,14 +297,14 @@ initPane: function(){
 				  request.status < 300) || 
 				  request.status == 304){
 					 if(aBoolean === true){ 
-						  //Download Pack	
+						  // Download Pack	
 						  document.location.href = aUrl;
 						  gLanguageManger.changeButtonStates("closeButton", false);	
 					 }else{
-						 //Load lanugage manager information.
+						 // Load lanugage manager information.
 						var text = aEvent.target.responseText;
 						gLMangerHandler.jsObject = text;		
-						//Need to check if json is valid, If json not valid don't continue and show error.
+						// Need to check if json is valid, If json not valid don't continue and show error.
 						function IsJsonValid(jsObject) {
 								try {
 									JSON.parse(jsObject);
@@ -309,7 +314,7 @@ initPane: function(){
 							return true;
 						}	
 						if(!IsJsonValid(gLMangerHandler.jsObject)){
-							//Need to throw error message and exit if not valid json.
+							// Need to throw error message and exit if not valid json.
 							gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));
 							document.getElementById("lm-overlay").hidden = true;		
 							menuItemsList.disabled = true;						
@@ -337,37 +342,41 @@ initPane: function(){
 		};
 		
 		request.onerror = function(aEvent){
-			//Disable the list and show error
+			// Disable the list and show error
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 			document.getElementById("lm-overlay").hidden = true;
 			menuItemsList.disabled = true;	
 		};
-		//Add pramas true for async
+		// Add pramas true for async
 		request.timeout = 5000;
 		request.open("GET", aUrl, true);
 		request.send(null);
 	},	
 	
-	//Here we are making sure only the mode for the browser can be enabled on that browser.
-	//Example: Firefoxmode can only be enabled in firefox etc.
+	/*
+	   Here we are making sure only the mode for the browser can be enabled on that browser.
+	   Example: Firefoxmode can only be enabled in firefox etc.
+	*/
 	checkBrowser : function(){
 	try{
-			//Check if browser Firefox
+			// Check if browser Firefox
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
-				//Check if running firefox beta.
-				//Since we target the releases/latest-beta we only support the latest firefox beta release.
+				/*
+				   Check if running firefox beta.
+				   Since we target the releases/latest-beta we only support the latest firefox beta release.
+				*/
 				if (Services.prefs.getCharPref("app.update.channel") === "beta"){
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxbetamode");
 				}else{
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxmode");
 				}
 			}
-			//Check if browser Cyberfox (Additional fallback)
+			// Check if browser Cyberfox (Additional fallback)
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Cyberfox".toLowerCase()) {
 				Services.prefs.setCharPref("extensions.language_manager.browser_mode", "cyberfoxmode");				
 			}
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
@@ -377,7 +386,7 @@ initPane: function(){
 		gLanguageManger.ReuseTab("A7E24DF418823798B540DF75FC347898", "chrome://LanguageManager/content/language_Manager.xul");
 		this.checkBrowser();
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
@@ -386,17 +395,17 @@ initPane: function(){
 	try{
 			gLanguageManger.ReuseTab("C974F35CA066A280F094DDE616EDD176", "chrome://languagemanager/content/options.html");
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
-	//Enabled Help button, This will show the informational post for detailed instructions on how to use language manager if needed.
+	// Enabled Help button, This will show the informational post for detailed instructions on how to use language manager if needed.
 	ShowHelpPage : function() {
 	try{
 		openUILinkIn('https://8pecxstudios.com/Forums/viewtopic.php?f=11&t=645', 'tab');
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
@@ -405,7 +414,7 @@ initPane: function(){
 		try{		
 			document.getElementById(element).disabled = state;
 		}catch (e){
-					//Catch any nasty errors and output to dialogue
+					// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 		}
 	},
@@ -415,7 +424,7 @@ initPane: function(){
 		this.changeButtonStates("installButton", false);
 		this.changeButtonStates("closeButton", true);			
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 	}
 },
@@ -426,16 +435,16 @@ initPane: function(){
 			var newPref = document.getElementById("languageMenu").value;	
 				Services.prefs.setCharPref("general.useragent.locale", newPref);	
 			}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("setPrefValueError") + " " + e);
 	}
 },
-	//Complex member
+	// Complex member
 	downloadPack: function() {
 		try{			
-			//Change button attributes.	
+			// Change button attributes.	
 			this.changeButtonStates("installButton", true);				  
-			//Request URL where to download language pack from.		
+			// Request URL where to download language pack from.		
 			var cyberfoxModeURL = "https://download.8pecxstudios.com/latest/language/" + gLMangerHandler.browserAppInformation.version + "/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/" + gLMangerHandler.browserAppInformation.version + "/win32/xpi/";
 			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";					
@@ -454,51 +463,53 @@ initPane: function(){
 						break;
 				}						
 			}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("downloadPackError") + " " + e);
 		}	
 },
-    //Important part of the process to enable download packs, Full logic implementation was removed for an easy one line.
+    // Important part of the process to enable download packs, Full logic implementation was removed for an easy one line.
 	restartBrowser: function () {		
 		try{
 				Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit);
 			}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("restartBrowserError") + " " + e);
 		}
 	},
-		//Language pack install complete.
+		// Language pack install complete.
 		complete: function() {
 		try{		
 				this.changeButtonStates("closeButton", true);
-				//Prompt restart to apply changes
+				// Prompt restart to apply changes
 				if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), 
 						gLMangerHandler.bundleDialogue.formatStringFromName("restartMessage", [gLMangerHandler.brandName], 1))) {
 					this.SetPrefValue();			
-					//Call browser restart function
+					// Call browser restart function
 					this.restartBrowser();
 				}				
 			}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
 		}	
 },
-		//Language pack activate.
+		// Language pack activate.
 		activateComplete: function(elementData) {
 		try{
-				//Prompt restart to apply changes
+				// Prompt restart to apply changes
 				if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartMessageActivate", [gLMangerHandler.brandName], 1))) {	
 					Services.prefs.setCharPref("general.useragent.locale", elementData);				
-					//Call browser restart function
+					// Call browser restart function
 					this.restartBrowser();
 				}		
 			}catch (e){
-				//Catch any nasty errors and output to dialogue
+				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
 		}
 },
-	//To prevent use of duplicate code we now can call this function by passing the element.childNodes 
-	//So for example you have the listitem and you get its childnode listcell 
+	/*
+	  To prevent use of duplicate code we now can call this function by passing the element.childNodes 
+	  So for example you have the listitem and you get its childnode listcell
+	*/ 
 	getSelectedPackInfo : function(aID, aLocale){
 		try{
 			var target = document.getElementById("theList").selectedItem.childNodes[0];
@@ -509,7 +520,7 @@ initPane: function(){
 				var splitElementStart = splitElement.indexOf('-') + 1;
 				var splitElementEnd = splitElement.indexOf('@',  splitElementStart);				
 				var elementData = splitElement.substring(splitElementStart, splitElementEnd);
-				//If both set return as array.
+				// If both set return as array.
 				if (aID && aLocale){
 					return [splitElement, elementData];
 				}	
@@ -527,14 +538,14 @@ initPane: function(){
 				document.getElementById("languageMenu").value = gLanguageManger.getSelectedPackInfo(false, true);
 				gLanguageManger.downloadPack();
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
 	TogglePack : function(e){	
 	try{			
-			//Here we toggle the pack when the user selects toggle pack from right click context menu.
+			// Here we toggle the pack when the user selects toggle pack from right click context menu.
 			var addonID = gLanguageManger.getSelectedPackInfo(true, false);
 			if (addonID &&  typeof(addonID)  != "undefined" || addonID  != null){
 				AddonManager.getAddonByID(addonID, function(addon) {
@@ -551,7 +562,7 @@ initPane: function(){
 				});
 			}
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
@@ -560,49 +571,51 @@ initPane: function(){
 	*/
 	RemovePack : function(e){	
 	try{	
-			//Prompt inform user they are about to uninstall a language pack and ask if that is what they want to do.
+			// Prompt inform user they are about to uninstall a language pack and ask if that is what they want to do.
 			if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningTitle"), gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningMessage"))) {
 			AddonManager.getAddonByID(gLanguageManger.getSelectedPackInfo(true, false), function(addon) {			
-				//Check if addon
+				// Check if addon
 				if (addon){				
-					//Check if the addon is the current active addon, Then need to reset the changed (general.useragent.locale) back to its original state before pack was enabled.
+					// Check if the addon is the current active addon, Then need to reset the changed (general.useragent.locale) back to its original state before pack was enabled.
 					if (gLanguageManger.getSelectedPackInfo(false, true).match(Services.prefs.getCharPref("general.useragent.locale"))){
-						//Clear locale 
+						// Clear locale 
 						Services.prefs.clearUserPref("general.useragent.locale");
 						addon.uninstall();
-						//Since the addon was active there are still parts of the localization loaded, So prompt user to restart the browser to unload these elements.
-						//Prompt restart to unload any localized elements. 
+						/*
+						   Since the addon was active there are still parts of the localization loaded, So prompt user to restart the browser to unload these elements.
+						   Prompt restart to unload any localized elements.
+						*/
 						if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), gLMangerHandler.bundleDialogue.formatStringFromName("restartRemoveMessage", [gLMangerHandler.brandName], 1))) {
-							//Call browser restart function
+							// Call browser restart function
 							gLanguageManger.restartBrowser();
 						}
 					}else{			
-						//If pack is not the current active we can just uninstall it.
+						// If pack is not the current active we can just uninstall it.
 						addon.uninstall();						
-						//Trigger a update on the installed addons table.
+						// Trigger a update on the installed addons table.
 						document.location.reload(false);
 					}
 				}					
 			});
 		} 								
 		}catch (e){
-			//Catch any nasty errors and output to dialogue
+			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}		
 	},
 
 	restoreDefaultLanguage: function(){	
 		try{
-				//Prompt restart to apply changes
+				// Prompt restart to apply changes
 				if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("restartMessageTitle"), 
 						gLMangerHandler.bundleDialogue.formatStringFromName("restartMessageRestoreDefault", [gLMangerHandler.brandName], 1))) {
-						//Clear locale 
+						// Clear locale 
 						Services.prefs.clearUserPref("general.useragent.locale");
-						//Call browser restart function
+						// Call browser restart function
 						this.restartBrowser();
 					}
 				}catch (e){
-					//Catch any nasty errors and output to dialogue and console
+					// Catch any nasty errors and output to dialogue and console
 					gLMangerHandler.prompts.alert("Were sorry but something has gone wrong! " + e);
 			}			
 

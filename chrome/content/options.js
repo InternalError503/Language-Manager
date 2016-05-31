@@ -7,10 +7,10 @@ var Cc = Components.classes;
 var Ci = Components.interfaces;
 var Cu = Components.utils;
 
-//Import services
+// Import services
 var {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
 
-//Get string sets to localized content.
+// Get string sets to localized content.
 var bundleOptionsWindow = Services.strings.createBundle("chrome://LanguageManager/locale/options.properties");
 
 var gLanguageMangerOptions = {
@@ -19,22 +19,22 @@ init: function(){
 
 try{
 
-	//Localise Content
+	// Localise Content
 	
-	//Get all the elements by there id's
+	// Get all the elements by there id's
 	var contentElement = {
-		//Top navigation bar
+		// Top navigation bar
 		navBarTitle: document.getElementById("NavTitle"),
 		navBarSupport: document.getElementById("NavSupport"),
 		navBarContact: document.getElementById("NavContact"),					
-		//Panel label
+		// Panel label
 		OptionsPanelTitle: document.getElementById("OptionsPanel"),
 		OptionsCurrentLocale: document.getElementById("currentLanguage"),	
-		//Show what browser mode firefox or firefox beta or cyberfox.
+		// Show what browser mode firefox or firefox beta or cyberfox.
 		OptionsBrowserMode: document.getElementById("BrowserMode"),	
-		//Copyright message.
+		// Copyright message.
 		CopyrightLabel: document.getElementById("labelCopy"),
-		//Select time and date format.
+		// Select time and date format.
 		OptionsSelectTimeDate: document.getElementById("SelectTimeDate"),
 		OptionsSelectTimeDateMenuDefault: document.getElementById("defaultFormat"),		
 		OptionsSelectTimeDateMenuD: document.getElementById("form-time-date-default"),
@@ -42,21 +42,21 @@ try{
 		OptionsSelectTimeDateMenuTD: document.getElementById("form-time-date-basic-td")		
 	};
 	
-	//Localize all the elements with the translated text if available.
-		//Window title
+		// Localize all the elements with the translated text if available.
+		// Window title
 		document.title = bundleOptionsWindow.GetStringFromName("lmOptionsTitle");
-		//Top navigation bar
+		// Top navigation bar
 		contentElement.navBarTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarTitle");		
 		contentElement.navBarSupport.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarSupport");
 		contentElement.navBarContact.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsNavBarContact");			
-		//Options panel label
+		// Options panel label
 		contentElement.OptionsPanelTitle.textContent = bundleOptionsWindow.GetStringFromName("lmOptionsPanelTitle");
 		contentElement.OptionsCurrentLocale.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguage");	
-		//Show browser mode label.
+		// Show browser mode label.
 		contentElement.OptionsBrowserMode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserMode");
-		//Copyright message.
+		// Copyright message.
 		contentElement.CopyrightLabel.textContent = bundleOptionsWindow.GetStringFromName("lmCopyright");
-		//Select time and date format.		
+		// Select time and date format.		
 		contentElement.OptionsSelectTimeDate.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDate");
 		contentElement.OptionsSelectTimeDateMenuDefault.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuDefault");
 		contentElement.OptionsSelectTimeDateMenuD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
@@ -64,12 +64,14 @@ try{
 		contentElement.OptionsSelectTimeDateMenuTD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
 
 		
-//Browser information			
+// Browser information			
 var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 			.getService(Components.interfaces.nsIXULAppInfo); 	
 
-		//Note: We don't show any values on the first run, Once language_Manager.xul has be initialized and the browser verified then we can display a value here.	
-		//Show what browser mode firefox or firefox beta or cyberfox.
+		/*
+		  Note: We don't show any values on the first run, Once language_Manager.xul has be initialized and the browser verified then we can display a value here.	
+		  Show what browser mode firefox or firefox beta or cyberfox.
+		*/
 		var OptionsBrowser_Mode = document.getElementById("form-browser-mode");
 		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 
@@ -106,7 +108,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 	document.getElementById("current-locale").textContent = Services.prefs.getCharPref("general.useragent.locale").toString();	
 
 			}catch (e){
-				//Catch any nasty errors and output to dialogue and console
+				// Catch any nasty errors and output to dialogue and console
 				Services.prompt.alert("Were sorry but something has gone wrong! " + e);
 		}
 	
@@ -133,7 +135,7 @@ timeDateFormatChanged: function(){
         }
 		
 			}catch (e){
-				//Catch any nasty errors and output to dialogue and console
+				// Catch any nasty errors and output to dialogue and console
 				Services.prompt.alert("Were sorry but something has gone wrong! " + e);
 		}		
 
