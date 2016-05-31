@@ -1,7 +1,7 @@
 /*Set tab favicon*/
 .tab-icon-image {
-		list-style-image: url("icon16.png");
-	}
+	list-style-image: url("icon16.png");
+}
 
 #Language-Manager #top_pane_caption,
 #Language-Manager #top_pane{
@@ -24,14 +24,12 @@
 
 #menu_LanguageManager,
 #appmenu_LanguageManager{
-	list-style-image: url("icon16.png");
-	
+	list-style-image: url("icon16.png");	
 }
 
 #lm_options_menu_manager,
 #toolbar_openLangageManager{
-	list-style-image: url("icon16.png");
-	
+	list-style-image: url("icon16.png");	
 }
 
 #toolbar_openLangageManager[cui-areatype="menu-panel"]{
@@ -58,59 +56,81 @@
 	list-style-image: url("lm-remove.png");	
 }
 
-	/* Make sure it only uses this css in language manger*/
-    @-moz-document url(chrome://languagemanager/content/language_Manager.xul) {
-	
+#lm-overlay {
+	position: fixed;
+	background-color:rgba(0, 0, 0, 0.7);
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 10;
+}
+
+#lm-percent{
+	font-size:60px;
+	font-weight:400;
+	color:#efefef!important;
+}
+
+.lm-percentContainer{
+	position: fixed;
+	top: 40%;
+	left: 0;
+	bottom: 50%;
+	right:50%;
+	width: 100%;
+	text-align: center;
+}
+
+/* Make sure it only uses this css in language manger*/
+@-moz-document url(chrome://languagemanager/content/language_Manager.xul) {
+		
 	#Language-Manager *{
 		-moz-user-select: none;
 	}
-	
-			.help-button {
-			  min-width: 30px;
-			  border-radius: 16px;
-			  border: 1px solid inherit;
+		
+	.help-button {
+		min-width: 30px;
+		border-radius: 16px;
+		border: 1px solid inherit;
+	}
 
-			}
+	.help-button:not([disabled="true"]):hover {
+		background-color: #fefefe;
+		opacity: 0.5;
+		background-image: none;
+	}
 
-			.help-button:not([disabled="true"]):hover {
-			  background-color: #fefefe;
-			  opacity: 0.5;
-			  background-image: none;
-			}
+	.help-button:not([disabled="true"]):hover:active {
+		background-color: inherit;
+		background-image: none;
+	}
 
-			.help-button:not([disabled="true"]):hover:active {
-			  background-color: inherit;
-			  background-image: none;
-			}
+	.help-button > .button-box {
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-right: 0 !important;
+		padding-left: 0 !important;
+	}
 
-			.help-button > .button-box {
-			  padding-top: 0;
-			  padding-bottom: 0;
-			  padding-right: 0 !important;
-			  padding-left: 0 !important;
-			}
+	.help-button > .button-box > .button-icon {
+		width: 26px;
+		height: 26px;
+		background-image: url("help-glyph.png");
+		background-position: center;
+	}
 
-			.help-button > .button-box > .button-icon {
-			  width: 26px;
-			  height: 26px;
-			  background-image: url("help-glyph.png");
-			  background-position: center;
-			}
+	@media (min-resolution: 2dppx) {
+		.help-button > .button-box > .button-icon {
+		background-size: 26px 26px;
+		background-image: url("help-glyph@2x.png");
+		}
+	}
 
-			@media (min-resolution: 2dppx) {
-			.help-button > .button-box > .button-icon {
-				background-size: 26px 26px;
-				background-image: url("help-glyph@2x.png");
-			  }
-			}
-
-			.help-button > .button-box >.button-text {
-			  display: none;
-			}
-			listheader {
-				padding: 2px 5px!important;
-			}				
-	}	
+	.help-button > .button-box >.button-text {
+		display: none;
+	}
+	listheader {
+		padding: 2px 5px!important;
+	}				
+}	
 	
 /* Theme compatibility slight margin issue with some themes and the language manager xul window */
 #Language-Manager[themename="FXChrome"] #top_pane_caption{
@@ -133,27 +153,3 @@
 #Language-Manager[themename="mla"] #top_pane{
 	margin-left:8px;
 }
-
-	
-	#lm-overlay {
-	  position: fixed;
-	  background-color:rgba(0, 0, 0, 0.7);
-	  top: 0; right: 0; bottom: 0; left: 0;
-	  z-index: 10;
-	}
-
-	#lm-percent{
-	  font-size:60px;
-	  font-weight:400;
-	  color:#efefef!important;
-	}
-
-	.lm-percentContainer{
-	  position: fixed;
-	  top: 40%;
-	  left: 0;
-	  bottom: 50%;
-	  right:50%;
-	  width: 100%;
-	  text-align: center;
-	}
