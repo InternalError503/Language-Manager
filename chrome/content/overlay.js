@@ -36,7 +36,7 @@ initPane: function(){
 		}
 	}catch(e){
 		//Catch any nasty errors and output to dialogue
-		alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);		
+		gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);		
 	}
 	try {
 		if (Services.appinfo.OS=="WINNT"){
@@ -57,7 +57,7 @@ initPane: function(){
 		
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
 		}
 		
 		//Quick toggle of language packs	
@@ -73,7 +73,7 @@ initPane: function(){
 				}
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}
     }, false);
 	//If the pack is the active pack we don't want to show toggle context menu item.
@@ -95,7 +95,7 @@ initPane: function(){
 				});
 				}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}
     }, false);
 	
@@ -173,7 +173,7 @@ initPane: function(){
 			datlist.appendChild( row );
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	}
 	//Get list of all installed language packs, Needs a little work in need of optimization -> (Single call iteration).
@@ -198,7 +198,7 @@ initPane: function(){
 			gLMangerHandler.jsObject = [];
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 			}
 		});
 	},
@@ -259,7 +259,7 @@ initPane: function(){
 			  }
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 		}
 	},
 
@@ -307,7 +307,7 @@ initPane: function(){
 						}	
 						if(!IsJsonValid(gLMangerHandler.jsObject)){
 							//Need to throw error message and exit if not valid json.
-							alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));
+							gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));
 							document.getElementById("lm-overlay").hidden = true;		
 							menuItemsList.disabled = true;						
 							return;
@@ -328,14 +328,14 @@ initPane: function(){
 					gLanguageManger.ResizeListbox();
 					 }				  			  
 			}else{
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));
 				document.getElementById("lm-overlay").hidden = true;
 			}	
 		};
 		
 		request.onerror = function(aEvent){
 			//Disable the list and show error
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
 			document.getElementById("lm-overlay").hidden = true;
 			menuItemsList.disabled = true;	
 		};
@@ -365,7 +365,7 @@ initPane: function(){
 			}
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
@@ -375,7 +375,7 @@ initPane: function(){
 		this.checkBrowser();
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
@@ -384,7 +384,7 @@ initPane: function(){
 			gLanguageManger.ReuseTab("C974F35CA066A280F094DDE616EDD176", "chrome://languagemanager/content/options.html");
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
@@ -394,7 +394,7 @@ initPane: function(){
 		openUILinkIn('https://8pecxstudios.com/Forums/viewtopic.php?f=11&t=645', 'tab');
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
@@ -403,7 +403,7 @@ initPane: function(){
 			document.getElementById(element).disabled = state;
 		}catch (e){
 					//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 		}
 	},
 	
@@ -413,7 +413,7 @@ initPane: function(){
 		this.changeButtonStates("closeButton", true);			
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
 	}
 },
 	
@@ -424,7 +424,7 @@ initPane: function(){
 				Services.prefs.setCharPref("general.useragent.locale", newPref);	
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("setPrefValueError") + " " + e);
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("setPrefValueError") + " " + e);
 	}
 },
 	//Complex member
@@ -452,7 +452,7 @@ initPane: function(){
 				}						
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("downloadPackError") + " " + e);
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("downloadPackError") + " " + e);
 		}	
 },
     //Important part of the process to enable download packs, Full logic implementation was removed for an easy one line.
@@ -461,7 +461,7 @@ initPane: function(){
 				Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit);
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("restartBrowserError") + " " + e);
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("restartBrowserError") + " " + e);
 		}
 	},
 		//Language pack install complete.
@@ -477,7 +477,7 @@ initPane: function(){
 				}				
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
 		}	
 },
 		//Language pack activate.
@@ -491,7 +491,7 @@ initPane: function(){
 				}		
 			}catch (e){
 				//Catch any nasty errors and output to dialogue
-				alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
+				gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
 		}
 },
 	//To prevent use of duplicate code we now can call this function by passing the element.childNodes 
@@ -525,7 +525,7 @@ initPane: function(){
 				gLanguageManger.downloadPack();
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	
@@ -549,7 +549,7 @@ initPane: function(){
 			}
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	},
 	/*
@@ -584,7 +584,7 @@ initPane: function(){
 		} 								
 		}catch (e){
 			//Catch any nasty errors and output to dialogue
-			alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}		
 	},
 
@@ -600,7 +600,7 @@ initPane: function(){
 					}
 				}catch (e){
 					//Catch any nasty errors and output to dialogue and console
-					alert("Were sorry but something has gone wrong! " + e);
+					gLMangerHandler.prompts.alert("Were sorry but something has gone wrong! " + e);
 			}			
 
 		}

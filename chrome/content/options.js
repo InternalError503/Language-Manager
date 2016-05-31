@@ -104,7 +104,7 @@ var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
 
 			}catch (e){
 				//Catch any nasty errors and output to dialogue and console
-				alert("Were sorry but something has gone wrong! " + e);
+				Services.prompt.alert("Were sorry but something has gone wrong! " + e);
 		}
 	
 },
@@ -131,7 +131,7 @@ timeDateFormatChanged: function(){
 		
 			}catch (e){
 				//Catch any nasty errors and output to dialogue and console
-				alert("Were sorry but something has gone wrong! " + e);
+				Services.prompt.alert("Were sorry but something has gone wrong! " + e);
 		}		
 
 }
