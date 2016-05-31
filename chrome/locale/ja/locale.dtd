@@ -13,6 +13,7 @@
 
 <!ENTITY listItemName.label "名前">
 <!ENTITY listItemVersion.label "バージョン">
+<!ENTITY listItemLocale.label "Locale">
 <!ENTITY listItemInstalled.label "インストール日時">
 <!ENTITY listItemEnabled.label "有効性">
 <!ENTITY listItemCompatible.label "互換性">

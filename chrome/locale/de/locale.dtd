@@ -13,6 +13,7 @@
 
 <!ENTITY listItemName.label "Name">
 <!ENTITY listItemVersion.label "Version">
+<!ENTITY listItemLocale.label "Locale">
 <!ENTITY listItemInstalled.label "Installiert">
 <!ENTITY listItemEnabled.label "Aktiviert">
 <!ENTITY listItemCompatible.label "Kompatibel">

@@ -112,7 +112,7 @@ initPane: function(){
 },
 
 	getInstalledLanguages: function() {
-		function getAllAddons(name, id, version, updateDate, isActive, isCompatible){
+		function getAllAddons(name, id, locale, version, updateDate, isActive, isCompatible){
 		try{
 			var row = document.createElement('listitem');
 			row.setAttribute('tooltip', 'listEnableMessage');
@@ -122,12 +122,20 @@ initPane: function(){
 			cell.setAttribute('label', name );
 			cell.setAttribute('value', id );
 			row.appendChild( cell );
-			// Create and attach 2nd cell (Version)
+			// Create and attach 2nd cell (Locale)
+			cell = document.createElement('listcell');
+			// Here we chop the source URI to get the locale value, In cases where the pack was updated automatically
+			// we need to trim the query with the file hash value, This locale value will look different to the standard.
+			var showLocale = locale.substring(locale.lastIndexOf("/") + 1).replace(".xpi", "").split('?')[0];			
+			cell.setAttribute('label', showLocale );
+			cell.setAttribute('value', showLocale );
+			row.appendChild( cell );
+			// Create and attach 3rd cell (Version)
 			cell = document.createElement('listcell');
 			cell.setAttribute('label', version );
 			cell.setAttribute('value', version );
 			row.appendChild( cell );
-			// Create and attach 3rd cell (Installed)
+			// Create and attach 4th cell (Installed)
 			cell = document.createElement('listcell');
 			//Some users might like a different time - date readout.			
 			switch (Services.prefs.getCharPref("extensions.language_manager.time-date_mode")){
@@ -151,12 +159,12 @@ initPane: function(){
 				break;				
 			}
 			row.appendChild( cell );
-			// Create and attach 4th cell (Enabled)
+			// Create and attach 5th cell (Enabled)
 			cell = document.createElement('listcell');
 			cell.setAttribute('label', isActive );
 			cell.setAttribute('value', isActive );
 			row.appendChild( cell );
-			// Create and attach 5th cell (Compatible)
+			// Create and attach 6th cell (Compatible)
 			cell = document.createElement('listcell');
 			cell.setAttribute('label', isCompatible );
 			cell.setAttribute('value', isCompatible );
@@ -182,7 +190,7 @@ initPane: function(){
 			for (i = 0; guidList[i]; i++) {
 				items.forEach(function(item, index, array) {	
 					if (item.id === guidList[i].ID){
-						getAllAddons(item.name, item.id,  item.version, item.updateDate, item.isActive, item.isCompatible);						
+						getAllAddons(item.name, item.id, item.sourceURI.spec, item.version, item.updateDate, item.isActive, item.isCompatible);						
 					}
 				});
 			}
