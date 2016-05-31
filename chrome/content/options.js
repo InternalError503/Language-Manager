@@ -63,11 +63,6 @@ try{
 		contentElement.OptionsSelectTimeDateMenuB.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
 		contentElement.OptionsSelectTimeDateMenuTD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
 
-		
-// Browser information			
-var browserAppInformation = Components.classes["@mozilla.org/xre/app-info;1"]
-			.getService(Components.interfaces.nsIXULAppInfo); 	
-
 		/*
 		  Note: We don't show any values on the first run, Once language_Manager.xul has be initialized and the browser verified then we can display a value here.	
 		  Show what browser mode firefox or firefox beta or cyberfox.
