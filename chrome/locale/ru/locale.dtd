@@ -13,7 +13,7 @@
 
 <!ENTITY listItemName.label "Имя">
 <!ENTITY listItemVersion.label "Версия">
-<!ENTITY listItemLocale.label "Locale">
+<!ENTITY listItemLocale.label "Место">
 <!ENTITY listItemInstalled.label "Установлен">
 <!ENTITY listItemEnabled.label "Включен">
 <!ENTITY listItemCompatible.label "Совместим">
