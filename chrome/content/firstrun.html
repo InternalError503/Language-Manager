@@ -11,8 +11,11 @@
 	<meta charset="utf-8" />
 	<title id="languageFirstruntitle">Language Manager Firstrun</title>
 	<link rel="icon" type="image/png" id="favicon" href="chrome://LanguageManager/skin/icon32.png">
-	<link rel="stylesheet" type="text/css" media="all" href="core/css/uikit.gradient.min.css" />
-	<script src="chrome://LanguageManager/content/firstrun.js"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="core/css/uikit.gradient.min.css"/>
+	<script src="firstrun.js"></script>
+	<script src="core/js/jquery-2.2.4.min.js"></script>
+	<script src="core/js/uikit.min.js"></script>
+	<script src="core/js/lightbox.min.js"></script>
 </head>
 
 <body>
@@ -63,7 +66,7 @@
 						<div class="uk-panel uk-panel-box">
 							<center>
 								<h5 class="uk-text-bold" id="ImageButtonAreaMenuDefault">Default (Customize Pallet)</h5>
-								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_customize.jpg" target="_blank">
+								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_customize.jpg" data-lightbox-type="image" data-uk-lightbox>
 									<img src="chrome://LanguageManager/content/core/images/show_on_customize.jpg" height="500" width="350" />
 								</a>
 							</center>
@@ -73,7 +76,7 @@
 						<div class="uk-panel uk-panel-box">
 							<center>
 								<h5 class="uk-text-bold" id="ImageButtonAreaMenuToolbar">Toolbar (nav-bar)</h5>
-								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" target="_blank">
+								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" data-lightbox-type="image" data-uk-lightbox>
 									<img src="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" height="500" width="350" />
 								</a>
 							</center>
@@ -83,7 +86,7 @@
 						<div class="uk-panel uk-panel-box">
 							<center>
 								<h5 class="uk-text-bold" id="ImageButtonAreaMenuPanel">Panel menu (Panel UI Menu)</h5>
-								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_panel.jpg" target="_blank">
+								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_panel.jpg" data-lightbox-type="image" data-uk-lightbox>
 									<img src="chrome://LanguageManager/content/core/images/show_on_panel.jpg" height="500" width="350" />
 								</a>
 							</center>
@@ -93,11 +96,11 @@
 					<div class="uk-width-medium-1-1 uk-visible-small">
 						<div class="uk-panel uk-panel-box">
 							<h5 class="uk-text-bold" id="TextButtonAreaMenuDefault">Default (Customize Pallet)</h5>
-							<a href="chrome://LanguageManager/content/core/images/show_on_customize.jpg" target="_blank">show_on_customize.jpg</a>
+							<a href="chrome://LanguageManager/content/core/images/show_on_customize.jpg" data-lightbox-type="image" data-uk-lightbox>show_on_customize.jpg</a>
 							<h5 class="uk-text-bold" id="TextButtonAreaMenuToolbar">Toolbar (nav-bar)</h5>
-							<a href="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" target="_blank">show_on_toolbar.jpg</a>
+							<a href="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" data-lightbox-type="image" data-uk-lightbox>show_on_toolbar.jpg</a>
 							<h5 class="uk-text-bold" id="TextButtonAreaMenuPanel">Panel menu (Panel UI Menu)</h5>
-							<a href="chrome://LanguageManager/content/core/images/show_on_panel.jpg" target="_blank">show_on_panel.jpg</a>
+							<a href="chrome://LanguageManager/content/core/images/show_on_panel.jpg" data-lightbox-type="image" data-uk-lightbox>show_on_panel.jpg</a>
 						</div>
 					</div>
 
