@@ -8,7 +8,7 @@ import sys
 from glob import glob
 from zipfile import ZipFile, ZIP_STORED, ZIP_DEFLATED
 
-# XPI package files, Note must update when addong or removing files.
+# XPI package files, Note must update when adding or removing files.
 resources = [
 	"install.rdf",
 	"chrome.manifest",
@@ -51,7 +51,7 @@ def get_files(resources):
 # Build XPI package.
 def buildXPI( version ):
 	destination = "xpi/LanguageManager-" + version + ".xpi"
-	# Check if the package already exists in our destination and removing it.
+	# Check if the package already exists in our destination and remove it.
 	if os.path.exists(destination):
 		print("Found & removing: " + destination)
 		os.remove(destination)
