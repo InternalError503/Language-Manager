@@ -104,7 +104,7 @@ try{
 
 			}catch (e){
 				// Catch any nasty errors and output to dialogue and console
-				Services.prompt.alert("Were sorry but something has gone wrong! " + e);
+				Services.prompt.alert(null, "oops i did it again!", "Were sorry but something has gone wrong! " + e);
 		}
 	
 },
@@ -131,7 +131,7 @@ timeDateFormatChanged: function(){
 		
 			}catch (e){
 				// Catch any nasty errors and output to dialogue and console
-				Services.prompt.alert("Were sorry but something has gone wrong! " + e);
+				Services.prompt.alert(null, "oops i did it again!", "Were sorry but something has gone wrong! " + e);
 		}		
 
 }
