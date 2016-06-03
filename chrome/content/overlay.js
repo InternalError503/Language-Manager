@@ -3,9 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  
 (function(global) {
-var Cc = Components.classes;
-var Ci = Components.interfaces;
-var Cu = Components.utils;
+const {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 
 // Import addon manager
 var {AddonManager} = Cu.import("resource://gre/modules/AddonManager.jsm", {});
