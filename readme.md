@@ -24,6 +24,27 @@ the latest language pack installed.
 - Restore: Default language settings at a click of a button.
 - Read more about Language Manager by reading the [Informational Manual] (https://8pecxstudios.com/Forums/viewtopic.php?f=11&t=645)
 
+
+###  To build (Platform):
+
+- `Windows:` __CTRL + SHIFT + B__
+- `Linux:` __CTRL + SHIFT + B__
+- `Mac:` __CMD + SHIFT + B__
+
+
+#### Task Runner (Visual Studio Code):
+
+- `Windows:` __CTRL + SHIFT + P__
+- `Linux:` __CTRL + SHIFT + P__
+- `Mac:` __CMD + SHIFT + P__
+
+| Task | Command | Result |
+|----------|:-------------:|------:|
+| Build | task build | Builds addon *.xpi |
+
+##### You must set the version number in the arguments field of tasks.json when bumping the XPI package version.
+
+
 ### Credits:
 
 Using popular open source projects.
