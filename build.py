@@ -73,6 +73,10 @@ def buildXPI( version ):
 
 # Since we use command line arguments we require two in total "build" & "0.0.0" (Version) for XPI package.	
 if sys.argv[1] == "build":
+	# Make XPI directory if not exists.
+	if not os.path.exists("xpi"):
+		os.makedirs("xpi")
+	# Send version to build XPI package.
 	buildXPI(sys.argv[2])
 	sys.exit()
 else:
