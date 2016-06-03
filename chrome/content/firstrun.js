@@ -115,8 +115,8 @@ addToolbarButtonToAreaSelectChanged: function(){
         case "toolbar":
             Services.prefs.setCharPref("extensions.language_manager.addbuttontoarea", "toolbar");
 			try {	
-				if (CustomizableUI.getPlacementOfWidget("home-button").area === "nav-bar"){
-					CustomizableUI.addWidgetToArea("toolbar_openLangageManager", CustomizableUI.AREA_NAVBAR, CustomizableUI.getPlacementOfWidget("home-button").position);
+				if (CustomizableUI.getPlacementOfWidget("search-container").area === "nav-bar"){
+					CustomizableUI.addWidgetToArea("toolbar_openLangageManager", CustomizableUI.AREA_NAVBAR, CustomizableUI.getPlacementOfWidget("search-container").position + 1);
 				} else {
 					CustomizableUI.addWidgetToArea("toolbar_openLangageManager", CustomizableUI.AREA_NAVBAR);
 				}
