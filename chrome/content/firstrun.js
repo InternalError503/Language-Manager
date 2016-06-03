@@ -3,9 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  
 (function(global) {
-var Cc = Components.classes;
-var Ci = Components.interfaces;
-var Cu = Components.utils;
+const {utils: Cu} = Components;
 
 // Import services
 var {Services} = Cu.import("resource://gre/modules/Services.jsm", {});
