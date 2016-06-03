@@ -44,6 +44,17 @@ initAddon: function(){
 			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
 		}
 	}
+	
+	// Listen for addon uninstall and clear firstrun preference.
+	AddonManager.addAddonListener({
+		onUninstalling: function(addon){
+			if (addon.id === "LanguageManager@8pecxstudios.com"){
+				Services.prefs.clearUserPref("extensions.language_manager.firstrun");
+			}
+		}
+	});
+
+
 },
 
 initPane: function(){	
