@@ -45,6 +45,11 @@ the latest language pack installed.
 ##### You must set the version number in the arguments field of tasks.json when bumping the XPI package version.
 
 
+#### Build Notes (Visual Studio Code) (Platform):
+
+- `Windows:` You must have __python 2.7__ or higher installed to run the build script.
+- `Linux:` You must on the __`build.py`__ set in its properties permissions tab, To allow execution or __`EACCESS`__ error will ensue.
+
 ### Credits:
 
 Using popular open source projects.
