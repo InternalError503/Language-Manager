@@ -20,9 +20,10 @@ init: function(){
 
 try{
 
-	// Localise Content
-	
-	// Get all the elements by there id's
+	/* 
+	  Localise Content	
+	  Get all the elements by there id's
+	*/
 	var contentElement = {
 		// Top navigation bar
 		navBarTitle: document.getElementById("NavTitle"),
@@ -46,8 +47,10 @@ try{
 		FirstrunTextButtonAreaMenuPanel: document.getElementById("TextButtonAreaMenuPanel")
 	};
 	
-		// Localize all the elements with the translated text if available.
-		// Window title
+		/* 
+		  Localize all the elements with the translated text if available.
+		  Window title
+		*/
 		document.title = bundleFirstrunWindow.GetStringFromName("lmFirstrunTitle");
 		// Top navigation bar
 		contentElement.navBarTitle.textContent = bundleFirstrunWindow.GetStringFromName("lmFirstrunNavBarTitle");		

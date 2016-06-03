@@ -6,109 +6,105 @@
 
 <!DOCTYPE html>
 <html class="uk-notouch" lang="en-us" dir="ltr">
+
 <head>
-  <meta charset="utf-8" />
-    <title id="languageoptionstitle">Language Manager Preferences</title>
-		<link rel="icon" 
-			type="image/png" 
-			id="favicon"
-			href="chrome://LanguageManager/skin/icon32.png">
-    <link rel="stylesheet" type="text/css" media="all"
-          href="core/css/uikit.gradient.min.css"/>	
-	<script src="chrome://LanguageManager/content/options.js"></script>	
-	</head>
+	<meta charset="utf-8" />
+	<title id="languageoptionstitle">Language Manager Preferences</title>
+	<link rel="icon" type="image/png" id="favicon" href="chrome://LanguageManager/skin/icon32.png">
+	<link rel="stylesheet" type="text/css" media="all" href="core/css/uikit.gradient.min.css" />
+	<script src="chrome://LanguageManager/content/options.js"></script>
+</head>
+
 <body>
 	<div class="uk-container uk-container-center">
 		<div class="uk-grid uk-grid-width-xlarge-*">
 			<div class="column_main">
-	
-<nav class="uk-navbar">
-<a class="uk-navbar-brand uk-hidden-small"><img src="chrome://LanguageManager/skin/icon32.png"></img> <span class="uk-text-bold" id="NavTitle">Language Manager</span></a>
-    <ul class="uk-navbar-nav">				
-        <li><a href="https://8pecxstudios.com/Forums/index.php" target="_blank" ><i class="uk-icon-user uk-icon-medium"></i> <span id="NavSupport">Support Forums</span></a></li>
-        <li><a href="https://8pecxstudios.com/contact-us" target="_blank" ><i class="uk-icon-envelope uk-icon-medium"></i> <span id="NavContact">Contact Us</span></a></li>
-    </ul>
-</nav>
 
-<hr class="uk-grid-divider" style="border:none;"></hr>
-	
-<div class="uk-grid" data-uk-grid-margin="">	
+				<nav class="uk-navbar">
+					<a class="uk-navbar-brand uk-hidden-small"><img src="chrome://LanguageManager/skin/icon32.png"></img> <span class="uk-text-bold" id="NavTitle">Language Manager</span></a>
+					<ul class="uk-navbar-nav">
+						<li><a href="https://8pecxstudios.com/Forums/index.php" target="_blank"><i class="uk-icon-user uk-icon-medium"></i> <span id="NavSupport">Support Forums</span></a></li>
+						<li><a href="https://8pecxstudios.com/contact-us" target="_blank"><i class="uk-icon-envelope uk-icon-medium"></i> <span id="NavContact">Contact Us</span></a></li>
+					</ul>
+				</nav>
 
-<div class="uk-width-medium-1-2">
+				<hr class="uk-grid-divider" style="border:none;"></hr>
 
-		<div class="uk-panel uk-hidden-small">	
-				<center>
-					<img src="chrome://LanguageManager/skin/icon256.png" />
-				</center>	
-		</div>
+				<div class="uk-grid" data-uk-grid-margin="">
 
-</div>	
-<!--- --->	
+					<div class="uk-width-medium-1-2">
 
-		
-				<div class="uk-width-medium-1-2">
-				
-			
-<div class="uk-panel uk-panel-box">			
-			
-		<h2 id="mainOptionsLabel" class="uk-panel-title"><i class="uk-icon-cog uk-icon-large"></i> <span id="OptionsPanel">Options Panel</span></h2>	
-			<form class="uk-form uk-form-horizontal">
-			<fieldset>
-			
-			
-				<!-- Current Browser Locale - Restore browser default locale -->
-				<div class="uk-form-row">
-					<label class="uk-form-label" id="currentLanguage">Currently Set Language:</label>
-						<div class="uk-form-controls">
-							<span class="uk-form-label" id="current-locale"/>
-						</div>		
-				</div>			
-			
-				<!-- Browser Mode -->
-				<div class="uk-form-row">										
-					<label class="uk-form-label" id="BrowserMode">Browser Mode:</label>
-					<div class="uk-form-controls">
-						<span id="form-browser-mode"/>
-					</div>						
-				</div>	
-
-				<!-- Time & Date Format Selection -->
-				<div class="uk-form-row">				
-						
-					<label class="uk-form-label" for="form-time-date"><span id="SelectTimeDate">Select Time &amp; Date Format:</span></label>	
-					<div class="uk-form-controls" onchange="gLanguageMangerOptions.timeDateFormatChanged();">
-						<select id="form-time-date">
-                        <option id="defaultFormat" disabled="true">Select Format</option>					
-						<option id="form-time-date-default" value="default_tnd">Default</option>
-						<option id="form-time-date-basic-d" value="basic_date">Basic Date</option>
-						<option id="form-time-date-basic-td" value="basic_time">Basic Time &amp; Date</option>						
-						</select>
-					</div>																
-				</div>				
-								
-				</fieldset>				
-			</form>	
-		</div>
-</div>
-
-	
-</div>		
-		
-<hr class="uk-grid-divider" style="border:none;"></hr>		
-		<div class="uk-grid" data-uk-grid-margin="">
-				<div class="uk-width-medium-1-1">	
 						<div class="uk-panel uk-hidden-small">
-						<center>		
-							<p><span id="labelCopy">Copyright© 2012-2016</span> <a href="https://8pecxstudios.com/"><i class="uk-icon-external-link"></i> 8pecxstudios &trade;</a></p>
-						</center>	
-						</div>		
-					</div>	
-					
-			</div>	
-			
-		</div>	
+							<center>
+								<img src="chrome://LanguageManager/skin/icon256.png" />
+							</center>
+						</div>
+
+					</div>
+					<!--- --->
+					<div class="uk-width-medium-1-2">
+
+
+						<div class="uk-panel uk-panel-box">
+
+							<h2 id="mainOptionsLabel" class="uk-panel-title"><i class="uk-icon-cog uk-icon-large"></i> <span id="OptionsPanel">Options Panel</span></h2>
+							<form class="uk-form uk-form-horizontal">
+								<fieldset>
+
+
+									<!-- Current Browser Locale - Restore browser default locale -->
+									<div class="uk-form-row">
+										<label class="uk-form-label" id="currentLanguage">Currently Set Language:</label>
+										<div class="uk-form-controls">
+											<span class="uk-form-label" id="current-locale" />
+										</div>
+									</div>
+
+									<!-- Browser Mode -->
+									<div class="uk-form-row">
+										<label class="uk-form-label" id="BrowserMode">Browser Mode:</label>
+										<div class="uk-form-controls">
+											<span id="form-browser-mode" />
+										</div>
+									</div>
+
+									<!-- Time & Date Format Selection -->
+									<div class="uk-form-row">
+
+										<label class="uk-form-label" for="form-time-date"><span id="SelectTimeDate">Select Time &amp; Date Format:</span></label>
+										<div class="uk-form-controls" onchange="gLanguageMangerOptions.timeDateFormatChanged();">
+											<select id="form-time-date">
+												<option id="defaultFormat" disabled="true">Select Format</option>					
+												<option id="form-time-date-default" value="default_tnd">Default</option>
+												<option id="form-time-date-basic-d" value="basic_date">Basic Date</option>
+												<option id="form-time-date-basic-td" value="basic_time">Basic Time &amp; Date</option>						
+											</select>
+										</div>
+									</div>
+
+								</fieldset>
+							</form>
+						</div>
+					</div>
+
+
+				</div>
+
+				<hr class="uk-grid-divider" style="border:none;"></hr>
+				<div class="uk-grid" data-uk-grid-margin="">
+					<div class="uk-width-medium-1-1">
+						<div class="uk-panel uk-hidden-small">
+							<center>
+								<p><span id="labelCopy">Copyright© 2012-2016</span> <a href="https://8pecxstudios.com/"><i class="uk-icon-external-link"></i> 8pecxstudios &trade;</a></p>
+							</center>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
 	</div>
-</div>
 
 </body>
 </html>

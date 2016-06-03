@@ -473,18 +473,16 @@ initPane: function(){
 			// Request URL where to download language pack from.		
 			var cyberfoxModeURL = "https://download.8pecxstudios.com/latest/language/" + gLMangerHandler.browserAppInformation.version + "/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/" + gLMangerHandler.browserAppInformation.version + "/win32/xpi/";
-			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";					
+			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";
+				document.getElementById("lm-overlay").hidden = false;					
 				switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 					case "cyberfoxmode":
-						document.getElementById("lm-overlay").hidden = false;
 						gLanguageManger.validateURL(cyberfoxModeURL + document.getElementById("languageMenu").value + ".xpi", true);	
 						break;
 					case "firefoxmode":
-						document.getElementById("lm-overlay").hidden = false;
 						gLanguageManger.validateURL(firerfoxModeURL + document.getElementById("languageMenu").value + ".xpi", true);
 						break;
 					case "firefoxbetamode":
-						document.getElementById("lm-overlay").hidden = false;
 						gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi", true);				
 						break;
 				}						
