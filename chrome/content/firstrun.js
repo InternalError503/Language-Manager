@@ -38,12 +38,12 @@ try{
 		FirstrunButtonAreaMenuDefault: document.getElementById("ButtonAreaMenuDefault"),
 		FirstrunButtonAreaMenuToolbar: document.getElementById("ButtonAreaMenuToolbar"),
 		FirstrunButtonAreaMenuPanel: document.getElementById("ButtonAreaMenuPanel"),
-		FirstrunImageButtonAreaMenuDefault: document.getElementById("ButtonAreaMenuDefault"),
-		FirstrunImageButtonAreaMenuToolbar: document.getElementById("ButtonAreaMenuToolbar"),
-		FirstrunImageButtonAreaMenuPanel: document.getElementById("ButtonAreaMenuPanel"),
-		FirstrunTextButtonAreaMenuDefault: document.getElementById("ButtonAreaMenuDefault"),
-		FirstrunTextButtonAreaMenuToolbar: document.getElementById("ButtonAreaMenuToolbar"),
-		FirstrunTextButtonAreaMenuPanel: document.getElementById("ButtonAreaMenuPanel")
+		FirstrunImageButtonAreaMenuDefault: document.getElementById("ImageButtonAreaMenuDefault"),
+		FirstrunImageButtonAreaMenuToolbar: document.getElementById("ImageButtonAreaMenuToolbar"),
+		FirstrunImageButtonAreaMenuPanel: document.getElementById("ImageButtonAreaMenuPanel"),
+		FirstrunTextButtonAreaMenuDefault: document.getElementById("TextButtonAreaMenuDefault"),
+		FirstrunTextButtonAreaMenuToolbar: document.getElementById("TextButtonAreaMenuToolbar"),
+		FirstrunTextButtonAreaMenuPanel: document.getElementById("TextButtonAreaMenuPanel")
 	};
 	
 		// Localize all the elements with the translated text if available.
