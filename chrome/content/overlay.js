@@ -24,10 +24,27 @@ var gLMangerHandler = {
 	// Get browser name from branding
 	brandName: Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName"),
 	// Store json data to save on multiple requests.
-	jsObject: [],
+	jsObject: [],	
 };
 
 var gLanguageManger = {
+	
+initAddon: function(){
+	// Here we do first run globally, Show firstrun page.
+	if (Services.prefs.getBoolPref("extensions.language_manager.firstrun") == false){
+		Services.prefs.setBoolPref("extensions.language_manager.firstrun", true);
+		try {
+			if (typeof openUILinkIn != "undefined") {
+				setTimeout(function() {
+					openUILinkIn("chrome://languagemanager/content/firstrun.html", "tab");
+				}, 2000); // Wait 2 seconds before showing to allow time after browser restart.
+			}
+		} catch(e){
+			// Catch any nasty errors and output to dialogue
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+		}
+	}
+},
 
 initPane: function(){	
 		// Add attribute to provide theme specific css to resolve any issues with styling on non default themes.
@@ -621,6 +638,12 @@ initPane: function(){
 
 		}
 }
+
+window.addEventListener("load", function () { 
+	window.removeEventListener("load", gLanguageManger.initAddon(), false);
+	gLanguageManger.initAddon(); 
+}, false);
+
   // Make gLanguageManger a global variable
   global.gLanguageManger = gLanguageManger;
 }(this));

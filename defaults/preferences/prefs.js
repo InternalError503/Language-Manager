@@ -10,3 +10,14 @@ pref("extensions.language_manager.browser_mode", "");
 - time date (timedate)
 */
 pref("extensions.language_manager.time-date_mode", "default");
+
+// On addon first run.
+pref("extensions.language_manager.firstrun", false);
+
+/*
+On addon first run add toolbar button to area*
+- default (Customize Pallet)
+- toolbar (nav-bar)
+- panel_menu (panel UI menu)
+*/
+pref("extensions.language_manager.addbuttontoarea", "default");

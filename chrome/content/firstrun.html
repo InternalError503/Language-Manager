@@ -1,0 +1,124 @@
+<!-- 
+	This Source Code Form is subject to the terms of the Mozilla Public
+	License, v. 2.0. If a copy of the MPL was not distributed with this
+	file, You can obtain one at http://mozilla.org/MPL/2.0/. 
+-->
+
+<!DOCTYPE html>
+<html class="uk-notouch" lang="en-us" dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<title id="languageFirstruntitle">Language Manager Firstrun</title>
+	<link rel="icon" type="image/png" id="favicon" href="chrome://LanguageManager/skin/icon32.png">
+	<link rel="stylesheet" type="text/css" media="all" href="core/css/uikit.gradient.min.css" />
+	<script src="chrome://LanguageManager/content/firstrun.js"></script>
+</head>
+
+<body>
+	<div class="uk-container uk-container-center">
+		<div class="uk-grid uk-grid-width-xlarge-*">
+			<div class="column_main">
+
+				<nav class="uk-navbar uk-hidden-small">
+					<a class="uk-navbar-brand"><img src="chrome://LanguageManager/skin/icon32.png"></img> <span class="uk-text-bold" id="NavTitle">Language Manager</span></a>
+					<ul class="uk-navbar-nav">
+						<li><a href="https://8pecxstudios.com/Forums/index.php" target="_blank"><i class="uk-icon-user uk-icon-medium"></i> <span id="NavSupport">Support Forums</span></a></li>
+						<li><a href="https://8pecxstudios.com/contact-us" target="_blank"><i class="uk-icon-envelope uk-icon-medium"></i> <span id="NavContact">Contact Us</span></a></li>
+					</ul>
+				</nav>
+
+				<hr class="uk-grid-divider" style="border:none;"></hr>
+
+				<div class="uk-grid" data-uk-grid-margin="">
+
+					<div class="uk-width-medium-1-1">
+
+						<div class="uk-panel uk-panel-box">
+
+							<h2 id="mainFirstrunLabel" class="uk-panel-title"><i class="uk-icon-asterisk uk-icon-large"></i> <span id="FirstrunPanel">Firstrun Settings</span></h2>
+							<form class="uk-form uk-form-stacked">
+								<fieldset>
+
+									<!-- Set language manager toolbar button position -->
+									<div class="uk-form-row">
+
+										<label class="uk-form-label" for="AddToolbarButtonToAreaSelect"><span id="AddToolbarButtonToArea">Where would you like to place the toolbar button:</span></label>
+										<div class="uk-form-controls" onchange="gLanguageMangerFirstrun.addToolbarButtonToAreaSelectChanged();">
+											<select id="AddToolbarButtonToAreaSelect">
+												<option id="defaultFormat" disabled="true">Select Position</option>					
+												<option id="ButtonAreaMenuDefault" value="default">Default (Customize Pallet)</option>
+												<option id="ButtonAreaMenuToolbar" value="toolbar">Toolbar (nav-bar)</option>
+												<option id="ButtonAreaMenuPanel" value="panel_menu">Panel menu (Panel UI Menu)</option>						
+											</select>
+										</div>
+									</div>
+
+								</fieldset>
+							</form>
+						</div><br/>
+					</div>
+
+					<div class="uk-width-medium-1-3 uk-hidden-small">
+						<div class="uk-panel uk-panel-box">
+							<center>
+								<h5 class="uk-text-bold" id="ImageButtonAreaMenuDefault">Default (Customize Pallet)</h5>
+								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_customize.jpg" target="_blank">
+									<img src="chrome://LanguageManager/content/core/images/show_on_customize.jpg" height="500" width="350" />
+								</a>
+							</center>
+						</div>
+					</div>
+					<div class="uk-width-1-3 uk-hidden-small">
+						<div class="uk-panel uk-panel-box">
+							<center>
+								<h5 class="uk-text-bold" id="ImageButtonAreaMenuToolbar">Toolbar (nav-bar)</h5>
+								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" target="_blank">
+									<img src="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" height="500" width="350" />
+								</a>
+							</center>
+						</div>
+					</div>
+					<div class="uk-width-1-3 uk-hidden-small">
+						<div class="uk-panel uk-panel-box">
+							<center>
+								<h5 class="uk-text-bold" id="ImageButtonAreaMenuPanel">Panel menu (Panel UI Menu)</h5>
+								<a class="uk-thumbnail" href="chrome://LanguageManager/content/core/images/show_on_panel.jpg" target="_blank">
+									<img src="chrome://LanguageManager/content/core/images/show_on_panel.jpg" height="500" width="350" />
+								</a>
+							</center>
+						</div>
+					</div>
+
+					<div class="uk-width-1-3 uk-visible-small">
+						<h5 class="uk-text-bold" id="TextButtonAreaMenuDefault">Default (Customize Pallet)</h5>
+						<a href="chrome://LanguageManager/content/core/images/show_on_customize.jpg" target="_blank">show_on_customize.jpg</a>
+						<h5 class="uk-text-bold" id="TextButtonAreaMenuToolbar">Toolbar (nav-bar)</h5>
+						<a href="chrome://LanguageManager/content/core/images/show_on_toolbar.jpg" target="_blank">show_on_toolbar.jpg</a>
+						<h5 class="uk-text-bold" id="TextButtonAreaMenuPanel">Panel menu (Panel UI Menu)</h5>
+						<a href="chrome://LanguageManager/content/core/images/show_on_panel.jpg" target="_blank">show_on_panel.jpg</a>
+					</div>
+
+				</div>
+
+			</div>
+
+			<hr class="uk-grid-divider" style="border:none;"></hr>
+			<div class="uk-grid" data-uk-grid-margin="">
+				<div class="uk-width-medium-1-1">
+					<div class="uk-panel uk-hidden-small">
+						<center>
+							<p><span id="labelCopy">Copyright© 2012-2016</span> <a href="https://8pecxstudios.com/"><i class="uk-icon-external-link"></i> 8pecxstudios &trade;</a></p>
+						</center>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	</div>
+
+</body>
+
+</html>
