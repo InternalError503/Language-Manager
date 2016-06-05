@@ -29,7 +29,9 @@ try{
 		OptionsPanelTitle: document.getElementById("OptionsPanel"),
 		OptionsCurrentLocale: document.getElementById("currentLanguage"),	
 		// Show what browser mode firefox or firefox beta or cyberfox.
-		OptionsBrowserMode: document.getElementById("BrowserMode"),	
+		OptionsBrowserMode: document.getElementById("BrowserMode"),
+		// Language manager browser menus items
+		OptionsBrowserMenus: document.getElementById("BrowserMenus"),	
 		// Copyright message.
 		CopyrightLabel: document.getElementById("labelCopy"),
 		// Select time and date format.
@@ -52,6 +54,8 @@ try{
 		contentElement.OptionsCurrentLocale.textContent = bundleOptionsWindow.GetStringFromName("lmCurrentLanguage");	
 		// Show browser mode label.
 		contentElement.OptionsBrowserMode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserMode");
+		// Language manager menu item in browser menus label
+		contentElement.OptionsBrowserMenus.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserMenus");
 		// Copyright message.
 		contentElement.CopyrightLabel.textContent = bundleOptionsWindow.GetStringFromName("lmCopyright");
 		// Select time and date format.		
@@ -82,6 +86,18 @@ try{
 
 		}
 		
+		switch (Services.prefs.getBoolPref("extensions.language_manager.showinmenu")) {
+
+		    case true:
+					document.getElementById("BrowserMenusCheckbox").checked = true;
+		    break;
+
+		    case false:
+					document.getElementById("BrowserMenusCheckbox").checked = false;
+		    break;
+
+		}
+		
 		switch (Services.prefs.getCharPref("extensions.language_manager.time-date_mode")) {
 
 		    default:
@@ -105,6 +121,28 @@ try{
 				Services.prompt.alert(null, "oops i did it again!", "Were sorry but something has gone wrong! " + e);
 		}
 	
+},
+
+addToBrowserMenusChanged: function(){
+
+	try{
+	
+        switch (document.getElementById("BrowserMenusCheckbox").checked) {
+        
+            case true:
+                Services.prefs.setBoolPref("extensions.language_manager.showinmenu", true);
+            break;
+ 
+            case false:
+                Services.prefs.setBoolPref("extensions.language_manager.showinmenu", false);
+            break;
+        }
+		
+			}catch (e){
+				// Catch any nasty errors and output to dialogue and console
+				Services.prompt.alert(null, "oops i did it again!", "Were sorry but something has gone wrong! " + e);
+		}		
+
 },
 
 timeDateFormatChanged: function(){

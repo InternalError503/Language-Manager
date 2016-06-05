@@ -11,6 +11,9 @@ pref("extensions.language_manager.browser_mode", "");
 */
 pref("extensions.language_manager.time-date_mode", "default");
 
+// Set language manager browser menu items.
+pref("extensions.language_manager.showinmenu", true);
+
 // On addon first run.
 pref("extensions.language_manager.firstrun", false);
 

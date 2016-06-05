@@ -37,7 +37,8 @@
 					context="lm_options_menu"		
 					iconic="true"
 					class="menuitem-iconic"
-					label="&languageManagerTitleItem.label;" 
+					label="&languageManagerTitleItem.label;"
+					insertafter="menu_preferences"
 					oncommand="gLanguageManger.ShowLanguageManager();"/>						
 	</menupopup>
 	<menupopup id="appmenuSecondaryPane">
@@ -45,7 +46,8 @@
 					context="lm_options_menu"		
 					iconic="true"
 					class="menuitem-iconic"
-					label="&languageManagerTitleItem.label;" 
+					label="&languageManagerTitleItem.label;"
+					insertafter="appmenu_customize" 
 					oncommand="gLanguageManger.ShowLanguageManager();"/>	
 	</menupopup>	
 
