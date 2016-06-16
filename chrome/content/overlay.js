@@ -339,7 +339,7 @@ initPane: function(){
 		// On request completion hide the progress-bar
 		function requestComplete(evt) {
 		  document.getElementById("lm-percent").textContent = 0 + " %";
-		 document.getElementById("lm-overlay").hidden = true;
+		  document.getElementById("lm-overlay").hidden = true;
 		}
 				
 		request.onload = function(aEvent){
@@ -347,9 +347,41 @@ initPane: function(){
 				  request.status < 300) || 
 				  request.status == 304){
 					 if(aBoolean === true){ 
-						  // Download Pack	
-						  document.location.href = aUrl;
-						  gLanguageManger.changeButtonStates("closeButton", false);	
+						 /* 						 
+							Note to AMO reviewers with browser.tabs.remote.force-enable enabled language manager is unable to download correctly.
+							Below will download and install the language pack only if the users accepts the dialogue prompt, No addon will install without
+							user consent, This may only be nessisary until e10s finally lands when a complete work around can be used.
+						 */
+						 // Download Pack	
+						if (Services.prefs.getBoolPref("browser.tabs.remote.force-enable")){
+							// Only download pack with user consent.
+							if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningTitle"),
+								gLMangerHandler.bundleDialogue.GetStringFromName("installPackWarningMessage"))){
+								AddonManager.getInstallForURL(aUrl,
+										function(addonInstall) {
+										  let listener = {
+											onDownloadStarted: function(addon){
+												document.getElementById("lm-percent").textContent = 0 + " %";
+												document.getElementById("lm-overlay").hidden = false;
+											},
+											onDownloadProgress: function(addon){
+												var percentComplete = Math.floor((addonInstall.progress / addonInstall.maxProgress) * 100);
+												document.getElementById("lm-percent").textContent = percentComplete + " %";
+											},
+											onInstallEnded: function(addon){
+												document.getElementById("lm-overlay").hidden = true;
+												document.getElementById("lm-percent").textContent = 0 + " %";
+												gLanguageManger.changeButtonStates("closeButton", false);
+											}
+										  }
+										  addonInstall.addListener(listener);
+										  addonInstall.install();
+										}, "application/x-xpinstall");
+							 }
+						} else {
+								document.location.href = aUrl;
+								gLanguageManger.changeButtonStates("closeButton", false);
+						}
 					 }else{
 						 // Load lanugage manager information.
 						var text = aEvent.target.responseText;
