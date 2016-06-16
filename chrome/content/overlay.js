@@ -39,7 +39,7 @@ initAddon: function(){
 			}
 		} catch(e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 1");	
 		}
 	}
 	
@@ -83,7 +83,7 @@ initPane: function(){
 		}
 	}catch(e){
 		// Catch any nasty errors and output to dialogue
-		gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);		
+		gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 2");		
 	}
 	try {
 		if (Services.appinfo.OS=="WINNT"){
@@ -103,7 +103,7 @@ initPane: function(){
 		
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e);	
+			gLMangerHandler.prompts.alert(gLMangerHandler.bundleDebugError.GetStringFromName("initPaneErrorAlert") + " " + e + " 3");	
 		}
 		
 		// Quick toggle of language packs	
@@ -119,7 +119,7 @@ initPane: function(){
 				}
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 4");	
 			}
     }, false);
 	// If the pack is the active pack we don't want to show toggle context menu item.
@@ -141,7 +141,7 @@ initPane: function(){
 				});
 				}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 5");	
 			}
     }, false);
 	
@@ -225,7 +225,7 @@ initPane: function(){
 			datlist.appendChild( row );
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 6");	
 		}
 	}
 	// Get list of all installed language packs, Needs a little work in need of optimization -> (Single call iteration).
@@ -254,7 +254,7 @@ initPane: function(){
 			gLMangerHandler.jsObject = [];
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 7");	
 			}
 		});
 	},
@@ -315,7 +315,7 @@ initPane: function(){
 			  }
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 8");
 		}
 	},
 
@@ -390,7 +390,7 @@ initPane: function(){
 						}	
 						if(!IsJsonValid(gLMangerHandler.jsObject)){
 							// Need to throw error message and exit if not valid json.
-							gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid"));
+							gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("jsonnotvalid") + " a");
 							document.getElementById("lm-overlay").hidden = true;		
 							menuItemsList.disabled = true;						
 							return;
@@ -411,14 +411,14 @@ initPane: function(){
 					gLanguageManger.ResizeListbox();
 					 }				  			  
 			}else{
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess"));
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotsuccess") + " b");
 				document.getElementById("lm-overlay").hidden = true;
 			}	
 		};
 		
 		request.onerror = function(aEvent){
 			// Disable the list and show error
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status);
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("httpdNotExist") + " " + aEvent.target.status  + " c");
 			document.getElementById("lm-overlay").hidden = true;
 			menuItemsList.disabled = true;	
 		};
@@ -452,7 +452,7 @@ initPane: function(){
 			}
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 9");	
 		}
 	},
 	
@@ -462,7 +462,7 @@ initPane: function(){
 		this.checkBrowser();
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 10");	
 		}
 	},
 	
@@ -471,7 +471,7 @@ initPane: function(){
 			gLanguageManger.ReuseTab("C974F35CA066A280F094DDE616EDD176", "chrome://languagemanager/content/options.html");
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 11");	
 		}
 	},
 	
@@ -481,7 +481,7 @@ initPane: function(){
 		openUILinkIn('https://8pecxstudios.com/Forums/viewtopic.php?f=11&t=645', 'tab');
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 12");	
 		}
 	},
 	
@@ -490,7 +490,7 @@ initPane: function(){
 			document.getElementById(element).disabled = state;
 		}catch (e){
 					// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 13");
 		}
 	},
 	
@@ -500,7 +500,7 @@ initPane: function(){
 		this.changeButtonStates("closeButton", true);			
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 14");
 	}
 },
 	
@@ -511,7 +511,7 @@ initPane: function(){
 				Services.prefs.setCharPref("general.useragent.locale", newPref);	
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("setPrefValueError") + " " + e);
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("setPrefValueError") + " " + e + " 15");
 	}
 },
 	// Complex member
@@ -537,7 +537,7 @@ initPane: function(){
 				}						
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("downloadPackError") + " " + e);
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("downloadPackError") + " " + e + " 16");
 		}	
 },
     // Important part of the process to enable download packs, Full logic implementation was removed for an easy one line.
@@ -546,7 +546,7 @@ initPane: function(){
 				Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit);
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("restartBrowserError") + " " + e);
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("restartBrowserError") + " " + e + " 17");
 		}
 	},
 		// Language pack install complete.
@@ -562,7 +562,7 @@ initPane: function(){
 				}				
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e + " 18");
 		}	
 },
 		// Language pack activate.
@@ -576,7 +576,7 @@ initPane: function(){
 				}		
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
-				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e);
+				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("completeError") + " " + e + " 19");
 		}
 },
 	/*
@@ -612,7 +612,7 @@ initPane: function(){
 				gLanguageManger.downloadPack();
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 20");	
 		}
 	},
 	
@@ -636,7 +636,7 @@ initPane: function(){
 			}
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 21");	
 		}
 	},
 	/*
@@ -673,7 +673,7 @@ initPane: function(){
 		} 								
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 22");	
 		}		
 	},
 
@@ -689,7 +689,7 @@ initPane: function(){
 					}
 				}catch (e){
 					// Catch any nasty errors and output to dialogue and console
-					gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+					gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 23");
 			}			
 
 		}
