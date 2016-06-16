@@ -39,7 +39,7 @@ initAddon: function(){
 			}
 		} catch(e){
 			// Catch any nasty errors and output to dialogue
-			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 1");	
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 0");	
 		}
 	}
 	
@@ -66,7 +66,7 @@ initAddon: function(){
 					}
 				} catch (e) {
 					// Catch any nasty errors and output to dialogue
-					gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e);
+					gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 1");
 				}
 			}, false);
 		}
@@ -250,8 +250,7 @@ initPane: function(){
 					}
 				});
 			}
-			// Release JSON data from memory.
-			gLMangerHandler.jsObject = [];
+			
 			}catch (e){
 				// Catch any nasty errors and output to dialogue
 				gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 7");	
@@ -318,6 +317,23 @@ initPane: function(){
 			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 8");
 		}
 	},
+	
+	// Update language pack list items.
+	updateInstalledPackList : function(){
+		try {
+			if (gLMangerHandler.jsObject  != null && datlist != null)	{
+				// Remove all current language pack list items to prevent duplicates.
+				while (datlist.childNodes.length > 1) {
+					datlist.removeChild(datlist.lastChild);
+				}
+				// Rebuild language pack list.
+				gLanguageManger.getInstalledLanguages();
+			}
+		} catch (e) {
+			// Catch any nasty errors and output to dialogue
+			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " d");
+		}
+	},
 
 	/* 
 	   We attempt to validate our json urls, But what about the language pack urls.
@@ -368,6 +384,7 @@ initPane: function(){
 											onInstallEnded: function(addon){
 												document.getElementById("lm-overlay").hidden = true;
 												document.getElementById("lm-percent").textContent = 0 + " %";
+												gLanguageManger.updateInstalledPackList();
 												gLanguageManger.changeButtonStates("closeButton", false);
 											}
 										  }
@@ -666,7 +683,7 @@ initPane: function(){
 						// If pack is not the current active we can just uninstall it.
 						addon.uninstall();						
 						// Trigger a update on the installed addons table.
-						document.location.reload(false);
+						gLanguageManger.updateInstalledPackList();
 					}
 				}					
 			});
