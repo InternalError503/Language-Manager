@@ -348,18 +348,15 @@ initPane: function(){
 				  request.status == 304){
 					 if(aBoolean === true){ 
 						 /* 						 
-							Note to AMO reviewers with browser.tabs.remote.force-enable enabled language manager is unable to download correctly.
-							Below will download and install the language pack only if the users accepts the dialogue prompt, No addon will install without
-							user consent, This may only be nessisary until e10s finally lands when a complete work around can be used.
+							Note to AMO reviewers language manager is unable to download language packs correctly, Ether gets treated as *.zip or CSP prevents it in 47.0 or with e10s.
+							Below will download and install the language pack only if the users accepts the dialogue prompt, No addon will install without user consent.
 						 */
-						 // Download Pack	
-						if (Services.prefs.getBoolPref("browser.tabs.remote.force-enable")){
-							// Only download pack with user consent.
-							if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningTitle"),
-								gLMangerHandler.bundleDialogue.GetStringFromName("installPackWarningMessage"))){
+						if (gLMangerHandler.prompts.confirm(window, gLMangerHandler.bundleDialogue.GetStringFromName("removeWarningTitle"),
+							gLMangerHandler.bundleDialogue.GetStringFromName("installPackWarningMessage"))){
+								// Download and install language pack only with user consent!
 								AddonManager.getInstallForURL(aUrl,
-										function(addonInstall) {
-										  let listener = {
+									function(addonInstall) {
+										let listener = {
 											onDownloadStarted: function(addon){
 												document.getElementById("lm-percent").textContent = 0 + " %";
 												document.getElementById("lm-overlay").hidden = false;
@@ -376,12 +373,8 @@ initPane: function(){
 										  }
 										  addonInstall.addListener(listener);
 										  addonInstall.install();
-										}, "application/x-xpinstall");
-							 }
-						} else {
-								document.location.href = aUrl;
-								gLanguageManger.changeButtonStates("closeButton", false);
-						}
+									}, "application/x-xpinstall");
+							}
 					 }else{
 						 // Load lanugage manager information.
 						var text = aEvent.target.responseText;
