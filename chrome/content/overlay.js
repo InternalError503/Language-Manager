@@ -174,9 +174,11 @@ initPane: function(){
 			   Here we chop the source URI to get the locale value, In cases where the pack was updated automatically
 			   we need to trim the query with the file hash value, This locale value will look different to the standard.
 			*/
-			var showLocale = locale.substring(locale.lastIndexOf("/") + 1).replace(".xpi", "").split('?')[0];			
-			cell.setAttribute('label', showLocale );
-			cell.setAttribute('value', showLocale );
+			if (locale != null) {
+				var showLocale = locale.substring(locale.lastIndexOf("/") + 1).replace(".xpi", "").split('?')[0];			
+				cell.setAttribute('label', showLocale );
+				cell.setAttribute('value', showLocale );
+			}
 			row.appendChild( cell );
 			// Create and attach 3rd cell (Version)
 			cell = document.createElement('listcell');
@@ -240,7 +242,11 @@ initPane: function(){
 			for (i = 0; guidList[i]; i++) {
 				items.forEach(function(item, index, array) {	
 					if (item.id === guidList[i].ID){
-						getAllAddons(item.name, item.id, item.sourceURI.spec, item.version, item.updateDate, item.isActive, item.isCompatible);						
+						if (item.sourceURI != null){
+							getAllAddons(item.name, item.id, item.sourceURI.spec, item.version, item.updateDate, item.isActive, item.isCompatible);
+						}else{
+							getAllAddons(item.name, item.id, null, item.version, item.updateDate, item.isActive, item.isCompatible);
+						}							
 					}
 				});
 			}
