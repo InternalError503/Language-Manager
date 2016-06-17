@@ -128,7 +128,13 @@
 	}
 	listheader {
 		padding: 2px 5px!important;
-	}				
+	}
+	listbox > listitem{
+		padding: 0px!important;
+	}
+	listbox > listitem > listcell{
+		padding: 0.3em!important;
+	}	
 }	
 	
 /* Theme compatibility slight margin issue with some themes and the language manager xul window */
