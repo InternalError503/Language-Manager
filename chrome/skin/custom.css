@@ -6,7 +6,10 @@
 #Language-Manager #top_pane{
 	margin-left:7px;
 }
-
+#top_pane_caption {
+	list-style-image: url("icon64.png");
+	-moz-image-region: rect(0px 66px 64px 0px);
+}
 #languageMenu{
 	width: 290px;
 }
