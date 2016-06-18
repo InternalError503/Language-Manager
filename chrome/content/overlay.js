@@ -340,7 +340,7 @@ initPane: function(){
 	   Since we have json elements hosted on our server, We need to check if the url is valid
 	   If the url is not valid then we need to alert the user and stop the addon from continuing.
 	*/
-	validateURL : function(aUrl, aBoolean){
+	validateURL : function(aUrl, aBoolean, isUpdatePack){
 		var menuItemsList = document.getElementById("languageMenu");
 		var request = new XMLHttpRequest();
 			request.addEventListener("progress", requestProgress, false);
@@ -385,7 +385,8 @@ initPane: function(){
 												document.getElementById("lm-overlay").hidden = true;
 												document.getElementById("lm-percent").textContent = 0 + " %";
 												gLanguageManger.updateInstalledPackList();
-												gLanguageManger.changeButtonStates("closeButton", false);
+												if (!isUpdatePack)
+													gLanguageManger.changeButtonStates("closeButton", false);
 											}
 										  }
 										  addonInstall.addListener(listener);
@@ -532,7 +533,7 @@ initPane: function(){
 	}
 },
 	// Complex member
-	downloadPack: function() {
+	downloadPack: function(aBoolean) {
 		try{			
 			// Change button attributes.	
 			this.changeButtonStates("installButton", true);				  
@@ -543,13 +544,13 @@ initPane: function(){
 				document.getElementById("lm-overlay").hidden = false;					
 				switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 					case "cyberfoxmode":
-						gLanguageManger.validateURL(cyberfoxModeURL + document.getElementById("languageMenu").value + ".xpi", true);	
+						gLanguageManger.validateURL(cyberfoxModeURL + document.getElementById("languageMenu").value + ".xpi", true, aBoolean);	
 						break;
 					case "firefoxmode":
-						gLanguageManger.validateURL(firerfoxModeURL + document.getElementById("languageMenu").value + ".xpi", true);
+						gLanguageManger.validateURL(firerfoxModeURL + document.getElementById("languageMenu").value + ".xpi", true, aBoolean);
 						break;
 					case "firefoxbetamode":
-						gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi", true);				
+						gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi", true, aBoolean);				
 						break;
 				}						
 			}catch (e){
@@ -626,7 +627,8 @@ initPane: function(){
 	UpdatePack : function(){	
 	try{
 				document.getElementById("languageMenu").value = gLanguageManger.getSelectedPackInfo(false, true);
-				gLanguageManger.downloadPack();
+				this.changeButtonStates("closeButton", true);
+        gLanguageManger.downloadPack(true);
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
 			gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 20");	

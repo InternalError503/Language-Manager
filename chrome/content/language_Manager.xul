@@ -101,7 +101,7 @@
 <separator class="groove-thin" id="restoreDefaultSeparator"/>
 
 <hbox align="center">	
- <button id="installButton" label="&installButtonItem.label;" disabled="true" oncommand="gLanguageManger.downloadPack();"/> 
+ <button id="installButton" label="&installButtonItem.label;" disabled="true" oncommand="gLanguageManger.downloadPack(false);"/> 
  <button id="closeButton" type="button" label="&closeButtonItem.label;" disabled="true" oncommand="gLanguageManger.complete();"/>
  <button id="optionsButton" type="button" label="&optionsButtonItem.label;" oncommand="gLanguageManger.ShowLanguageManagerOptions();"/>
 <hbox pack="end">
