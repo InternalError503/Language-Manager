@@ -537,10 +537,20 @@ initPane: function(){
 		try{			
 			// Change button attributes.	
 			this.changeButtonStates("installButton", true);				  
-			// Request URL where to download language pack from.		
+			// Request URL where to download language pack from.
 			var cyberfoxModeURL = "https://download.8pecxstudios.com/latest/language/" + gLMangerHandler.browserAppInformation.version + "/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/" + gLMangerHandler.browserAppInformation.version + "/win32/xpi/";
 			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";
+			/*
+				Unfortunately changes have been made to the https://ftp.mozilla.org/pub/firefox/releases/latest-beta url and is no longer working correctly.
+				Below we attempt to get the browser display version as it contains what beta version the browser is and construct the url.
+			*/
+			var MozAppConstants = null;
+			try {
+				MozAppConstants = Cu.import("resource://gre/modules/AppConstants.jsm", null).AppConstants;
+				firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/" +  MozAppConstants.MOZ_APP_VERSION_DISPLAY + "/win32/xpi/";
+			}catch(e){MozAppConstants = null;}
+
 				document.getElementById("lm-overlay").hidden = false;					
 				switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
 					case "cyberfoxmode":
