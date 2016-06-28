@@ -27,3 +27,5 @@
 <!ENTITY languageManagerTogglePack.tooltip "Активация языкового пакета">
 <!ENTITY languageManagerToggleRemove.label "Удалить пакет">
 <!ENTITY languageManagerToggleRemove.tooltip "Удаление языкового пакета">
+
+<!ENTITY languageManagerBetaWarning.label "Important: Firefox beta language packs may not be available for your version at this time!">

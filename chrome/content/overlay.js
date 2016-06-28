@@ -460,6 +460,18 @@ initPane: function(){
 				*/
 				if (Services.prefs.getCharPref("app.update.channel") === "beta"){
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxbetamode");
+					/*
+					 Show a brief notifcation to the user about beta language packs then hide the notification after * time.
+					 6 seconds should be enough to inform the user then hide the notification to prevet wasted vertical screen space.
+					 Note: For AMO reviewers this notifcation should only show in firefox beta clients.
+					*/
+					var notice = document.getElementById("betawarningtouser");
+					if (notice && typeof(notice)  != "undefined" || notice != null){
+						notice.hidden = false;
+						setTimeout(function() {
+							notice.hidden = true;
+						}, 6000); // Wait 6 seconds before hiding the notification.
+					}
 				}else{
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxmode");
 				}

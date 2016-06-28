@@ -6,6 +6,7 @@
 -->
 <?xml-stylesheet href="chrome://global/skin/"?>
 <?xml-stylesheet href="chrome://LanguageManager/skin/custom.css" type="text/css"?>
+<?xml-stylesheet href="chrome://LanguageManager/content/core/css/uikit.gradient.min.css" type="text/css"?>
 <!-- 
 	Use in-content preferences.css to style language manager this makes language manager look very nice and works great with full themes.
 	This allows language managers visual experience to grow with each new version of firefox.
@@ -59,7 +60,9 @@
 <separator class="groove-thin"/>
 <rows>
 <vbox align="center">
-
+	<hbox flex="1">
+		<label id="betawarningtouser" class="uk-alert uk-alert-large uk-alert-danger" hidden="true">&languageManagerBetaWarning.label;</label>
+	</hbox>
 </vbox>
 <description id="desc2" align="center">&languageCurrentInstalled.label;</description>
 <listbox id="theList">

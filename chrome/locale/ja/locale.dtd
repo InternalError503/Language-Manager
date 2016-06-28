@@ -27,3 +27,5 @@
 <!ENTITY languageManagerTogglePack.tooltip "言語パックを有効にします">
 <!ENTITY languageManagerToggleRemove.label "パックを削除">
 <!ENTITY languageManagerToggleRemove.tooltip "言語パックを削除します">
+
+<!ENTITY languageManagerBetaWarning.label "Important: Firefox beta language packs may not be available for your version at this time!">
