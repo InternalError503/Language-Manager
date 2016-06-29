@@ -1,0 +1,31 @@
+<!ENTITY languageManagerTitleItem.label "Language Manager">
+<!ENTITY languagePackCaptionItem.label "Instalowanie pakietu językowego">
+<!ENTITY languageDescription.desc "Wystarczy wybrać pakiet, który chce się zainstalować, następnie nacisnać przycisk 'zainstaluj'.">
+<!ENTITY languageCurrentInstalled.label "Aktualnie zainstalwoane pakiety językowe:">
+<!ENTITY languageEnableMessage.label "Kliknij dwukrotnie pakiet aby włączyć!">
+<!ENTITY selectLanguageItem.label "Wybierz język">
+<!ENTITY installButtonItem.label "Zainstaluj">
+<!ENTITY closeButtonItem.label "Ukończono">
+<!ENTITY optionsButtonItem.label "Opcje">
+<!ENTITY lmHelpButton.tooltip "Dokumentacja pomocy Language Manager">
+<!ENTITY restoreDefaultLocale.label "Przywróć domyślny język.">
+<!ENTITY restoreDefaultButtonItem.label "Zresetuj język">
+
+<!ENTITY listItemName.label "Nazwa">
+<!ENTITY listItemVersion.label "Wersja">
+<!ENTITY listItemLocale.label "Lokalizacja">
+<!ENTITY listItemInstalled.label "Zainstalowane">
+<!ENTITY listItemEnabled.label "Włączone">
+<!ENTITY listItemCompatible.label "Kompatybilne">
+
+<!ENTITY languageManagerCMenuItem.label "Pokaż Language Manager">
+<!ENTITY languageManagerCMenuOptionsItem.label "Pokaż Opcje">
+
+<!ENTITY languageManagerUpdatePack.label "Aktualizuj pakiet">
+<!ENTITY languageManagerUpdatePack.tooltip "Aktualizuj pakiet językowy">
+<!ENTITY languageManagerTogglePack.label "Przełącz pakiet">
+<!ENTITY languageManagerTogglePack.tooltip "Włącz pakiet językowy">
+<!ENTITY languageManagerToggleRemove.label "Usuń pakiet">
+<!ENTITY languageManagerToggleRemove.tooltip "Usuń pakiet językowy">
+
+<!ENTITY languageManagerBetaWarning.label "Ważne: pakiety językowe dla twojej wersji Firefox beta mogą nie być teraz dostępne!">
