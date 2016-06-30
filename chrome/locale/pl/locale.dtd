@@ -1,11 +1,11 @@
 <!ENTITY languageManagerTitleItem.label "Language Manager">
 <!ENTITY languagePackCaptionItem.label "Instalowanie pakietu językowego">
-<!ENTITY languageDescription.desc "Wystarczy wybrać pakiet, który chce się zainstalować, następnie nacisnać przycisk 'zainstaluj'.">
-<!ENTITY languageCurrentInstalled.label "Aktualnie zainstalwoane pakiety językowe:">
-<!ENTITY languageEnableMessage.label "Kliknij dwukrotnie pakiet aby włączyć!">
+<!ENTITY languageDescription.desc "Wystarczy wybrać pakiet, który chce się zainstalować, a następnie nacisnąć przycisk 'zainstaluj'.">
+<!ENTITY languageCurrentInstalled.label "Aktualnie zainstalowane pakiety językowe:">
+<!ENTITY languageEnableMessage.label "Kliknij dwukrotnie pakiet, aby włączyć!">
 <!ENTITY selectLanguageItem.label "Wybierz język">
 <!ENTITY installButtonItem.label "Zainstaluj">
-<!ENTITY closeButtonItem.label "Ukończono">
+<!ENTITY closeButtonItem.label "Gotowe">
 <!ENTITY optionsButtonItem.label "Opcje">
 <!ENTITY lmHelpButton.tooltip "Dokumentacja pomocy Language Manager">
 <!ENTITY restoreDefaultLocale.label "Przywróć domyślny język.">
@@ -14,12 +14,12 @@
 <!ENTITY listItemName.label "Nazwa">
 <!ENTITY listItemVersion.label "Wersja">
 <!ENTITY listItemLocale.label "Lokalizacja">
-<!ENTITY listItemInstalled.label "Zainstalowane">
-<!ENTITY listItemEnabled.label "Włączone">
-<!ENTITY listItemCompatible.label "Kompatybilne">
+<!ENTITY listItemInstalled.label "Zainstalowany">
+<!ENTITY listItemEnabled.label "Włączony">
+<!ENTITY listItemCompatible.label "Kompatybilny">
 
 <!ENTITY languageManagerCMenuItem.label "Pokaż Language Manager">
-<!ENTITY languageManagerCMenuOptionsItem.label "Pokaż Opcje">
+<!ENTITY languageManagerCMenuOptionsItem.label "Pokaż opcje">
 
 <!ENTITY languageManagerUpdatePack.label "Aktualizuj pakiet">
 <!ENTITY languageManagerUpdatePack.tooltip "Aktualizuj pakiet językowy">
@@ -28,4 +28,4 @@
 <!ENTITY languageManagerToggleRemove.label "Usuń pakiet">
 <!ENTITY languageManagerToggleRemove.tooltip "Usuń pakiet językowy">
 
-<!ENTITY languageManagerBetaWarning.label "Ważne: pakiety językowe dla twojej wersji Firefox beta mogą nie być teraz dostępne!">
+<!ENTITY languageManagerBetaWarning.label "Ważne: pakiety językowe dla twojej wersji Firefox Beta mogą być teraz niedostępne!">
