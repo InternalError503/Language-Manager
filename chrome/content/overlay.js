@@ -72,6 +72,25 @@ initAddon: function(){
 			}, false);
 		}
 	} catch(e){}
+	// Add language manager to CTR (Classic Theme Restorer) appmenu-popup
+	try {
+		// Check that appmenu-popup is not null or undefined, Continue regardless of error as to not break the script.
+		var browserMenu = document.getElementById("appmenu-popup");
+		if (browserMenu &&  typeof(browserMenu)  != "undefined" || browserMenu  != null){
+			browserMenu.addEventListener("popupshowing", function(e) {
+				try {
+					if (Services.prefs.getBoolPref("extensions.language_manager.showinmenu")) {
+						document.getElementById("appmenu_LanguageManager").hidden = false;
+					} else {
+						document.getElementById("appmenu_LanguageManager").hidden = true;
+					}
+				} catch (e) {
+					// Catch any nasty errors and output to dialogue
+					gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 1a");
+				}
+			}, false);
+		}
+	} catch(e){}
 },
 
 initPane: function(){	
