@@ -44,7 +44,8 @@ try{
 		FirstrunImageButtonAreaMenuPanel: document.getElementById("ImageButtonAreaMenuPanel"),
 		FirstrunTextButtonAreaMenuDefault: document.getElementById("TextButtonAreaMenuDefault"),
 		FirstrunTextButtonAreaMenuToolbar: document.getElementById("TextButtonAreaMenuToolbar"),
-		FirstrunTextButtonAreaMenuPanel: document.getElementById("TextButtonAreaMenuPanel")
+		FirstrunTextButtonAreaMenuPanel: document.getElementById("TextButtonAreaMenuPanel"),
+		FirstrunBrowserMenus: document.getElementById("BrowserMenus")
 	};
 	
 		/* 
@@ -73,6 +74,7 @@ try{
 		contentElement.FirstrunTextButtonAreaMenuDefault.textContent = bundleFirstrunWindow.GetStringFromName("lmButtonAreaMenuDefault");
 		contentElement.FirstrunTextButtonAreaMenuToolbar.textContent = bundleFirstrunWindow.GetStringFromName("lmButtonAreaMenuToolbar");
 		contentElement.FirstrunTextButtonAreaMenuPanel.textContent = bundleFirstrunWindow.GetStringFromName("lmButtonAreaMenuPanel");
+		contentElement.FirstrunBrowserMenus.textContent = bundleFirstrunWindow.GetStringFromName("lmBrowserMenus");
 		
 		switch (Services.prefs.getCharPref("extensions.language_manager.addbuttontoarea")) {
 
@@ -90,6 +92,18 @@ try{
 
 		    case "panel_menu":
 				document.getElementById("AddToolbarButtonToAreaSelect").value = "panel_menu";
+		    break;
+
+		}
+
+		switch (Services.prefs.getBoolPref("extensions.language_manager.showinmenu")) {
+
+		    case true:
+					document.getElementById("BrowserMenusCheckbox").checked = true;
+		    break;
+
+		    case false:
+					document.getElementById("BrowserMenusCheckbox").checked = false;
 		    break;
 
 		}
@@ -135,6 +149,28 @@ addToolbarButtonToAreaSelectChanged: function(){
 
     }
 		
+},
+
+addToBrowserMenusChanged: function(){
+
+	try{
+	
+        switch (document.getElementById("BrowserMenusCheckbox").checked) {
+        
+            case true:
+                Services.prefs.setBoolPref("extensions.language_manager.showinmenu", true);
+            break;
+ 
+            case false:
+                Services.prefs.setBoolPref("extensions.language_manager.showinmenu", false);
+            break;
+        }
+		
+			}catch (e){
+				// Catch any nasty errors and output to dialogue and console
+				Services.prompt.alert(null, "oops i did it again!", "Were sorry but something has gone wrong! " + e);
+		}		
+
 }
 				
 }
