@@ -34,7 +34,8 @@ initAddon: function(){
 		try {
 			if (typeof openUILinkIn != "undefined") {
 				setTimeout(function() {
-					openUILinkIn("chrome://languagemanager/content/firstrun.html", "tab");
+					// Open next to current tab so user can see the first run page, User may not see the page it they have allot of tabs.
+					openUILinkIn("chrome://languagemanager/content/firstrun.html", "tab", { relatedToCurrent: true });
 				}, 2000); // Wait 2 seconds before showing to allow time after browser restart.
 			}
 		} catch(e){
@@ -67,6 +68,25 @@ initAddon: function(){
 				} catch (e) {
 					// Catch any nasty errors and output to dialogue
 					gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 1");
+				}
+			}, false);
+		}
+	} catch(e){}
+	// Add language manager to CTR (Classic Theme Restorer) appmenu-popup
+	try {
+		// Check that appmenu-popup is not null or undefined, Continue regardless of error as to not break the script.
+		var browserMenu = document.getElementById("appmenu-popup");
+		if (browserMenu &&  typeof(browserMenu)  != "undefined" || browserMenu  != null){
+			browserMenu.addEventListener("popupshowing", function(e) {
+				try {
+					if (Services.prefs.getBoolPref("extensions.language_manager.showinmenu")) {
+						document.getElementById("appmenu_LanguageManager").hidden = false;
+					} else {
+						document.getElementById("appmenu_LanguageManager").hidden = true;
+					}
+				} catch (e) {
+					// Catch any nasty errors and output to dialogue
+					gLMangerHandler.prompts.alert(null, "oops i did it again!", gLMangerHandler.bundleDebugError.GetStringFromName("wereSorry") + " " + e + " 1a");
 				}
 			}, false);
 		}
