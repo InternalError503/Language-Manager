@@ -1,3 +1,15 @@
+<!-- LOCALIZATION NOTE (<!ENTITY % brandDTD) must not be edited as it  
+	   controls the use of (&brandShortName;) this gets replaced at run time
+	   with the browsers name so in cyberfox (&brandShortName;) says cyberfox
+	   in firefox (&brandShortName;) says firefox, This item can not be edited or
+	   errors may occur.
+-->
+<!-- Do not edit -->
+<!ENTITY % brandDTD
+    SYSTEM "chrome://branding/locale/brand.dtd">
+  %brandDTD;
+<!-- Do not edit above this message-->
+
 <!ENTITY languageManagerTitleItem.label "Language Manager">
 <!ENTITY languagePackCaptionItem.label "Instalowanie pakietu językowego">
 <!ENTITY languageDescription.desc "Wystarczy wybrać pakiet, który chce się zainstalować, a następnie nacisnąć przycisk 'zainstaluj'.">
@@ -28,4 +40,4 @@
 <!ENTITY languageManagerToggleRemove.label "Usuń pakiet">
 <!ENTITY languageManagerToggleRemove.tooltip "Usuń pakiet językowy">
 
-<!ENTITY languageManagerBetaWarning.label "Ważne: pakiety językowe dla twojej wersji Firefox Beta mogą być teraz niedostępne!">
+<!ENTITY languageManagerBetaWarning.label "Ważne: pakiety językowe dla twojej wersji &brandShortName; Beta mogą być teraz niedostępne!">
