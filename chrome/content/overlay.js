@@ -466,10 +466,28 @@ initPane: function(){
 		request.send(null);
 	},	
 	
+
+
+	/*
+		Show a brief notifcation to the user about beta language packs then hide the notification after * time.
+		6 seconds should be enough to inform the user then hide the notification to prevet wasted vertical screen space.
+		Note: For AMO reviewers this notifcation should only show in firefox beta clients.
+	*/	
+	showbetaWarning : function(){
+		var notice = document.getElementById("betawarningtouser");
+		if (notice && typeof(notice)  != "undefined" || notice != null){
+			notice.hidden = false;
+			setTimeout(function() {
+				notice.hidden = true;
+			}, 6000); // Wait 6 seconds before hiding the notification.
+		}
+	},
+	
 	/*
 	   Here we are making sure only the mode for the browser can be enabled on that browser.
 	   Example: Firefoxmode can only be enabled in firefox etc.
-	*/
+	*/	
+	
 	checkBrowser : function(){
 	try{
 			// Check if browser Firefox
@@ -480,25 +498,17 @@ initPane: function(){
 				*/
 				if (Services.prefs.getCharPref("app.update.channel") === "beta"){
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxbetamode");
-					/*
-					 Show a brief notifcation to the user about beta language packs then hide the notification after * time.
-					 6 seconds should be enough to inform the user then hide the notification to prevet wasted vertical screen space.
-					 Note: For AMO reviewers this notifcation should only show in firefox beta clients.
-					*/
-					var notice = document.getElementById("betawarningtouser");
-					if (notice && typeof(notice)  != "undefined" || notice != null){
-						notice.hidden = false;
-						setTimeout(function() {
-							notice.hidden = true;
-						}, 6000); // Wait 6 seconds before hiding the notification.
-					}
+						gLanguageManger.showbetaWarning();
 				}else{
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxmode");
 				}
 			}
 			// Check if browser Cyberfox (Additional fallback)
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Cyberfox".toLowerCase()) {
-				Services.prefs.setCharPref("extensions.language_manager.browser_mode", "cyberfoxmode");				
+				Services.prefs.setCharPref("extensions.language_manager.browser_mode", "cyberfoxmode");	
+				if (Services.prefs.getCharPref("app.update.channel.type") == "beta"){
+					gLanguageManger.showbetaWarning();
+				}
 			}
 		}catch (e){
 			// Catch any nasty errors and output to dialogue
