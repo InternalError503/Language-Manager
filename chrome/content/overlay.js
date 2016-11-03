@@ -469,17 +469,19 @@ initPane: function(){
 
 
 	/*
-		Show a brief notifcation to the user about beta language packs then hide the notification after * time.
-		6 seconds should be enough to inform the user then hide the notification to prevet wasted vertical screen space.
-		Note: For AMO reviewers this notifcation should only show in firefox beta clients.
+		No longer supports firefox beta
+		Note: For AMO reviewers this notifcation should only show in firefox beta clients, We are dropping support for it entirely.
 	*/	
 	showbetaWarning : function(){
 		var notice = document.getElementById("betawarningtouser");
 		if (notice && typeof(notice)  != "undefined" || notice != null){
 			notice.hidden = false;
-			setTimeout(function() {
-				notice.hidden = true;
-			}, 6000); // Wait 6 seconds before hiding the notification.
+			document.getElementById("top_pane_caption").hidden = true;
+			document.getElementById("desc1").hidden = true;
+			document.getElementById("theList").hidden = true;
+			document.getElementById("iRow").hidden = true;
+			document.getElementById("desc2").hidden = true;
+			document.getElementById("buttonContainer").hidden = true;
 		}
 	},
 	
@@ -494,10 +496,9 @@ initPane: function(){
 			if (gLMangerHandler.browserAppInformation.name.toLowerCase() === "Firefox".toLowerCase()) {
 				/*
 				   Check if running firefox beta.
-				   Since we target the releases/latest-beta we only support the latest firefox beta release.
+				   Since we target the releases we only support the latest firefox release.
 				*/
 				if (Services.prefs.getCharPref("app.update.channel") === "beta"){
-					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxbetamode");
 						gLanguageManger.showbetaWarning();
 				}else{
 					Services.prefs.setCharPref("extensions.language_manager.browser_mode", "firefoxmode");
@@ -582,16 +583,6 @@ initPane: function(){
 			// Request URL where to download language pack from.
 			var cyberfoxModeURL = "https://download.8pecxstudios.com/latest/language/" + gLMangerHandler.browserAppInformation.version + "/";
 			var firerfoxModeURL = "https://ftp.mozilla.org/pub/firefox/releases/" + gLMangerHandler.browserAppInformation.version + "/win32/xpi/";
-			var firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/latest-beta/win32/xpi/";
-			/*
-				Unfortunately changes have been made to the https://ftp.mozilla.org/pub/firefox/releases/latest-beta url and is no longer working correctly.
-				Below we attempt to get the browser display version as it contains what beta version the browser is and construct the url.
-			*/
-			var MozAppConstants = null;
-			try {
-				MozAppConstants = Cu.import("resource://gre/modules/AppConstants.jsm", null).AppConstants;
-				firefoxBetaModeURL = "https://ftp.mozilla.org/pub/firefox/releases/" +  MozAppConstants.MOZ_APP_VERSION_DISPLAY + "/win32/xpi/";
-			}catch(e){MozAppConstants = null;}
 
 				document.getElementById("lm-overlay").hidden = false;					
 				switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
@@ -600,9 +591,6 @@ initPane: function(){
 						break;
 					case "firefoxmode":
 						gLanguageManger.validateURL(firerfoxModeURL + document.getElementById("languageMenu").value + ".xpi", true, aBoolean);
-						break;
-					case "firefoxbetamode":
-						gLanguageManger.validateURL(firefoxBetaModeURL + document.getElementById("languageMenu").value + ".xpi", true, aBoolean);				
 						break;
 				}						
 			}catch (e){

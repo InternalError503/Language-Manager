@@ -28,7 +28,7 @@ try{
 		// Panel label
 		OptionsPanelTitle: document.getElementById("OptionsPanel"),
 		OptionsCurrentLocale: document.getElementById("currentLanguage"),	
-		// Show what browser mode firefox or firefox beta or cyberfox.
+		// Show what browser mode firefox.
 		OptionsBrowserMode: document.getElementById("BrowserMode"),
 		// Language manager browser menus items
 		OptionsBrowserMenus: document.getElementById("BrowserMenus"),	
@@ -67,7 +67,7 @@ try{
 
 		/*
 		  Note: We don't show any values on the first run, Once language_Manager.xul has be initialized and the browser verified then we can display a value here.	
-		  Show what browser mode firefox or firefox beta or cyberfox.
+		  Show what browser mode firefox
 		*/
 		var OptionsBrowser_Mode = document.getElementById("form-browser-mode");
 		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
@@ -79,11 +79,6 @@ try{
 		    case "firefoxmode":
 				OptionsBrowser_Mode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserModeFF");
 		    break;
-
-		    case "firefoxbetamode":
-				OptionsBrowser_Mode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserModeFFB");
-		    break;
-
 		}
 		
 		switch (Services.prefs.getBoolPref("extensions.language_manager.showinmenu")) {

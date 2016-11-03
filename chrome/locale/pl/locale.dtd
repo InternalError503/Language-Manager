@@ -40,4 +40,4 @@
 <!ENTITY languageManagerToggleRemove.label "Usuń pakiet">
 <!ENTITY languageManagerToggleRemove.tooltip "Usuń pakiet językowy">
 
-<!ENTITY languageManagerBetaWarning.label "Ważne: pakiety językowe dla twojej wersji &brandShortName; Beta mogą być teraz niedostępne!">
+<!ENTITY languageManagerBetaWarning.label "Important: &brandShortName; beta is no longer supported, language manager only does release versions of &brandShortName;">
