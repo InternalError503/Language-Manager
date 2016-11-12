@@ -482,6 +482,14 @@ initPane: function(){
 			document.getElementById("iRow").hidden = true;
 			document.getElementById("desc2").hidden = true;
 			document.getElementById("buttonContainer").hidden = true;
+
+			// Still show restore local if on beta.
+			var vbox = document.createElement("vbox");
+			var restore = document.getElementById("restoreDefaultLocale");
+			restore.className = 'uk-alert uk-alert-large uk-text-center uk-alert-warning';
+			vbox.setAttribute("align", "center");
+			vbox.appendChild(restore);
+			document.getElementById('Language-Manager').appendChild(vbox);
 		}
 	},
 	
