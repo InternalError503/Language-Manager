@@ -17,5 +17,6 @@ locale LanguageManager fr chrome/locale/fr/
 locale LanguageManager ja chrome/locale/ja/
 locale LanguageManager pl chrome/locale/pl/
 locale LanguageManager pt-BR chrome/locale/pt-BR/
+locale LanguageManager pt-PT chrome/locale/pt-PT/
 locale LanguageManager tr chrome/locale/tr/
 locale LanguageManager ru chrome/locale/ru/
