@@ -1,0 +1,43 @@
+<!-- LOCALIZATION NOTE (<!ENTITY % brandDTD) must not be edited as it  
+	   controls the use of (&brandShortName;) this gets replaced at run time
+	   with the browsers name so in cyberfox (&brandShortName;) says cyberfox
+	   in firefox (&brandShortName;) says firefox, This item can not be edited or
+	   errors may occur.
+-->
+<!-- Do not edit -->
+<!ENTITY % brandDTD
+    SYSTEM "chrome://branding/locale/brand.dtd">
+  %brandDTD;
+<!-- Do not edit above this message-->
+
+<!ENTITY languageManagerTitleItem.label "Gestor de idiomas">
+<!ENTITY languagePackCaptionItem.label "Instalação do pacote de idioma">
+<!ENTITY languageDescription.desc "Selecione o pacote que deseja instalar e prima Instalar.">
+<!ENTITY languageCurrentInstalled.label "Pacotes de idioma instalados:">
+<!ENTITY languageEnableMessage.label "Clique duas vezes no pacote para o ativar!">
+<!ENTITY selectLanguageItem.label "Selecione o idioma">
+<!ENTITY installButtonItem.label "Instalar">
+<!ENTITY closeButtonItem.label "Terminado">
+<!ENTITY optionsButtonItem.label "Opções">
+<!ENTITY lmHelpButton.tooltip "Documentação do gestor de idiomas">
+<!ENTITY restoreDefaultLocale.label "Restaurar o idioma padrão.">
+<!ENTITY restoreDefaultButtonItem.label "Restaurar idioma">
+
+<!ENTITY listItemName.label "Nomeme">
+<!ENTITY listItemVersion.label "Versão">
+<!ENTITY listItemLocale.label "Configuração regional">
+<!ENTITY listItemInstalled.label "Instalado">
+<!ENTITY listItemEnabled.label "Ativado">
+<!ENTITY listItemCompatible.label "Compatível">
+
+<!ENTITY languageManagerCMenuItem.label "Mostrar Gestor de idiomas">
+<!ENTITY languageManagerCMenuOptionsItem.label "Mostrar opções">
+
+<!ENTITY languageManagerUpdatePack.label "Atualizar pacote">
+<!ENTITY languageManagerUpdatePack.tooltip "Atualizar pacote de idioma">
+<!ENTITY languageManagerTogglePack.label "Alternar pacote">
+<!ENTITY languageManagerTogglePack.tooltip "Ativar pacote de idioma">
+<!ENTITY languageManagerToggleRemove.label "Remover pacote">
+<!ENTITY languageManagerToggleRemove.tooltip "Remover pacote de idioma">
+
+<!ENTITY languageManagerBetaWarning.label "Importante: &brandShortName; beta já não é suportado. O gestor de idiomas apenas funciona para versões do &brandShortName;">
