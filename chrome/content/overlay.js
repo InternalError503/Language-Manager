@@ -462,7 +462,7 @@ initPane: function(){
 		};
 		// Add pramas true for async
 		request.timeout = 5000;
-		request.open("GET", aUrl, true);
+		request.open("GET", aUrl + ((/\?/).test(aUrl) ? "&" : "?=") + (new Date()).getTime(), true);
 		request.send(null);
 	},	
 	
