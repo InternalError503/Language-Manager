@@ -63,6 +63,9 @@
 	<hbox flex="1">
 		<label id="betawarningtouser" class="uk-alert uk-alert-large uk-alert-danger" hidden="true">&languageManagerBetaWarning.label;</label>
 	</hbox>
+	<hbox flex="1">
+		<label id="browserwarningtouser" class="uk-alert uk-alert-large uk-alert-danger" hidden="true">&languageManagerBrowserWarning.label;</label>
+	</hbox>
 </vbox>
 <description id="desc1" align="center">&languageCurrentInstalled.label;</description>
 <listbox id="theList">

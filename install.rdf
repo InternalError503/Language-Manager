@@ -22,7 +22,7 @@
 	
 	<!-- Front End MetaData -->
     <em:name>Language Manager</em:name>
-    <em:description>Language Manager, Designed to manage language packs for Cyberfox and Firefox web browsers this easy to use utility make it easy to manage installed language packs and always have the latest language pack installed.</em:description>
+    <em:description>Language Manager, Designed to manage language packs for Firefox web browser this easy to use utility make it easy to manage installed language packs and always have the latest language pack installed.</em:description>
     <em:creator>8pecxstudios</em:creator>
     <em:homepageURL>https://8pecxstudios.com/</em:homepageURL>
 	<em:optionsType>3</em:optionsType>

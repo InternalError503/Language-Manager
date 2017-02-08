@@ -1,8 +1,7 @@
 <!-- LOCALIZATION NOTE (<!ENTITY % brandDTD) must not be edited as it  
 	   controls the use of (&brandShortName;) this gets replaced at run time
-	   with the browsers name so in cyberfox (&brandShortName;) says cyberfox
-	   in firefox (&brandShortName;) says firefox, This item can not be edited or
-	   errors may occur.
+	   with the browsers name so in firefox (&brandShortName;) says firefox, 
+	   This item can not be edited or errors may occur.
 -->
 <!-- Do not edit -->
 <!ENTITY % brandDTD
@@ -40,4 +39,5 @@
 <!ENTITY languageManagerToggleRemove.label "Remover pacote">
 <!ENTITY languageManagerToggleRemove.tooltip "Remover pacote de idioma">
 
-<!ENTITY languageManagerBetaWarning.label "Importante: &brandShortName; beta já não é suportado. O gestor de idiomas apenas funciona para versões do &brandShortName;">
+<!ENTITY languageManagerBetaWarning.label "Importante: &brandShortName; beta já não é suportado. O gestor de idiomas apenas funciona para versões do Firefox">
+<!ENTITY languageManagerBrowserWarning.label "Important: &brandShortName; is no longer supported, language manager only does release versions of Firefox">

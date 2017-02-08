@@ -64,22 +64,8 @@ try{
 		contentElement.OptionsSelectTimeDateMenuD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuD");
 		contentElement.OptionsSelectTimeDateMenuB.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuB");
 		contentElement.OptionsSelectTimeDateMenuTD.textContent = bundleOptionsWindow.GetStringFromName("lmSelectTimeDateMenuTD");
+		document.getElementById("form-browser-mode").textContent = Services.appinfo.name;
 
-		/*
-		  Note: We don't show any values on the first run, Once language_Manager.xul has be initialized and the browser verified then we can display a value here.	
-		  Show what browser mode firefox
-		*/
-		var OptionsBrowser_Mode = document.getElementById("form-browser-mode");
-		switch (Services.prefs.getCharPref("extensions.language_manager.browser_mode")) {
-
-		    case "cyberfoxmode":
-				OptionsBrowser_Mode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserModeCF");
-			break;
-
-		    case "firefoxmode":
-				OptionsBrowser_Mode.textContent = bundleOptionsWindow.GetStringFromName("lmBrowserModeFF");
-		    break;
-		}
 		
 		switch (Services.prefs.getBoolPref("extensions.language_manager.showinmenu")) {
 
